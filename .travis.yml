@@ -1,19 +1,9 @@
+dist: xenial
+
 language: python
 
 python:
   - "3.7.2"
 
-virtualenv:
-  system_site_packages: true
-
 install:
   - pip install -r requirements.txt
-
-script:
-  - pytest
-
-deploy:
-  provider: script
-  script: python3 aliens.py
-  on:
-    branch: travis
