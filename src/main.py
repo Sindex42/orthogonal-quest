@@ -5,16 +5,23 @@
 import pygame as pg
 from constants import *
 
-pg.init()
-SCREEN = pg.display.set_mode((WIDTH, HEIGHT))
+class Game:
+    def __init__(self):
+        pg.init()
+        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+        pg.display.set_caption(TITLE)
 
-RUNNING = True
-while RUNNING:
+    def run(self):
+        # game loop - set self.playing = False to end the game
+        self.playing = True
+        while self.playing:
+            for event in pg.event.get():
+                self.screen.fill(GREEN)
+                if event.type == pg.QUIT:
+                    self.playing = False
 
-    for event in pg.event.get():
-        print(event)
-        SCREEN.fill(GREEN)
-        if event.type == pg.QUIT:
-            RUNNING = False
+            pg.display.flip()
 
-    pg.display.flip()
+# create instance of game
+game = Game()
+game.run()
