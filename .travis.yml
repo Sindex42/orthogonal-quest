@@ -13,11 +13,3 @@ install:
 
 script:
   - pytest
-
-after_script: cd ~
-
-deploy:
-  provider: script
-  script: python3 aliens.py
-  on:
-    branch: travis
