@@ -1,23 +1,23 @@
 """
-    Main module for running pygame
+    Main module for running pg
 """
 
-import pygame
+import pygame as pg
 
 HEIGHT = 600
 WIDTH = 800
 GREEN = (0, 255, 0)
 
-pygame.init()
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+pg.init()
+SCREEN = pg.display.set_mode((WIDTH, HEIGHT))
 
 RUNNING = True
 while RUNNING:
 
-    for event in pygame.event.get():
+    for event in pg.event.get():
         print(event)
         SCREEN.fill(GREEN)
-        if event.type == pygame.QUIT:
-            running = False
+        if event.type == pg.QUIT:
+            RUNNING = False
 
-    pygame.display.flip()
+    pg.display.flip()
