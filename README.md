@@ -19,6 +19,10 @@ As a user
 So I can play the game 
 I would like to be able to see a game screen
 
+As a game dev
+So I can build a map
+I would like the game world to be divided into a grid
+
 As a user
 So I can begin my quest 
 I would like to be able to see a hero 
@@ -26,6 +30,10 @@ I would like to be able to see a hero
 As a user 
 So I know who I control
 I would like to be able to move the hero orthogonally 
+
+As a user 
+So I can control my hero
+I would like to be able to move one tile at a time
 
 As a user 
 So I know what I’m up against
