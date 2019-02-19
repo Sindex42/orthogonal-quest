@@ -8,10 +8,5 @@ python:
 install:
   - pip install -r requirements.txt
 
-after_script: cd ~
-
-deploy:
-  provider: script
-  script: python3 aliens.py
-  on:
-    branch: travis
+script:
+  - python3 aliens.py
