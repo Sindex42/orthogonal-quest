@@ -1,3 +1,7 @@
+"""
+    Main module for running pygame
+"""
+
 import pygame
 
 HEIGHT = 600
@@ -5,14 +9,14 @@ WIDTH = 800
 GREEN = (0, 255, 0)
 
 pygame.init()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
-running = True
-while running:
+RUNNING = True
+while RUNNING:
 
     for event in pygame.event.get():
         print(event)
-        screen.fill(GREEN)
+        SCREEN.fill(GREEN)
         if event.type == pygame.QUIT:
             running = False
 
