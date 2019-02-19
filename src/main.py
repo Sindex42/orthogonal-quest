@@ -3,10 +3,7 @@
 """
 
 import pygame as pg
-
-HEIGHT = 600
-WIDTH = 800
-GREEN = (0, 255, 0)
+from constants import *
 
 pg.init()
 SCREEN = pg.display.set_mode((WIDTH, HEIGHT))
