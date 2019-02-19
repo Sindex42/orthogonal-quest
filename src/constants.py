@@ -1,5 +1,12 @@
-HEIGHT = 600
-WIDTH = 800
-GREEN = (0, 255, 0)
+# colors
+GREEN = (14, 81, 53)
+GOLD = (212, 206, 70)
 
+# game settings
+HEIGHT = 384
+WIDTH = 512
 TITLE = 'Orthogonal Quest'
+
+TILESIZE = 32
+GRIDWIDTH = WIDTH / TILESIZE
+GRIDHEIGHT = HEIGHT / TILESIZE
