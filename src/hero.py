@@ -1,7 +1,6 @@
 import pygame
 
-from constants import WIDTH, HEIGHT, TILESIZE, GREEN
-
+from src.constants import WIDTH, HEIGHT, TILESIZE, GREEN
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self):
