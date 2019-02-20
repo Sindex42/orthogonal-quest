@@ -15,7 +15,19 @@ class Hero(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
  
- 
+    def handle_keys(self):
+        """ Handles Keys """
+        key = pygame.key.get_pressed()
+        dist = 32 # distance moved in 1 frame, try changing it to 5
+        if key[pygame.K_DOWN]: # down key
+            self.rect.y += dist # move down
+        elif key[pygame.K_UP]: # up key
+            self.rect.y -= dist # move up
+        if key[pygame.K_RIGHT]: # right key
+            self.rect.x += dist # move right
+        elif key[pygame.K_LEFT]: # left key
+            self.rect.x -= dist # move left
+
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -35,8 +47,9 @@ while running:
         
         #print(event)
         screen.fill(WHITE)
+        hero.handle_keys()
         all_sprites.update()
-    
+
         # Key line of code for rendering sprites
         all_sprites.draw(screen)
  
