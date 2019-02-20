@@ -6,6 +6,7 @@ import pygame as pg
 from enemy import Enemy
 from wall import Wall
 from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
+from os import path 
 
 
 class Game:
@@ -17,6 +18,16 @@ class Game:
         pg.init()
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
+        self.load_data()
+
+    def load_data(self):
+        ''' Loads walls '''
+
+        game_folder = path.dirname(__file__)
+        self.map_data = []
+        with open(path.join(game_folder, 'map.txt'), 'r') as file:
+            for line in file:
+                self.map_data.append(line)
 
     def run(self):
         ''' Game loop '''
@@ -31,6 +42,11 @@ class Game:
 
         self.all_sprites = pg.sprite.Group()
         self.all_sprites.add(Enemy(1, 1))
+        for row, tiles in enumerate(self.map_data):
+            for col, tile in enumerate(tiles):
+                if tile == '1':
+                    self.all_sprites.add(Wall(col, row))
+       
 
     def draw_grid(self):
         ''' Draws the grid '''
