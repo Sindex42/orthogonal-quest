@@ -32,6 +32,7 @@ class Game:
         self.all_sprites.add(Enemy(1, 1))
         self.hero  = Hero()
         self.all_sprites.add(self.hero)
+        # self.clock = pg.time.Clock()
 
     def draw_grid(self):
         ''' Draws the grid '''
@@ -49,6 +50,7 @@ class Game:
         self.draw_grid()
         self.all_sprites.draw(self.screen)
         pg.display.flip()
+        # self.clock.tick(60)
 
     def events(self):
         ''' Event listener '''
