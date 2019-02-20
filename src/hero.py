@@ -14,7 +14,7 @@ class Hero(pygame.sprite.Sprite):
         self.image.fill(BLACK)
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
- 
+
     def handle_keys(self):
         """ Handles Keys """
         key = pygame.key.get_pressed()
@@ -35,37 +35,3 @@ class Hero(pygame.sprite.Sprite):
             self.rect.bottom = HEIGHT
         if self.rect.top < 0:
             self.rect.top = 0
-
-
-pygame.init()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Orthogonal Quest')
-
-all_sprites = pygame.sprite.Group()
-
-hero = Hero()  
-all_sprites.add(hero)
-      
-clock = pygame.time.Clock()
-
-running = True
-while running:
-
-    for event in pygame.event.get():
-        
-        #print(event)
-        screen.fill(WHITE)
-        hero.handle_keys()
-        all_sprites.update()
-
-        # Key line of code for rendering sprites
-        all_sprites.draw(screen)
- 
-        pygame.display.flip()
- 
-        clock.tick(60)
-
-        if event.type == pygame.QUIT:
-            running = False
- 
-pygame.quit()

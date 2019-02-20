@@ -1,10 +1,10 @@
-
 """
     Main module for running pg
 """
 
 import pygame as pg
 from enemy import Enemy
+from hero import Hero
 from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
 
 class Game:
@@ -30,6 +30,8 @@ class Game:
 
         self.all_sprites = pg.sprite.Group()
         self.all_sprites.add(Enemy(1, 1))
+        self.hero  = Hero()
+        self.all_sprites.add(self.hero)
 
     def draw_grid(self):
         ''' Draws the grid '''
@@ -42,6 +44,7 @@ class Game:
     def draw(self):
         ''' Refreshes screen on every loop '''
 
+        self.hero.handle_keys()
         self.screen.fill(BG_COLOUR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
