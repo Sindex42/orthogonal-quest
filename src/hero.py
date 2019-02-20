@@ -12,8 +12,6 @@ class Hero(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((32, 32))
         self.image.fill(BLACK)
-        self.x = 0
-        self.y = 0
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
  
