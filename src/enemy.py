@@ -1,15 +1,12 @@
-"""
-Enemy module
-"""
+''' Enemy tiles '''
 
 import pygame as pg
 from constants import TILESIZE, RED
 
 
 class Enemy(pg.sprite.Sprite):
-    """
-    Creates enemies
-    """
+    ''' Creates enemies '''
+
     def __init__(self, x_pos, y_pos):
         pg.sprite.Sprite.__init__(self)
         self.image = pg.Surface((TILESIZE, TILESIZE))

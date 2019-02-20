@@ -1,33 +1,35 @@
-"""
-    Main module for running pg
-"""
+''' Main module for running pg '''
 
+from os import path
 import pygame as pg
+
 from enemy import Enemy
 from wall import Wall
 from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
-from os import path 
 
 
 class Game:
-    """
-    Setup and run game instance
-    """
+    ''' Setup and run game instance '''
 
     def __init__(self):
         pg.init()
-        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
+
+        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+        self.playing = None
+        self.map_data = []
+        self.all_sprites = pg.sprite.Group()
+
         self.load_data()
 
-    def load_data(self):
-        ''' Loads walls '''
+    def new(self):
+        ''' Creates sprites '''
 
-        game_folder = path.dirname(__file__)
-        self.map_data = []
-        with open(path.join(game_folder, 'map.txt'), 'r') as file:
-            for line in file:
-                self.map_data.append(line)
+        self.all_sprites.add(Enemy(1, 1))
+        for row, tiles in enumerate(self.map_data):
+            for col, tile in enumerate(tiles):
+                if tile == '1':
+                    self.all_sprites.add(Wall(col, row))
 
     def run(self):
         ''' Game loop '''
@@ -37,16 +39,13 @@ class Game:
             self.events()
             self.draw()
 
-    def new(self):
-        ''' Creates sprites '''
+    def load_data(self):
+        ''' Loads walls '''
 
-        self.all_sprites = pg.sprite.Group()
-        self.all_sprites.add(Enemy(1, 1))
-        for row, tiles in enumerate(self.map_data):
-            for col, tile in enumerate(tiles):
-                if tile == '1':
-                    self.all_sprites.add(Wall(col, row))
-       
+        game_folder = path.dirname(__file__)
+        with open(path.join(game_folder, 'map.txt'), 'r') as file:
+            for line in file:
+                self.map_data.append(line)
 
     def draw_grid(self):
         ''' Draws the grid '''

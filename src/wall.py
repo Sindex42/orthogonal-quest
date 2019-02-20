@@ -1,12 +1,12 @@
-"""
-    Main module for wall
-"""
+''' Wall tiles '''
 
 import pygame as pg
 from constants import TILESIZE, BROWN
 
+
 class Wall(pg.sprite.Sprite):
-    '''creates walls '''
+    ''' Creates walls '''
+
     def __init__(self, x_pos, y_pos):
         pg.sprite.Sprite.__init__(self)
         self.image = pg.Surface((TILESIZE, TILESIZE))

@@ -1,3 +1,5 @@
+''' Colours and Window constants '''
+
 # colors
 GREEN = (14, 81, 53)
 GOLD = (212, 206, 70)
