@@ -1,24 +1,21 @@
 import pygame
 
-HEIGHT = 568
-WIDTH = 1024
-GREEN = (0, 255, 0)
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+from constants import WIDTH, HEIGHT, TILESIZE, GREEN
+
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self):
 
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((32, 32))
-        self.image.fill(BLACK)
+        self.image.fill(GREEN)
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
 
     def handle_keys(self):
         """ Handles Keys """
         key = pygame.key.get_pressed()
-        dist = 32 # distance moved in 1 frame, try changing it to 5
+        dist = TILESIZE# distance moved in 1 frame, try changing it to 5
         if key[pygame.K_DOWN]: # down key
             self.rect.y += dist # move down
         elif key[pygame.K_UP]: # up key
