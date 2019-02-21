@@ -23,6 +23,7 @@ class Game:
         self.playing = True
         while self.playing:
             self.events()
+            self.update()
             self.draw()
 
     def new(self):
@@ -30,9 +31,11 @@ class Game:
 
         self.all_sprites = pg.sprite.Group()
         self.all_sprites.add(Enemy(1, 1))
-        self.hero  = Hero(5, 5)
+        self.hero  = Hero(self, 5, 5)
         self.all_sprites.add(self.hero)
-        # self.clock = pg.time.Clock()
+
+    def update(self):
+        self.all_sprites.update()
 
     def draw_grid(self):
         ''' Draws the grid '''
@@ -45,12 +48,10 @@ class Game:
     def draw(self):
         ''' Refreshes screen on every loop '''
 
-        self.hero.handle_keys()
         self.screen.fill(BG_COLOUR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
         pg.display.flip()
-        # self.clock.tick(60)
 
     def events(self):
         ''' Event listener '''
@@ -58,6 +59,15 @@ class Game:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.playing = False
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_LEFT:
+                    self.hero.move(dx=-1)
+                if event.key == pg.K_RIGHT:
+                    self.hero.move(dx=1)
+                if event.key == pg.K_UP:
+                    self.hero.move(dy=-1)
+                if event.key == pg.K_DOWN:
+                    self.hero.move(dy=1)
 
 
 # create instance of game
