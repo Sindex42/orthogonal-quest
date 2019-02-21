@@ -23,16 +23,6 @@ class Game:
         self.map_data = []
         self.load_data()
 
-    # def new(self):
-    #     ''' Creates sprites '''
-
-    #     self.all_sprites.add(Enemy(1, 1))
-    #     for row, tiles in enumerate(self.map_data):
-    #         for col, tile in enumerate(tiles):
-    #             if tile == '1':
-    #                 self.all_sprites.add(Wall(col, row))
-
-
     def run(self):
         ''' Game loop '''
 
