@@ -69,7 +69,6 @@ class Game:
                 if event.key == pg.K_DOWN:
                     self.hero.move(dy=1)
 
-
 # create instance of game
 GAME = Game()
 GAME.new()
