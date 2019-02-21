@@ -13,6 +13,9 @@ class Game:
 
     def __init__(self):
         pg.init()
+        pg.mixer.init()
+        pg.mixer.music.load('./audio/Bridgeburner (8-Bit).mp3')
+        pg.mixer.music.play(-1)
         pg.display.set_caption(TITLE)
 
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
