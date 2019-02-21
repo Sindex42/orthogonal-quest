@@ -21,19 +21,7 @@ class Game:
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
-        self.all_sprites = pg.sprite.Group()
-
         self.load_data()
-
-    def new(self):
-        ''' Creates sprites '''
-
-        self.all_sprites.add(Enemy(1, 1))
-        for row, tiles in enumerate(self.map_data):
-            for col, tile in enumerate(tiles):
-                if tile == '1':
-                    self.all_sprites.add(Wall(col, row))
-
 
     def run(self):
         ''' Game loop '''
@@ -51,6 +39,10 @@ class Game:
         self.all_sprites.add(Enemy(1, 1))
         self.hero  = Hero(self, 5, 5)
         self.all_sprites.add(self.hero)
+        for row, tiles in enumerate(self.map_data):
+            for col, tile in enumerate(tiles):
+                if tile == '1':
+                    self.all_sprites.add(Wall(col, row))
 
     def update(self):
         self.all_sprites.update()
