@@ -2,7 +2,7 @@
 
 from os import path
 import pygame as pg
-
+from hero import Hero
 from enemy import Enemy
 from wall import Wall
 from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
@@ -31,13 +31,26 @@ class Game:
                 if tile == '1':
                     self.all_sprites.add(Wall(col, row))
 
+
     def run(self):
         ''' Game loop '''
 
         self.playing = True
         while self.playing:
             self.events()
+            self.update()
             self.draw()
+
+    def new(self):
+        ''' Creates sprites '''
+
+        self.all_sprites = pg.sprite.Group()
+        self.all_sprites.add(Enemy(1, 1))
+        self.hero  = Hero(self, 5, 5)
+        self.all_sprites.add(self.hero)
+
+    def update(self):
+        self.all_sprites.update()
 
     def load_data(self):
         ''' Loads walls '''
@@ -70,8 +83,18 @@ class Game:
             if event.type == pg.QUIT:
                 self.playing = False
 
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_LEFT:
+                    self.hero.move(dx=-1)
+                if event.key == pg.K_RIGHT:
+                    self.hero.move(dx=1)
+                if event.key == pg.K_UP:
+                    self.hero.move(dy=-1)
+                if event.key == pg.K_DOWN:
+                    self.hero.move(dy=1)
 
 # create instance of game
 GAME = Game()
 GAME.new()
 GAME.run()
+
