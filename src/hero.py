@@ -1,4 +1,5 @@
 import pygame as pg
+#import pygame.image as pg.image
 
 from constants import WIDTH, HEIGHT, TILESIZE, GREEN
 
@@ -7,8 +8,10 @@ class Hero(pg.sprite.Sprite):
 
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pg.Surface((TILESIZE, TILESIZE))
-        self.image.fill(GREEN)
+        #self.image = pg.Surface((TILESIZE, TILESIZE))
+        #self.image.fill(GREEN)
+        #self.image = pg.image.load('./images/link_f0.png')
+        self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.rect = self.image.get_rect()
         self.x = x_pos
         self.y = y_pos
