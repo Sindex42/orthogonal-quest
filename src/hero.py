@@ -20,6 +20,7 @@ class Hero(pg.sprite.Sprite):
         if not self.collide_with_walls(dx, dy) and not self.collide_with_enemy(dx, dy):
             self.x += dx
             self.y += dy
+        #Changes link image on each arrow key push
         if dx == 1:
             self.image = pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1))
         if dx == -1:
