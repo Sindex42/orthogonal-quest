@@ -1,6 +1,6 @@
 import pygame as pg
 
-from constants import WIDTH, HEIGHT, TILESIZE, GREEN
+from src.constants import WIDTH, HEIGHT, TILESIZE, GREEN
 
 class Hero(pg.sprite.Sprite):
     def __init__(self, game, x_pos, y_pos):
@@ -14,8 +14,16 @@ class Hero(pg.sprite.Sprite):
         self.y = y_pos
 
     def move(self, dx=0, dy=0):
-        self.x += dx
-        self.y += dy
+        if not self.collide_with_walls(dx, dy):
+            self.x += dx
+            self.y += dy
+    
+    def collide_with_walls(self, dx=0, dy=0):
+        for wall in self.game.walls_sprites:
+            if wall.x == self.x + dx and wall.y == self.y + dy:
+                print("Wall collision")
+                return True
+        return False
 
     def update(self):
         self.rect.x = self.x * TILESIZE

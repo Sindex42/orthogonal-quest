@@ -26,3 +26,5 @@ class TestHero(object):
     hero.handle_keys()
     
     assert hero.rect.y == 367
+
+  
