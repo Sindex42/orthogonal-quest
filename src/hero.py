@@ -22,6 +22,12 @@ class Hero(pg.sprite.Sprite):
             self.y += dy
         if dx == 1:
             self.image = pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1))
+        if dx == -1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_l0.png'), (TILESIZE -1, TILESIZE -1))
+        if dy == 1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
+        if dy == -1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
     
     def collide_with_walls(self, dx=0, dy=0):
         for wall in self.game.walls_sprites:
