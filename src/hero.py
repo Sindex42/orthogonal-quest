@@ -1,5 +1,4 @@
 import pygame as pg
-#import pygame.image as pg.image
 
 from constants import WIDTH, HEIGHT, TILESIZE, GREEN
 
@@ -8,9 +7,6 @@ class Hero(pg.sprite.Sprite):
 
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        #self.image = pg.Surface((TILESIZE, TILESIZE))
-        #self.image.fill(GREEN)
-        #self.image = pg.image.load('./images/link_f0.png')
         self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.rect = self.image.get_rect()
         self.x = x_pos
@@ -30,6 +26,7 @@ class Hero(pg.sprite.Sprite):
         if dy == -1:
             self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
     
+
     def collide_with_walls(self, dx=0, dy=0):
         for wall in self.game.walls_sprites:
             if wall.x == self.x + dx and wall.y == self.y + dy:
@@ -45,5 +42,5 @@ class Hero(pg.sprite.Sprite):
         return False
 
     def update(self):
-        self.rect.x = self.x * TILESIZE
-        self.rect.y = self.y * TILESIZE
+        self.rect.x = self.x * TILESIZE + 1
+        self.rect.y = self.y * TILESIZE + 1
