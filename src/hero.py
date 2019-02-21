@@ -7,8 +7,7 @@ class Hero(pg.sprite.Sprite):
 
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pg.Surface((TILESIZE - 1, TILESIZE - 1))
-        self.image.fill(GREEN)
+        self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.rect = self.image.get_rect()
         self.x = x_pos
         self.y = y_pos
@@ -17,6 +16,16 @@ class Hero(pg.sprite.Sprite):
         if not self.collide_with_walls(dx, dy) and not self.collide_with_enemy(dx, dy):
             self.x += dx
             self.y += dy
+        #Changes link image on each arrow key push
+        if dx == 1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1))
+        if dx == -1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_l0.png'), (TILESIZE -1, TILESIZE -1))
+        if dy == 1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
+        if dy == -1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
+    
 
     def collide_with_walls(self, dx=0, dy=0):
         for wall in self.game.walls_sprites:
