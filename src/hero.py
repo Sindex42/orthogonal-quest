@@ -20,6 +20,8 @@ class Hero(pg.sprite.Sprite):
         if not self.collide_with_walls(dx, dy) and not self.collide_with_enemy(dx, dy):
             self.x += dx
             self.y += dy
+        if dx == 1:
+            self.image = pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1))
     
     def collide_with_walls(self, dx=0, dy=0):
         for wall in self.game.walls_sprites:
