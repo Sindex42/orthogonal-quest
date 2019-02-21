@@ -42,7 +42,7 @@ class Game:
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    self.all_sprites.add(Wall(col, row))
+                    self.all_sprites.add(Wall(self, col, row))
 
     def update(self):
         self.all_sprites.update()

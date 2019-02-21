@@ -7,8 +7,9 @@ from constants import TILESIZE, BROWN
 class Wall(pg.sprite.Sprite):
     ''' Creates walls '''
 
-    def __init__(self, x_pos, y_pos):
+    def __init__(self, game, x_pos, y_pos):
         pg.sprite.Sprite.__init__(self)
+        self.game = game
         self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(BROWN)
         self.rect = self.image.get_rect()
