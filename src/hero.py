@@ -1,19 +1,20 @@
-import pygame
+import pygame as pg
 
 from src.constants import WIDTH, HEIGHT, TILESIZE, GREEN
 
-class Hero(pygame.sprite.Sprite):
-    def __init__(self):
+class Hero(pg.sprite.Sprite):
+    def __init__(self, x_pos, y_pos):
 
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((32, 32))
+        pg.sprite.Sprite.__init__(self)
+        self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(GREEN)
         self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH / 2, HEIGHT / 2)
+        self.rect.x = TILESIZE * x_pos
+        self.rect.y = TILESIZE * y_pos
 
     def handle_keys(self):
         """ Handles Keys """
-        self.key = pygame.key.get_pressed()
+        self.key = pg.key.get_pressed()
         self.__move_up_or_down()
         self.__move_left_or_right()
         self.__contain_right()
@@ -24,15 +25,15 @@ class Hero(pygame.sprite.Sprite):
     # private methods
 
     def __move_up_or_down(self):
-        if self.key[pygame.K_DOWN]: # down key
+        if self.key[pg.K_DOWN]: # down key
             self.rect.y += TILESIZE
-        elif self.key[pygame.K_UP]: # up key
+        elif self.key[pg.K_UP]: # up key
             self.rect.y -= TILESIZE
 
     def __move_left_or_right(self):
-        if self.key[pygame.K_RIGHT]: # right key
+        if self.key[pg.K_RIGHT]: # right key
             self.rect.x += TILESIZE
-        elif self.key[pygame.K_LEFT]: # left key
+        elif self.key[pg.K_LEFT]: # left key
             self.rect.x -= TILESIZE
 
     def __contain_right(self):

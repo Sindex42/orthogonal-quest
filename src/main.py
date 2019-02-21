@@ -30,7 +30,7 @@ class Game:
 
         self.all_sprites = pg.sprite.Group()
         self.all_sprites.add(Enemy(1, 1))
-        self.hero  = Hero()
+        self.hero  = Hero(5, 5)
         self.all_sprites.add(self.hero)
         # self.clock = pg.time.Clock()
 
