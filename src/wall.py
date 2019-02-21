@@ -13,5 +13,7 @@ class Wall(pg.sprite.Sprite):
         self.image = pg.Surface((TILESIZE, TILESIZE))
         self.image.fill(BROWN)
         self.rect = self.image.get_rect()
+        self.x = x_pos
+        self.y = y_pos
         self.rect.x = TILESIZE * x_pos
         self.rect.y = TILESIZE * y_pos
