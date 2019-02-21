@@ -148,3 +148,15 @@ Tech | Description
 ## Learning log
 
 * To see a log of our learnings throughout this project, please refer to our project [wiki](https://github.com/Sindex42/super-slack-bros/wiki)
+
+
+## How to Contribute
+
+We'd love to hear from you if have anything to contribute to help us improve Orthonogal Quest. To do so: 
+
+1. Fork the repo
+2. Make as regular and as small commits as possible
+3. Leave super clear commit messages along the way
+4. Make a pull request back to this repo explaining the contributions you made
+
+Your name will of course be added to our list of contributers if your pull request is approved.
