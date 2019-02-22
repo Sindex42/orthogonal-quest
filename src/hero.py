@@ -37,7 +37,9 @@ class Hero(pg.sprite.Sprite):
     def collide_with_enemy(self, dx=0, dy=0):
         for enemy in self.game.all_sprites:
             if enemy.x == self.x + dx and enemy.y == self.y + dy:
-                print("Enemy collision")
+                print("Game Over!")
+                self.kill()
+                self.game.playing = False
                 return True
         return False
 
