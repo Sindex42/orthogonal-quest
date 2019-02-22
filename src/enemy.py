@@ -1,7 +1,7 @@
 ''' Enemy tiles '''
 
 import pygame as pg
-from constants import TILESIZE, RED
+from constants import TILESIZE, RED, BLACK
 
 
 class Enemy(pg.sprite.Sprite):
@@ -10,7 +10,8 @@ class Enemy(pg.sprite.Sprite):
     def __init__(self, game, x_pos, y_pos):
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pg.transform.scale(pg.image.load('./images/enemy.png'), (TILESIZE -1, TILESIZE -1))
+        self.image = pg.transform.scale(pg.image.load('./images/enemy.png'), (TILESIZE -1, TILESIZE -1)).convert()
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.x = x_pos
         self.y = y_pos
