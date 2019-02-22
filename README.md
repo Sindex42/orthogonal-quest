@@ -1,4 +1,5 @@
 # Team Super Slack Bros - Final Project
+[![Build Status](https://travis-ci.com/Sindex42/orthogonal-quest.svg?branch=master)](https://travis-ci.com/Sindex42/orthogonal-quest)
 
 A two week group project to build a game in Python using Pygame
 
