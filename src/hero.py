@@ -17,6 +17,9 @@ class Hero(pg.sprite.Sprite):
         self.right_index = 0
         self.right_images = []
         self.load_right_image()
+        self.down_index = 0
+        self.down_images = []
+        self.load_down_image()
 
         self.image = self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.rect = self.image.get_rect()
@@ -36,6 +39,10 @@ class Hero(pg.sprite.Sprite):
             self.image = pg.transform.scale(pg.image.load('./images/link_l0.png'), (TILESIZE -1, TILESIZE -1))
         if dy == 1:
             self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
+            self.down_index += 1
+            if self.down_index >= len(self.down_images):
+                self.down_index = 0
+            self.image = self.down_images[self.down_index]
         if dy == -1:
             #self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
             self.up_index += 1
