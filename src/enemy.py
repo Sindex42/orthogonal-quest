@@ -13,7 +13,7 @@ class Enemy(pg.sprite.Sprite):
         self.image = pg.transform.scale(pg.image.load('./images/imp_f0.png'), (TILESIZE -1, TILESIZE -1)).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.x = x_pos
-        self.y = y_pos
+        self.x_pos = x_pos
+        self.y_pos = y_pos
         self.rect.x = TILESIZE * x_pos + 1
         self.rect.y = TILESIZE * y_pos + 1
