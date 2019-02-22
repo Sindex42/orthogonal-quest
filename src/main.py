@@ -41,6 +41,7 @@ class Game:
 
         self.all_sprites.add(Enemy(self, 1, 1))
         self.hero = Hero(self, 5, 5)
+
         self.all_sprites.add(self.hero)
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
@@ -55,6 +56,7 @@ class Game:
         ''' Loads map '''
 
         game_folder = path.dirname(__file__)
+
         with open(path.join(game_folder, 'map.txt'), 'r') as file:
             for line in file:
                 self.map_data.append(line)
@@ -92,6 +94,7 @@ class Game:
                     self.hero.move(d_y=-1)
                 if event.key == pg.K_DOWN:
                     self.hero.move(d_y=1)
+
 
 
 # create instance of game
