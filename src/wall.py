@@ -1,7 +1,7 @@
 ''' Wall tiles '''
 
 import pygame as pg
-from constants import TILESIZE, BROWN
+from constants import TILESIZE
 
 
 class Wall(pg.sprite.Sprite):
