@@ -10,10 +10,15 @@ class Hero(pg.sprite.Sprite):
         #self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.x = x_pos
         self.y = y_pos
-        self.images = []
+
+        self.up_index = 0
+        self.up_images = []
         self.load_up_image()
-        self.index = 0
-        self.image = self.images[self.index]
+        self.right_index = 0
+        self.right_images = []
+        self.load_right_image()
+
+        self.image = self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.rect = self.image.get_rect()
 
     def move(self, dx=0, dy=0):
@@ -22,29 +27,22 @@ class Hero(pg.sprite.Sprite):
             self.y += dy
         #Changes link image on each arrow key push
         if dx == 1:
-            self.image = pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1))
+            #self.image = pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1))
+            self.right_index += 1
+            if self.right_index >= len(self.right_images):
+                self.right_index = 0
+            self.image = self.right_images[self.right_index]
         if dx == -1:
             self.image = pg.transform.scale(pg.image.load('./images/link_l0.png'), (TILESIZE -1, TILESIZE -1))
         if dy == 1:
             self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         if dy == -1:
             #self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
-            
-            self.index += 1
-            if self.index >= len(self.images):
-                self.index = 0
-            self.image = self.images[self.index]
+            self.up_index += 1
+            if self.up_index >= len(self.up_images):
+                self.up_index = 0
+            self.image = self.up_images[self.up_index]
 
-
-    def load_up_image(self):
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1)))
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b1.png'), (TILESIZE -1, TILESIZE -1)))
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b2.png'), (TILESIZE -1, TILESIZE -1)))
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b3.png'), (TILESIZE -1, TILESIZE -1)))
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b4.png'), (TILESIZE -1, TILESIZE -1)))
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b5.png'), (TILESIZE -1, TILESIZE -1)))
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b6.png'), (TILESIZE -1, TILESIZE -1)))
-        self.images.append(pg.transform.scale(pg.image.load('./images/link_b7.png'), (TILESIZE -1, TILESIZE -1)))
 
     def collide_with_walls(self, dx=0, dy=0):
         for wall in self.game.walls_sprites:
@@ -59,6 +57,27 @@ class Hero(pg.sprite.Sprite):
                 print("Enemy collision")
                 return True
         return False
+
+    def load_up_image(self):
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1)))
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b1.png'), (TILESIZE -1, TILESIZE -1)))
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b2.png'), (TILESIZE -1, TILESIZE -1)))
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b3.png'), (TILESIZE -1, TILESIZE -1)))
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b4.png'), (TILESIZE -1, TILESIZE -1)))
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b5.png'), (TILESIZE -1, TILESIZE -1)))
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b6.png'), (TILESIZE -1, TILESIZE -1)))
+        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b7.png'), (TILESIZE -1, TILESIZE -1)))
+
+    def load_right_image(self):
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1)))
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r1.png'), (TILESIZE -1, TILESIZE -1)))
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r2.png'), (TILESIZE -1, TILESIZE -1)))
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r3.png'), (TILESIZE -1, TILESIZE -1)))
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r4.png'), (TILESIZE -1, TILESIZE -1)))
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r5.png'), (TILESIZE -1, TILESIZE -1)))
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r6.png'), (TILESIZE -1, TILESIZE -1)))
+        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r7.png'), (TILESIZE -1, TILESIZE -1)))
+
 
     def update(self):
         self.rect.x = self.x * TILESIZE + 1
