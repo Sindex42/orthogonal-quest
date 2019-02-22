@@ -4,6 +4,13 @@ A two week group project to build a game in Python using Pygame
 
 * Our [Trello board](https://trello.com/b/mXUdQOWW/final-project-team-super-slack-bros)
 
+Contributors:
+
+* [Chris Hassan](https://github.com/CKKH)
+* [Connor Kam-Cheong](https://github.com/sindex42)
+* [James Hotblack](https://github.com/hotblack86)
+* [Michael Nguyen](https://github.com/michaelnguyen974)
+* [Thomas Lawrence](https://github.com/matharotheelf)
 
 ## Getting Started
 
@@ -159,4 +166,4 @@ We'd love to hear from you if have anything to contribute to help us improve Ort
 3. Leave super clear commit messages along the way
 4. Make a pull request back to this repo explaining the contributions you made
 
-Your name will of course be added to our list of contributers if your pull request is approved.
+Your name will of course be added to our list of contributors if your pull request is approved.
