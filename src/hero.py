@@ -1,9 +1,14 @@
+''' Hero module '''
+
 import pygame as pg
 import os
 
-from constants import WIDTH, HEIGHT, TILESIZE, GREEN
+from constants import TILESIZE
+
 
 class Hero(pg.sprite.Sprite):
+    ''' Create hero '''
+
     def __init__(self, game, x_pos, y_pos):
 
         pg.sprite.Sprite.__init__(self)
@@ -40,16 +45,18 @@ class Hero(pg.sprite.Sprite):
                 self.up_index = 0
             self.image = self.up_images[self.up_index]
 
-    def collide_with_walls(self, dx=0, dy=0):
+    def collide_with_walls(self, d_x=0, d_y=0):
+        ''' Check for wall collision '''
         for wall in self.game.walls_sprites:
-            if wall.x == self.x + dx and wall.y == self.y + dy:
+            if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
                 print("Wall collision")
                 return True
         return False
 
-    def collide_with_enemy(self, dx=0, dy=0):
+    def collide_with_enemy(self, d_x=0, d_y=0):
+        ''' Check for enemy collision '''
         for enemy in self.game.all_sprites:
-            if enemy.x == self.x + dx and enemy.y == self.y + dy:
+            if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Enemy collision")
                 return True
         return False
@@ -86,5 +93,7 @@ class Hero(pg.sprite.Sprite):
             self.left_images.append(pg.transform.scale(pg.image.load(path), (TILESIZE -1, TILESIZE -1)))
 
     def update(self):
-        self.rect.x = self.x * TILESIZE + 1
-        self.rect.y = self.y * TILESIZE + 1
+        ''' Update position '''
+
+        self.rect.x = self.x_pos * TILESIZE + 1
+        self.rect.y = self.y_pos * TILESIZE + 1
