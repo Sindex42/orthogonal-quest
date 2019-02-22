@@ -18,6 +18,10 @@ class Game:
         pg.mixer.music.play(-1)
         pg.display.set_caption(TITLE)
 
+        self.walls_sprites = pg.sprite.Group()
+        self.all_sprites = pg.sprite.Group()
+        self.hero = None
+
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
@@ -35,10 +39,8 @@ class Game:
     def new(self):
         ''' Creates sprites '''
 
-        self.all_sprites = pg.sprite.Group()
         self.all_sprites.add(Enemy(self, 1, 1))
-        self.hero  = Hero(self, 5, 5)
-        self.walls_sprites = pg.sprite.Group()
+        self.hero = Hero(self, 5, 5)
         self.all_sprites.add(self.hero)
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
@@ -46,10 +48,11 @@ class Game:
                     self.walls_sprites.add(Wall(self, col, row))
 
     def update(self):
+        ''' Updates sprites '''
         self.all_sprites.update()
 
     def load_data(self):
-        ''' Loads walls '''
+        ''' Loads map '''
 
         game_folder = path.dirname(__file__)
         with open(path.join(game_folder, 'map.txt'), 'r') as file:
@@ -82,16 +85,16 @@ class Game:
 
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_LEFT:
-                    self.hero.move(dx=-1)
+                    self.hero.move(d_x=-1)
                 if event.key == pg.K_RIGHT:
-                    self.hero.move(dx=1)
+                    self.hero.move(d_x=1)
                 if event.key == pg.K_UP:
-                    self.hero.move(dy=-1)
+                    self.hero.move(d_y=-1)
                 if event.key == pg.K_DOWN:
-                    self.hero.move(dy=1)
+                    self.hero.move(d_y=1)
+
 
 # create instance of game
 GAME = Game()
 GAME.new()
 GAME.run()
-
