@@ -7,10 +7,20 @@ class Hero(pg.sprite.Sprite):
 
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
-        self.rect = self.image.get_rect()
+        #self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.x = x_pos
         self.y = y_pos
+        self.images = []
+        self.load_up_image()
+        self.index = 0
+        print(self.images)
+        self.image = self.images[self.index]
+        print(self.image)
+        self.rect = self.image.get_rect()
+
+    # def load_image(name):
+    #     image = pygame.image.load(name)
+    #     return image
 
     def move(self, dx=0, dy=0):
         if not self.collide_with_walls(dx, dy) and not self.collide_with_enemy(dx, dy):
@@ -24,8 +34,23 @@ class Hero(pg.sprite.Sprite):
         if dy == 1:
             self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         if dy == -1:
-            self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
-    
+            #self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
+            
+            self.index += 1
+            if self.index >= len(self.images):
+                self.index = 0
+            self.image = self.images[self.index]
+
+
+    def load_up_image(self):
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1)))
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b1.png'), (TILESIZE -1, TILESIZE -1)))
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b2.png'), (TILESIZE -1, TILESIZE -1)))
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b3.png'), (TILESIZE -1, TILESIZE -1)))
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b4.png'), (TILESIZE -1, TILESIZE -1)))
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b5.png'), (TILESIZE -1, TILESIZE -1)))
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b6.png'), (TILESIZE -1, TILESIZE -1)))
+        self.images.append(pg.transform.scale(pg.image.load('./images/link_b7.png'), (TILESIZE -1, TILESIZE -1)))
 
     def collide_with_walls(self, dx=0, dy=0):
         for wall in self.game.walls_sprites:
