@@ -13,14 +13,8 @@ class Hero(pg.sprite.Sprite):
         self.images = []
         self.load_up_image()
         self.index = 0
-        print(self.images)
         self.image = self.images[self.index]
-        print(self.image)
         self.rect = self.image.get_rect()
-
-    # def load_image(name):
-    #     image = pygame.image.load(name)
-    #     return image
 
     def move(self, dx=0, dy=0):
         if not self.collide_with_walls(dx, dy) and not self.collide_with_enemy(dx, dy):
