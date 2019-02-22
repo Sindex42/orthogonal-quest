@@ -10,7 +10,7 @@ class Enemy(pg.sprite.Sprite):
     def __init__(self, game, x_pos, y_pos):
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pg.Surface((TILESIZE - 1, TILESIZE -1 ))
+        self.image = pg.Surface((TILESIZE - 1, TILESIZE - 1))
         self.image.fill(RED)
         self.rect = self.image.get_rect()
         self.x = x_pos
