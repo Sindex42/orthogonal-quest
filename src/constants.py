@@ -1,7 +1,5 @@
 ''' Colours and Window constants '''
 
-import pygame as pg
-
 # colors
 GREEN = (14, 81, 53)
 GOLD = (212, 206, 70)

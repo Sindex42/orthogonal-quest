@@ -37,7 +37,7 @@ class Game:
 
         self.all_sprites = pg.sprite.Group()
         self.all_sprites.add(Enemy(self, 1, 1))
-        self.hero  = Hero(self, 5, 5)
+        self.hero = Hero(self, 5, 5)
         self.walls_sprites = pg.sprite.Group()
         self.all_sprites.add(self.hero)
         for row, tiles in enumerate(self.map_data):
@@ -56,7 +56,6 @@ class Game:
         with open(path.join(game_folder, 'map.txt'), 'r') as file:
             for line in file:
                 self.map_data.append(line)
-
 
     def draw_grid(self):
         ''' Draws the grid '''
@@ -92,8 +91,8 @@ class Game:
                 if event.key == pg.K_DOWN:
                     self.hero.move(dy=1)
 
+
 # create instance of game
 GAME = Game()
 GAME.new()
 GAME.run()
-
