@@ -52,9 +52,11 @@ class Game:
         ''' Loads walls '''
 
         game_folder = path.dirname(__file__)
+
         with open(path.join(game_folder, 'map.txt'), 'r') as file:
             for line in file:
                 self.map_data.append(line)
+
 
     def draw_grid(self):
         ''' Draws the grid '''
