@@ -10,10 +10,6 @@ pluggy==0.8.1
 py==1.7.0
 pygame==1.9.4
 pylint==2.2.2
-pynput==1.4
-pyobjc-core==5.1.2
-pyobjc-framework-Cocoa==5.1.2
-pyobjc-framework-Quartz==5.1.2
 pytest==4.3.0
 python3-wget==0.0.2b1
 six==1.12.0
