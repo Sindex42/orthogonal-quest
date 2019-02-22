@@ -68,6 +68,7 @@ class Hero(pg.sprite.Sprite):
         self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b6.png'), (TILESIZE -1, TILESIZE -1)))
         self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b7.png'), (TILESIZE -1, TILESIZE -1)))
 
+    
     def load_right_image(self):
         self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1)))
         self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r1.png'), (TILESIZE -1, TILESIZE -1)))
@@ -77,6 +78,16 @@ class Hero(pg.sprite.Sprite):
         self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r5.png'), (TILESIZE -1, TILESIZE -1)))
         self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r6.png'), (TILESIZE -1, TILESIZE -1)))
         self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r7.png'), (TILESIZE -1, TILESIZE -1)))
+
+    def load_down_image(self):
+        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1)))
+        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f1.png'), (TILESIZE -1, TILESIZE -1)))
+        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f2.png'), (TILESIZE -1, TILESIZE -1)))
+        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f3.png'), (TILESIZE -1, TILESIZE -1)))
+        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f4.png'), (TILESIZE -1, TILESIZE -1)))
+        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f5.png'), (TILESIZE -1, TILESIZE -1)))
+        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f6.png'), (TILESIZE -1, TILESIZE -1)))
+
 
 
     def update(self):
