@@ -1,8 +1,6 @@
 import pygame
 import pytest
 
-from pynput.keyboard import Key, Controller
-
 from src.hero import Hero
 
 class TestHero(object):
@@ -15,16 +13,3 @@ class TestHero(object):
   def test_rect_y_position(self):
     hero = Hero()
     assert hero.rect.y == 176
-
-  #Testing hero movement
-  def test_rect_new_position(self):
-    pygame.init()
-    pygame.display.set_mode((1024, 768))
-    keyboard = Controller()
-    keyboard.press(Key.down)
-    hero = Hero()
-    hero.handle_keys()
-    
-    assert hero.rect.y == 367
-
-  
