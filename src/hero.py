@@ -51,7 +51,7 @@ class Hero(pg.sprite.Sprite):
     def collide_with_enemy(self, d_x=0, d_y=0):
         ''' Check for enemy collision '''
         for enemy in self.game.all_sprites:
-            if enemy.x_pos == self.x + d_x and enemy.y_pos == self.y + d_y:
+            if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Game Over!")
                 self.kill()
                 self.game.playing = False
