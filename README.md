@@ -131,6 +131,42 @@ I would like to be able to see the collision in the console
 As a user
 So I know I bumped into an enemy
 I would like the hero and the enemy to not overlap
+
+As a game dev
+To make the game more interactive
+I would like to give enemies random movement
+
+As a game dev
+To make the game a challenge
+I would like enemies to kill heros on collision
+
+As a game dev
+To make the game look good
+I would like enemies to appear as sprites
+
+As a game dev
+To make the game look good
+I would like wall tiles to be textured
+
+As a game dev
+To make the game look good
+I would like background tiles to be textured
+
+As a user
+So I can kill my enemies
+I would like to be able to attack them
+
+As a user
+So I can kill my enemies
+I would like them to die when I hit them
+
+As a game dev
+So the game is more of a challenge
+I would like there to be multiple enemies
+
+As a game dev
+To make my game sound good
+I would like to embed sounds on events
 ```
 
 
