@@ -1,4 +1,5 @@
 import pygame as pg
+import os
 
 from constants import WIDTH, HEIGHT, TILESIZE, GREEN
 
@@ -24,7 +25,7 @@ class Hero(pg.sprite.Sprite):
         self.left_images = []
         self.load_left_image()
 
-        self.image = self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
+        self.image = pg.transform.scale(pg.image.load('./images/link/link_down/link_f0.png'), (TILESIZE -1, TILESIZE -1))
         self.rect = self.image.get_rect()
 
     def move(self, dx=0, dy=0):
@@ -45,7 +46,6 @@ class Hero(pg.sprite.Sprite):
                 self.left_index = 0
             self.image = self.left_images[self.left_index]
         if dy == 1:
-            self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
             self.down_index += 1
             if self.down_index >= len(self.down_images):
                 self.down_index = 0
@@ -56,6 +56,7 @@ class Hero(pg.sprite.Sprite):
             if self.up_index >= len(self.up_images):
                 self.up_index = 0
             self.image = self.up_images[self.up_index]
+            print(self.up_index)
 
 
     def collide_with_walls(self, dx=0, dy=0):
@@ -73,44 +74,24 @@ class Hero(pg.sprite.Sprite):
         return False
 
     def load_up_image(self):
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1)))
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b1.png'), (TILESIZE -1, TILESIZE -1)))
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b2.png'), (TILESIZE -1, TILESIZE -1)))
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b3.png'), (TILESIZE -1, TILESIZE -1)))
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b4.png'), (TILESIZE -1, TILESIZE -1)))
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b5.png'), (TILESIZE -1, TILESIZE -1)))
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b6.png'), (TILESIZE -1, TILESIZE -1)))
-        self.up_images.append(pg.transform.scale(pg.image.load('./images/link_b7.png'), (TILESIZE -1, TILESIZE -1)))
-
-    
+        for image in os.listdir('images/link/link_up'):
+            path = os.path.join('images/link/link_up', image) 
+            self.up_images.append(pg.transform.scale(pg.image.load(path), (TILESIZE -1, TILESIZE -1)))
+     
     def load_right_image(self):
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1)))
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r1.png'), (TILESIZE -1, TILESIZE -1)))
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r2.png'), (TILESIZE -1, TILESIZE -1)))
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r3.png'), (TILESIZE -1, TILESIZE -1)))
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r4.png'), (TILESIZE -1, TILESIZE -1)))
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r5.png'), (TILESIZE -1, TILESIZE -1)))
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r6.png'), (TILESIZE -1, TILESIZE -1)))
-        self.right_images.append(pg.transform.scale(pg.image.load('./images/link_r7.png'), (TILESIZE -1, TILESIZE -1)))
+        for image in os.listdir('images/link/link_right'):
+            path = os.path.join('images/link/link_right', image)
+            self.right_images.append(pg.transform.scale(pg.image.load(path), (TILESIZE -1, TILESIZE -1)))
 
     def load_down_image(self):
-        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1)))
-        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f1.png'), (TILESIZE -1, TILESIZE -1)))
-        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f2.png'), (TILESIZE -1, TILESIZE -1)))
-        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f3.png'), (TILESIZE -1, TILESIZE -1)))
-        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f4.png'), (TILESIZE -1, TILESIZE -1)))
-        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f5.png'), (TILESIZE -1, TILESIZE -1)))
-        self.down_images.append(pg.transform.scale(pg.image.load('./images/link_f6.png'), (TILESIZE -1, TILESIZE -1)))
+        for image in os.listdir('images/link/link_down'):
+            path = os.path.join('images/link/link_down', image)
+            self.down_images.append(pg.transform.scale(pg.image.load(path), (TILESIZE -1, TILESIZE -1)))
 
     def load_left_image(self):
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l0.png'), (TILESIZE -1, TILESIZE -1)))
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l1.png'), (TILESIZE -1, TILESIZE -1)))
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l2.png'), (TILESIZE -1, TILESIZE -1)))
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l3.png'), (TILESIZE -1, TILESIZE -1)))
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l4.png'), (TILESIZE -1, TILESIZE -1)))
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l5.png'), (TILESIZE -1, TILESIZE -1)))
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l6.png'), (TILESIZE -1, TILESIZE -1)))
-        self.left_images.append(pg.transform.scale(pg.image.load('./images/link_l7.png'), (TILESIZE -1, TILESIZE -1)))
+        for image in os.listdir('images/link/link_left'):
+            path = os.path.join('images/link/link_left', image)
+            self.left_images.append(pg.transform.scale(pg.image.load(path), (TILESIZE -1, TILESIZE -1)))
 
 
     def update(self):
