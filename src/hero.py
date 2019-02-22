@@ -55,16 +55,13 @@ class Hero(pg.sprite.Sprite):
         return False
 
     def link_animation_setup(self):
-        self.up_index = 0
+        self.up_index = self.right_index = self.down_index = self.left_index = 0
         self.up_images = []
         self.load_up_image()
-        self.right_index = 0
         self.right_images = []
         self.load_right_image()
-        self.down_index = 0
         self.down_images = []
         self.load_down_image()
-        self.left_index = 0
         self.left_images = []
         self.load_left_image()
 
