@@ -56,6 +56,7 @@ class Hero(pg.sprite.Sprite):
 
     def collide_with_walls(self, d_x=0, d_y=0):
         ''' Check for wall collision '''
+
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
                 print("Wall collision")
@@ -64,7 +65,8 @@ class Hero(pg.sprite.Sprite):
 
     def collide_with_enemy(self, d_x=0, d_y=0):
         ''' Check for enemy collision '''
-        for enemy in self.game.all_sprites:
+
+        for enemy in self.game.enemy_sprites:
             if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Game Over!")
                 self.kill()

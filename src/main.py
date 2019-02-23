@@ -20,8 +20,10 @@ class Game:
 
         self.walls_sprites = pg.sprite.Group()
         self.all_sprites = pg.sprite.Group()
+        self.enemy_sprites = pg.sprite.Group()
         self.hero = None
         self.enemy = None
+
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
@@ -44,9 +46,9 @@ class Game:
 
         self.all_sprites = pg.sprite.Group()
         self.enemy = Enemy(self, 1, 1)
-        self.all_sprites.add(self.enemy)
         self.hero = Hero(self, 5, 5)
         self.walls_sprites = pg.sprite.Group()
+
         self.all_sprites.add(self.hero)
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
@@ -56,6 +58,7 @@ class Game:
     def update(self):
         ''' Updates sprites '''
         self.all_sprites.update()
+        self.enemy_sprites.update()
 
     def load_data(self):
         ''' Loads map '''
@@ -88,6 +91,7 @@ class Game:
         self.draw_grid()
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
+        self.enemy_sprites.draw(self.screen)
         pg.display.flip()
 
     def events(self):
