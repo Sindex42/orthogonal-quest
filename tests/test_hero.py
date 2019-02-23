@@ -22,9 +22,7 @@ class TestHero(object):
     pygame.display.set_mode((1024, 768))
     keyboard = Controller()
     keyboard.press(Key.down)
-    hero = Hero()
-    hero.handle_keys()
-    
-    assert hero.rect.y == 367
 
-  
+
+
+    assert hero.rect.y == 367
