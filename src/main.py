@@ -21,6 +21,7 @@ class Game:
         self.walls_sprites = pg.sprite.Group()
         self.all_sprites = pg.sprite.Group()
         self.hero = None
+        self.enemy = None
 
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
@@ -40,6 +41,7 @@ class Game:
         ''' Creates sprites '''
 
         self.all_sprites.add(Enemy(self, 1, 1))
+        self.enemy = Enemy(self, 10, 10)
         self.hero = Hero(self, 5, 5)
 
         self.all_sprites.add(self.hero)
