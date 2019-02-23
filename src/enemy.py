@@ -1,4 +1,4 @@
-''' hero tiles '''
+''' Enemy module '''
 
 import pygame as pg
 from constants import TILESIZE, BLACK
@@ -22,11 +22,15 @@ class Enemy(pg.sprite.Sprite):
         self.rect.y = TILESIZE * y_pos + 1
 
     def move(self, d_x=0, d_y=0):
+        ''' Defines enemy movement '''
+
         if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
             self.y_pos += d_y
 
     def collide_with_walls(self, d_x=0, d_y=0):
+        ''' Check for wall collision '''
+
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
                 print("Wall collision")
@@ -35,6 +39,7 @@ class Enemy(pg.sprite.Sprite):
 
     def collide_with_hero(self, d_x=0, d_y=0):
         ''' Check for hero collision '''
+
         for hero in self.game.all_sprites:
             if hero.x_pos == self.x_pos + d_x and hero.y_pos == self.y_pos + d_y:
                 print("Collision with hero")
