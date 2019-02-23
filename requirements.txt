@@ -24,6 +24,5 @@ pytest==4.3.0
 pytest-cov==2.6.1
 python3-wget==0.0.2b1
 six==1.12.0
--e git+git@github.com:Sindex42/orthogonal-quest.git@eef096deed3f23667164839177c18aa9da0418a8#egg=test_.py
 virtualenv==16.4.0
 wrapt==1.11.1
