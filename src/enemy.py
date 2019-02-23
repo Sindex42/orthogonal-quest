@@ -38,6 +38,8 @@ class Enemy(pg.sprite.Sprite):
         for hero in self.game.all_sprites:
             if hero.x_pos == self.x_pos + d_x and hero.y_pos == self.y_pos + d_y:
                 print("Collision with hero")
+                self.kill()
+                self.game.playing = False
                 return True
         return False
 
