@@ -2,6 +2,7 @@
 
 import os
 import pygame as pg
+from pygame import mixer
 
 from constants import TILESIZE
 
@@ -55,6 +56,11 @@ class Hero(pg.sprite.Sprite):
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
                 print("Wall collision")
+                pg.mixer.init()
+                #pg.mixer.load("audio/Wall Bump Obstruction.mp3")
+                soundObj = pg.mixer.Sound(os.path.join('audio/Wall_Bump_Obstruction.mp3'))
+                soundChn = pg.mixer.Channel(0)
+                soundChn.play(soundObj, 0)
                 return True
         return False
 
