@@ -2,30 +2,39 @@ import pygame as pg
 
 from constants import WIDTH, HEIGHT, TILESIZE, GREEN
 
+
 class Hero(pg.sprite.Sprite):
     def __init__(self, game, x_pos, y_pos):
 
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
+        self.image = pg.transform.scale(pg.image.load(
+            './images/link_f0.png'), (TILESIZE - 1, TILESIZE - 1))
         self.rect = self.image.get_rect()
         self.x = x_pos
         self.y = y_pos
 
     def move(self, dx=0, dy=0):
-        if not self.collide_with_walls(dx, dy) and not self.collide_with_enemy(dx, dy):
+        if not self.collide_with_walls(
+                dx,
+                dy) and not self.collide_with_enemy(
+                dx,
+                dy):
             self.x += dx
             self.y += dy
-        #Changes link image on each arrow key push
+        # Changes link image on each arrow key push
         if dx == 1:
-            self.image = pg.transform.scale(pg.image.load('./images/link_r0.png'), (TILESIZE -1, TILESIZE -1))
+            self.image = pg.transform.scale(
+                pg.image.load('./images/link_r0.png'), (TILESIZE - 1, TILESIZE - 1))
         if dx == -1:
-            self.image = pg.transform.scale(pg.image.load('./images/link_l0.png'), (TILESIZE -1, TILESIZE -1))
+            self.image = pg.transform.scale(
+                pg.image.load('./images/link_l0.png'), (TILESIZE - 1, TILESIZE - 1))
         if dy == 1:
-            self.image = pg.transform.scale(pg.image.load('./images/link_f0.png'), (TILESIZE -1, TILESIZE -1))
+            self.image = pg.transform.scale(
+                pg.image.load('./images/link_f0.png'), (TILESIZE - 1, TILESIZE - 1))
         if dy == -1:
-            self.image = pg.transform.scale(pg.image.load('./images/link_b0.png'), (TILESIZE -1, TILESIZE -1))    
-    
+            self.image = pg.transform.scale(
+                pg.image.load('./images/link_b0.png'), (TILESIZE - 1, TILESIZE - 1))
 
     def collide_with_walls(self, dx=0, dy=0):
         for wall in self.game.walls_sprites:
