@@ -13,8 +13,6 @@ class TestHero(object):
   def test_rect_y_position(self):
     hero = Hero()
     assert hero.rect.y == 176
-<<<<<<< HEAD
-=======
 
   #Testing hero movement
   def test_rect_new_position(self):
@@ -26,7 +24,4 @@ class TestHero(object):
 
 
     assert hero.rect.y == 367
-<<<<<<< HEAD
->>>>>>> Enemy moves around fast
-=======
->>>>>>> d5f05a3b1db8e569960b5096e197914e642a699a
+
