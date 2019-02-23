@@ -6,6 +6,7 @@ import pygame as pg
 from constants import TILESIZE
 
 
+
 class Hero(pg.sprite.Sprite):
     ''' Create hero '''
 

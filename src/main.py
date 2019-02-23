@@ -45,7 +45,7 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.enemy = Enemy(self, 1, 1)
         self.all_sprites.add(self.enemy)
-        self.hero  = Hero(self, 5, 5)
+        self.hero = Hero(self, 5, 5)
         self.walls_sprites = pg.sprite.Group()
         self.all_sprites.add(self.hero)
         for row, tiles in enumerate(self.map_data):
@@ -74,15 +74,12 @@ class Game:
         for y_pos in range(0, HEIGHT, TILESIZE):
             pg.draw.line(self.screen, DARK_LINE, (0, y_pos), (WIDTH, y_pos))
 
-
-
     def enemymove(self):
         ''' Allows enemy to move '''
 
         if self.counter > 100:
             self.enemy.move()
             self.counter = 0
-
 
     def draw(self):
         ''' Refreshes screen on every loop '''
@@ -109,6 +106,7 @@ class Game:
                     self.hero.move(d_y=-1)
                 if event.key == pg.K_DOWN:
                     self.hero.move(d_y=1)
+
 
 
 
