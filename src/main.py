@@ -20,29 +20,38 @@ class Game:
 
         self.walls_sprites = pg.sprite.Group()
         self.all_sprites = pg.sprite.Group()
+        self.enemy_sprites = pg.sprite.Group()
         self.hero = None
+        self.enemy = None
 
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
         self.load_data()
+        self.counter = 0
 
     def run(self):
         ''' Game loop '''
 
         self.playing = True
         while self.playing:
+            self.enemymove()
             self.events()
             self.update()
             self.draw()
+            self.counter += 1
 
     def new(self):
         ''' Creates sprites '''
 
-        self.all_sprites.add(Enemy(self, 1, 1))
+        self.all_sprites = pg.sprite.Group()
+        self.enemy = Enemy(self, 1, 1)
         self.hero = Hero(self, 5, 5)
+        self.walls_sprites = pg.sprite.Group()
 
         self.all_sprites.add(self.hero)
+        self.enemy_sprites.add(self.enemy)
+
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
@@ -51,6 +60,7 @@ class Game:
     def update(self):
         ''' Updates sprites '''
         self.all_sprites.update()
+        self.enemy_sprites.update()
 
     def load_data(self):
         ''' Loads map '''
@@ -69,6 +79,13 @@ class Game:
         for y_pos in range(0, HEIGHT, TILESIZE):
             pg.draw.line(self.screen, DARK_LINE, (0, y_pos), (WIDTH, y_pos))
 
+    def enemymove(self):
+        ''' Allows enemy to move '''
+
+        if self.counter > 30:
+            self.enemy.move()
+            self.counter = 0
+
     def draw(self):
         ''' Refreshes screen on every loop '''
 
@@ -76,6 +93,7 @@ class Game:
         self.draw_grid()
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
+        self.enemy_sprites.draw(self.screen)
         pg.display.flip()
 
     def events(self):
@@ -94,7 +112,6 @@ class Game:
                     self.hero.move(d_y=-1)
                 if event.key == pg.K_DOWN:
                     self.hero.move(d_y=1)
-
 
 
 # create instance of game
