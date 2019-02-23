@@ -56,7 +56,7 @@ class Game:
 
     def update(self):
         ''' Updates sprites '''
-        
+
         self.all_sprites.update()
         self.enemy_sprites.update()
 
