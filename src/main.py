@@ -98,16 +98,6 @@ class Game:
                 if event.key == pg.K_DOWN:
                     self.hero.move(d_y=1)
 
-                if event.key == pg.K_a:
-                    self.enemy.move(d_x=-1)
-                if event.key == pg.K_d:
-                    self.enemy.move(d_x=1)
-                if event.key == pg.K_w:
-                    self.enemy.move(d_y=-1)
-                if event.key == pg.K_s:
-                    self.enemy.move(d_y=1)
-
-
 
 # create instance of game
 GAME = Game()
