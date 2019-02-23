@@ -26,4 +26,7 @@ class TestHero(object):
 
 
     assert hero.rect.y == 367
+<<<<<<< HEAD
 >>>>>>> Enemy moves around fast
+=======
+>>>>>>> d5f05a3b1db8e569960b5096e197914e642a699a

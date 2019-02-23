@@ -7,6 +7,7 @@ from constants import TILESIZE
 
 
 
+
 class Hero(pg.sprite.Sprite):
     ''' Create hero '''
 

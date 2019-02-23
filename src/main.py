@@ -110,6 +110,7 @@ class Game:
 
 
 
+
 # create instance of game
 GAME = Game()
 GAME.new()
