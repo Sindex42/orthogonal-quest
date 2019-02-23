@@ -82,7 +82,7 @@ class Game:
     def enemymove(self):
         ''' Allows enemy to move '''
 
-        if self.counter > 100:
+        if self.counter > 30:
             self.enemy.move()
             self.counter = 0
 
