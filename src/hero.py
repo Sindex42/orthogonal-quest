@@ -58,7 +58,7 @@ class Hero(pg.sprite.Sprite):
                 print("Wall collision")
                 pg.mixer.init()
                 #pg.mixer.load("audio/Wall Bump Obstruction.mp3")
-                soundObj = pg.mixer.Sound(os.path.join('audio/Wall_Bump_Obstruction.mp3'))
+                soundObj = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
                 soundChn = pg.mixer.Channel(0)
                 soundChn.play(soundObj, 0)
                 return True
