@@ -17,11 +17,11 @@ class Game:
         pg.mixer.music.load('./audio/Bridgeburner (8-Bit).mp3')
         pg.mixer.music.play(-1)
         pg.display.set_caption(TITLE)
-
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
         self.load_data()
+        self.counter = 0
 
     def run(self):
         ''' Game loop '''
@@ -32,6 +32,7 @@ class Game:
             self.events()
             self.update()
             self.draw()
+            self.counter += 1
 
     def new(self):
         ''' Creates sprites '''
@@ -71,7 +72,9 @@ class Game:
     def enemymove(self):
         ''' Allows enemy to move '''
 
-        self.enemy.move()
+        if self.counter > 100:
+            self.enemy.move()
+            self.counter = 0
 
 
     def draw(self):
