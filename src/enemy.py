@@ -4,7 +4,7 @@ import pygame as pg
 from constants import TILESIZE, BLACK
 
 
-class hero(pg.sprite.Sprite):
+class Enemy(pg.sprite.Sprite):
     ''' Creates enemies '''
 
     def __init__(self, game, x_pos, y_pos):
