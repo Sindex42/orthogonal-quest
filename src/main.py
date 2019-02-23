@@ -32,6 +32,7 @@ class Game:
 
         self.playing = True
         while self.playing:
+            self.enemymove()
             self.events()
             self.update()
             self.draw()
@@ -39,9 +40,11 @@ class Game:
     def new(self):
         ''' Creates sprites '''
 
-        self.all_sprites.add(Enemy(self, 1, 1))
-        self.hero = Hero(self, 5, 5)
-
+        self.all_sprites = pg.sprite.Group()
+        self.enemy = Enemy(self, 1, 1)
+        self.all_sprites.add(self.enemy)
+        self.hero  = Hero(self, 5, 5)
+        self.walls_sprites = pg.sprite.Group()
         self.all_sprites.add(self.hero)
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
@@ -68,6 +71,14 @@ class Game:
             pg.draw.line(self.screen, DARK_LINE, (x_pos, 0), (x_pos, HEIGHT))
         for y_pos in range(0, HEIGHT, TILESIZE):
             pg.draw.line(self.screen, DARK_LINE, (0, y_pos), (WIDTH, y_pos))
+
+
+
+    def enemymove(self):
+        ''' Allows enemy to move '''
+
+        self.enemy.move()
+
 
     def draw(self):
         ''' Refreshes screen on every loop '''
