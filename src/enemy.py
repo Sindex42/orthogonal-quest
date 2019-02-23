@@ -37,6 +37,7 @@ class Enemy(pg.sprite.Sprite):
         ''' Check for hero collision '''
         for hero in self.game.all_sprites:
             if hero.x_pos == self.x_pos + d_x and hero.y_pos == self.y_pos + d_y:
+                print("Collision with hero")
                 return True
         return False
 
