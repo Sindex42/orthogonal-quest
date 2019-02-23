@@ -38,10 +38,9 @@ class Enemy(pg.sprite.Sprite):
         else:
             d_x = 1
 
-        if not self.collide_with_walls(d_x, d_y):
+        if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
             self.y_pos += d_y
-
 
     def collide_with_walls(self, d_x=0, d_y=0):
         ''' Check for wall collision '''
