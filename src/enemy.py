@@ -39,3 +39,9 @@ class Enemy(pg.sprite.Sprite):
             if hero.x_pos == self.x_pos + d_x and hero.y_pos == self.y_pos + d_y:
                 return True
         return False
+
+    def update(self):
+        ''' Update position '''
+
+        self.rect.x = self.x_pos * TILESIZE + 1
+        self.rect.y = self.y_pos * TILESIZE + 1
