@@ -50,6 +50,8 @@ class Game:
         self.walls_sprites = pg.sprite.Group()
 
         self.all_sprites.add(self.hero)
+        self.enemy_sprites.add(self.enemy)
+
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
                 if tile == '1':

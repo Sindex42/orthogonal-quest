@@ -21,20 +21,20 @@ class Enemy(pg.sprite.Sprite):
         self.y_pos = y_pos
         self.rect.x = TILESIZE * x_pos + 1
         self.rect.y = TILESIZE * y_pos + 1
-        
-     def move(self):
-            ''' Defines enemy movement '''
 
-            movement = sample(["up", "down", "left", "right"], 1)
+    def move(self):
+        ''' Defines enemy movement '''
 
-            if movement == ["up"]:
-                self.y_pos += -1
-            elif movement == ["down"]:
-                self.y_pos += +1
-            elif movement == ["left"]:
-                self.x_pos += -1
-            else:
-                self.x_pos += 1
+        movement = sample(["up", "down", "left", "right"], 1)
+
+        if movement == ["up"]:
+            self.y_pos += -1
+        elif movement == ["down"]:
+            self.y_pos += +1
+        elif movement == ["left"]:
+            self.x_pos += -1
+        else:
+            self.x_pos += 1
 
     def collide_with_walls(self, d_x=0, d_y=0):
         ''' Check for wall collision '''
