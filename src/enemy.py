@@ -26,15 +26,16 @@ class Enemy(pg.sprite.Sprite):
         ''' Defines enemy movement '''
 
         movement = sample(["up", "down", "left", "right"], 1)
+        if not self.collide_with_walls(d_x, d_y):
 
-        if movement == ["up"]:
-            self.y_pos += -1
-        elif movement == ["down"]:
-            self.y_pos += +1
-        elif movement == ["left"]:
-            self.x_pos += -1
-        else:
-            self.x_pos += 1
+            if movement == ["up"]:
+                self.y_pos += -1
+            elif movement == ["down"]:
+                self.y_pos += +1
+            elif movement == ["left"]:
+                self.x_pos += -1
+            else:
+                self.x_pos += 1
 
     def collide_with_walls(self, d_x=0, d_y=0):
         ''' Check for wall collision '''
