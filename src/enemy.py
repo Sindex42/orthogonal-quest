@@ -1,8 +1,8 @@
 ''' Enemy tiles '''
 
-import pygame as pg
-from constants import TILESIZE, RED, BLACK
 from random import sample
+import pygame as pg
+from constants import TILESIZE, BLACK
 
 
 class Enemy(pg.sprite.Sprite):
@@ -24,10 +24,13 @@ class Enemy(pg.sprite.Sprite):
 
 
     def update(self):
+        ''' Update position '''
+
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
 
     def move(self):
+        ''' Defines enemy movement '''
 
         movement = sample(["up", "down", "left", "right"], 1)
 

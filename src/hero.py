@@ -6,8 +6,6 @@ import pygame as pg
 from constants import TILESIZE
 
 
-
-
 class Hero(pg.sprite.Sprite):
     ''' Create hero '''
 
@@ -26,7 +24,11 @@ class Hero(pg.sprite.Sprite):
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
 
-        if not self.collide_with_walls(d_x, d_y) and not self.collide_with_enemy(d_x, d_y):
+        if not self.collide_with_walls(
+                d_x,
+                d_y) and not self.collide_with_enemy(
+                    d_x,
+                    d_y):
             self.x_pos += d_x
             self.y_pos += d_y
 

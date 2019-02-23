@@ -21,7 +21,7 @@ class Game:
         self.walls_sprites = pg.sprite.Group()
         self.all_sprites = pg.sprite.Group()
         self.hero = None
-
+        self.enemy = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
@@ -106,9 +106,6 @@ class Game:
                     self.hero.move(d_y=-1)
                 if event.key == pg.K_DOWN:
                     self.hero.move(d_y=1)
-
-
-
 
 
 # create instance of game
