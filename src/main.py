@@ -45,7 +45,7 @@ class Game:
         ''' Creates sprites '''
 
         self.all_sprites = pg.sprite.Group()
-        self.enemy = Enemy(self, 1, 1)
+        self.enemy = Enemy(self, 8, 8)
         self.hero = Hero(self, 5, 5)
         self.walls_sprites = pg.sprite.Group()
 
