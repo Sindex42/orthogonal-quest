@@ -1,7 +1,6 @@
 ''' Enemy module '''
 
 from random import sample
-import os
 import pygame as pg
 from constants import TILESIZE, BLACK
 
@@ -32,17 +31,28 @@ class Enemy(pg.sprite.Sprite):
 
         if movement == ["up"]:
             d_y = -1
-            self.image = pg.transform.scale(pg.image.load
-                    ('./images/skeleton/skeleton_b0.png'), (TILESIZE -1, TILESIZE -1)).convert()
+            self.image = pg.transform.scale(
+                pg.image.load('./images/skeleton/skeleton_b0.png'),
+                (TILESIZE -1,
+                 TILESIZE -1)).convert()
         elif movement == ["down"]:
             d_y = 1
-            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_f0.png'), (TILESIZE -1, TILESIZE -1)).convert()
+            self.image = pg.transform.scale(
+                pg.image.load('./images/skeleton/skeleton_f0.png'),
+                (TILESIZE -1,
+                 TILESIZE -1)).convert()
         elif movement == ["left"]:
             d_x = -1
-            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_l0.png'), (TILESIZE -1, TILESIZE -1)).convert()
+            self.image = pg.transform.scale(
+                pg.image.load('./images/skeleton/skeleton_l0.png'),
+                (TILESIZE -1,
+                 TILESIZE -1)).convert()
         else:
             d_x = 1
-            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_r0.png'), (TILESIZE -1, TILESIZE -1)).convert()
+            self.image = pg.transform.scale(
+                pg.image.load('./images/skeleton/skeleton_r0.png'),
+                (TILESIZE -1,
+                 TILESIZE -1)).convert()
 
         if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
