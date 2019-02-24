@@ -38,24 +38,28 @@ class Enemy(pg.sprite.Sprite):
             if self.up_index >= len(self.up_images):
                 self.up_index = 0
             self.image = self.up_images[self.up_index]
+            self.image.set_colorkey(BLACK)
         elif movement == ["down"]:
             d_y = 1
             self.down_index += 1
             if self.down_index >= len(self.down_images):
                 self.down_index = 0
             self.image = self.down_images[self.down_index]
+            self.image.set_colorkey(BLACK)
         elif movement == ["left"]:
             d_x = -1
             self.left_index += 1
             if self.left_index >= len(self.left_images):
                 self.left_index = 0
             self.image = self.left_images[self.left_index]
+            self.image.set_colorkey(BLACK)
         else:
             d_x = 1
             self.right_index += 1
             if self.right_index >= len(self.right_images):
                 self.right_index = 0
             self.image = self.right_images[self.right_index]
+            self.image.set_colorkey(BLACK)
 
         if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x

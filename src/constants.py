@@ -9,7 +9,7 @@ GREEN = (14, 81, 53)
 GOLD = (212, 206, 70)
 RED = (124, 10, 2)
 
-BG_COLOUR = DARK_GREY
+BG_COLOUR = BLACK
 
 # game settings
 HEIGHT = 384
