@@ -12,14 +12,12 @@ class Enemy(pg.sprite.Sprite):
     def __init__(self, game, x_pos, y_pos):
         pg.sprite.Sprite.__init__(self)
         self.game = game
-        self.enemy_animation_setup()
         self.image = pg.transform.scale(
-            pg.image.load('./images/skeleton/skeleton_down/skeleton_f0.png'),
+            pg.image.load('./images/skeleton/skeleton_f0.png'),
             (TILESIZE - 1,
              TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.right_index = self.left_index = self.up_index = self.down_index = 0
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.rect.x = TILESIZE * x_pos + 1
@@ -34,28 +32,16 @@ class Enemy(pg.sprite.Sprite):
 
         if movement == ["up"]:
             d_y = -1
-            self.up_index += 1
-            if self.up_index >= len(self.up_images):
-                self.up_index = 0
-            self.image = self.up_images[self.up_index].convert()
+            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_b0.png'), (TILESIZE -1, TILESIZE -1)).convert()
         elif movement == ["down"]:
             d_y = 1
-            self.down_index += 1
-            if self.down_index >= len(self.down_images):
-                self.down_index = 0
-            self.image = self.down_images[self.down_index].convert()
+            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_f0.png'), (TILESIZE -1, TILESIZE -1)).convert()
         elif movement == ["left"]:
             d_x = -1
-            self.left_index += 1
-            if self.left_index >= len(self.left_images):
-                self.left_index = 0
-            self.image = self.left_images[self.left_index].convert()
+            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_l0.png'), (TILESIZE -1, TILESIZE -1)).convert()
         else:
             d_x = 1
-            self.right_index += 1
-            if self.right_index >= len(self.right_images):
-                self.right_index = 0
-            self.image = self.right_images[self.right_index].convert()
+            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_r0.png'), (TILESIZE -1, TILESIZE -1)).convert()
 
         if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
@@ -81,55 +67,6 @@ class Enemy(pg.sprite.Sprite):
                 self.game.playing = False
                 return True
         return False
-
-    def enemy_animation_setup(self):
-        ''' Loops through index arrays and correct sprite image load methods '''
-
-        self.up_index = self.right_index = self.down_index = self.left_index = 0
-        self.up_images = []
-        self.load_up_image()
-        self.right_images = []
-        self.load_right_image()
-        self.down_images = []
-        self.load_down_image()
-        self.left_images = []
-        self.load_left_image()
-
-    def load_up_image(self):
-        ''' Loads upward facing sprites '''
-
-        for image in os.listdir('images/skeleton/skeleton_up'):
-            path = os.path.join('images/skeleton/skeleton_up', image)
-            self.up_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_right_image(self):
-        ''' Loads rightward facing sprites '''
-
-        for image in os.listdir('images/skeleton/skeleton_right'):
-            path = os.path.join('images/skeleton/skeleton_right', image)
-            self.right_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_down_image(self):
-        ''' Loads downward facing sprites '''
-
-        for image in os.listdir('images/skeleton/skeleton_down'):
-            path = os.path.join('images/skeleton/skeleton_down', image)
-            self.down_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_left_image(self):
-        ''' Loads leftward facing sprites '''
-
-        for image in os.listdir('images/skeleton/skeleton_left'):
-            path = os.path.join('images/skeleton/skeleton_left', image)
-            self.left_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
 
     def update(self):
         ''' Update position '''
