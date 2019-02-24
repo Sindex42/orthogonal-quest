@@ -32,7 +32,8 @@ class Enemy(pg.sprite.Sprite):
 
         if movement == ["up"]:
             d_y = -1
-            self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_b0.png'), (TILESIZE -1, TILESIZE -1)).convert()
+            self.image = pg.transform.scale(pg.image.load
+                    ('./images/skeleton/skeleton_b0.png'), (TILESIZE -1, TILESIZE -1)).convert()
         elif movement == ["down"]:
             d_y = 1
             self.image = pg.transform.scale(pg.image.load('./images/skeleton/skeleton_f0.png'), (TILESIZE -1, TILESIZE -1)).convert()
@@ -46,7 +47,6 @@ class Enemy(pg.sprite.Sprite):
         if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
             self.y_pos += d_y
-            self.image.set_colorkey(BLACK)
 
     def collide_with_walls(self, d_x=0, d_y=0):
         ''' Check for wall collision '''
@@ -73,3 +73,4 @@ class Enemy(pg.sprite.Sprite):
 
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
+        self.image.set_colorkey(BLACK)
