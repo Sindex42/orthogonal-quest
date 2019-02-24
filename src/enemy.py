@@ -37,10 +37,7 @@ class Enemy(pg.sprite.Sprite):
             self.load_down_image()
         elif movement == ["left"]:
             d_x = -1
-            self.image = pg.transform.scale(
-                pg.image.load('./images/skeleton/skeleton_l0.png'),
-                (TILESIZE -1,
-                 TILESIZE -1)).convert()
+            self.load_left_image()
         else:
             d_x = 1
             self.image = pg.transform.scale(
@@ -88,5 +85,11 @@ class Enemy(pg.sprite.Sprite):
     def load_down_image(self):
         self.image = pg.transform.scale(
             pg.image.load('./images/skeleton/skeleton_f0.png'),
+            (TILESIZE -1,
+             TILESIZE -1)).convert()
+
+    def load_left_image(self):
+        self.image = pg.transform.scale(
+            pg.image.load('./images/skeleton/skeleton_l0.png'),
             (TILESIZE -1,
              TILESIZE -1)).convert()
