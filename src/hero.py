@@ -59,7 +59,7 @@ class Hero(pg.sprite.Sprite):
                 print("Wall collision")
                 sound_bump = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
                 chn_1 = pg.mixer.Channel(0)
-                chn_1.set_volume(0.8)
+                chn_1.set_volume(0.5)
                 chn_1.play(sound_bump, 0)
                 return True
         return False
@@ -71,14 +71,13 @@ class Hero(pg.sprite.Sprite):
                 print("Game Over!")
                 sound_game_over = pg.mixer.Sound(os.path.join('audio', 'Game_Over.ogg'))
                 chn_2 = pg.mixer.Channel(1)
-                chn_2.set_volume(1.5)
+                chn_2.set_volume(1.0)
                 chn_2.play(sound_game_over, 0)
                 self.kill()
                 pg.time.delay(2200)
                 self.game.playing = False
                 return True
         return False
-
     def link_animation_setup(self):
         ''' Loops through index arrays and correct sprite image load methods '''
 
