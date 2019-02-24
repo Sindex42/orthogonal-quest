@@ -56,8 +56,7 @@ class Hero(pg.sprite.Sprite):
         ''' Check for wall collision '''
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
-                print("Wall collision") 
-                #when using mixer.Sound files have to be .ogg
+                print("Wall collision")
                 sound_bump = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
                 chn_1 = pg.mixer.Channel(0)
                 chn_1.set_volume(0.8)
