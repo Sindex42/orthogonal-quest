@@ -31,10 +31,7 @@ class Enemy(pg.sprite.Sprite):
 
         if movement == ["up"]:
             d_y = -1
-            self.image = pg.transform.scale(
-                pg.image.load('./images/skeleton/skeleton_b0.png'),
-                (TILESIZE -1,
-                 TILESIZE -1)).convert()
+            self.load_up_image()
         elif movement == ["down"]:
             d_y = 1
             self.image = pg.transform.scale(
@@ -84,3 +81,9 @@ class Enemy(pg.sprite.Sprite):
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
         self.image.set_colorkey(BLACK)
+
+    def load_up_image(self):
+        self.image = pg.transform.scale(
+            pg.image.load('./images/skeleton/skeleton_b0.png'),
+            (TILESIZE -1,
+             TILESIZE -1)).convert()
