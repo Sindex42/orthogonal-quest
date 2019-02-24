@@ -40,10 +40,7 @@ class Enemy(pg.sprite.Sprite):
             self.load_left_image()
         else:
             d_x = 1
-            self.image = pg.transform.scale(
-                pg.image.load('./images/skeleton/skeleton_r0.png'),
-                (TILESIZE -1,
-                 TILESIZE -1)).convert()
+            self.load_right_image()
 
         if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
@@ -91,5 +88,11 @@ class Enemy(pg.sprite.Sprite):
     def load_left_image(self):
         self.image = pg.transform.scale(
             pg.image.load('./images/skeleton/skeleton_l0.png'),
+            (TILESIZE -1,
+             TILESIZE -1)).convert()
+
+    def load_right_image(self):
+        self.image = pg.transform.scale(
+            pg.image.load('./images/skeleton/skeleton_r0.png'),
             (TILESIZE -1,
              TILESIZE -1)).convert()
