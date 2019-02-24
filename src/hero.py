@@ -13,6 +13,7 @@ class Hero(pg.sprite.Sprite):
     def __init__(self, game, x_pos, y_pos):
 
         pg.sprite.Sprite.__init__(self)
+        pg.mixer.init()
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
@@ -55,12 +56,12 @@ class Hero(pg.sprite.Sprite):
         ''' Check for wall collision '''
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
-                print("Wall collision")
-                pg.mixer.init()
+                print("Wall collision") 
                 #when using mixer.Sound files have to be .ogg
-                sound_obj = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
-                sound_chn = pg.mixer.Channel(0)
-                sound_chn.play(sound_obj, 0)
+                sound_bump = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
+                chn_1 = pg.mixer.Channel(0)
+                chn_1.set_volume(0.8)
+                chn_1.play(sound_bump, 0)
                 return True
         return False
 
@@ -69,7 +70,12 @@ class Hero(pg.sprite.Sprite):
         for enemy in self.game.all_sprites:
             if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Game Over!")
+                sound_game_over = pg.mixer.Sound(os.path.join('audio', 'Game_Over.ogg'))
+                chn_2 = pg.mixer.Channel(1)
+                chn_2.set_volume(1.5)
+                chn_2.play(sound_game_over, 0)
                 self.kill()
+                pg.time.delay(2200)
                 self.game.playing = False
                 return True
         return False
