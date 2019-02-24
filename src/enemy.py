@@ -74,25 +74,28 @@ class Enemy(pg.sprite.Sprite):
         self.image.set_colorkey(BLACK)
 
     def load_up_image(self):
+        ''' Load up facing sprite '''
         self.image = pg.transform.scale(
             pg.image.load('./images/skeleton/skeleton_b0.png'),
-            (TILESIZE -1,
-             TILESIZE -1)).convert()
+            (TILESIZE, TILESIZE)).convert()
 
     def load_down_image(self):
+        ''' Load down facing sprite '''
+
         self.image = pg.transform.scale(
             pg.image.load('./images/skeleton/skeleton_f0.png'),
-            (TILESIZE -1,
-             TILESIZE -1)).convert()
+            (TILESIZE, TILESIZE)).convert()
 
     def load_left_image(self):
+        ''' Load left facing sprite '''
+
         self.image = pg.transform.scale(
             pg.image.load('./images/skeleton/skeleton_l0.png'),
-            (TILESIZE -1,
-             TILESIZE -1)).convert()
+            (TILESIZE, TILESIZE)).convert()
 
     def load_right_image(self):
+        ''' Load right facing sprite '''
+
         self.image = pg.transform.scale(
             pg.image.load('./images/skeleton/skeleton_r0.png'),
-            (TILESIZE -1,
-             TILESIZE -1)).convert()
+            (TILESIZE, TILESIZE)).convert()
