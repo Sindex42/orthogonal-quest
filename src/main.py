@@ -30,6 +30,7 @@ class Game:
         self.map_data = []
         self.load_data()
         self.counter = 0
+        self.font_name = pg.font.match_font(FONT_NAME)
 
     def run(self):
         ''' Game loop '''
@@ -98,6 +99,16 @@ class Game:
         self.enemy_sprites.draw(self.screen)
         pg.display.flip()
 
+    def show_start_screen(self):
+        pass
+    
+    def show_end_screen(self):
+        pass
+
+    def draw_text_on_screen(self, text, size, color, x, y):
+        pass
+
+
     def events(self):
         ''' Event listener '''
 
@@ -118,5 +129,6 @@ class Game:
 
 # create instance of game
 GAME = Game()
+GAME.show_start_screen()
 GAME.new()
 GAME.run()
