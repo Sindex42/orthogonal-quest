@@ -12,7 +12,7 @@ class Enemy(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
         self.game = game
         self.image = pg.transform.scale(
-            pg.image.load('./images/imp_f0.png'),
+            pg.image.load('./images/skeleton/skeleton_f0.png'),
             (TILESIZE - 1,
              TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
@@ -31,12 +31,16 @@ class Enemy(pg.sprite.Sprite):
 
         if movement == ["up"]:
             d_y = -1
+            self.load_up_image()
         elif movement == ["down"]:
             d_y = 1
+            self.load_down_image()
         elif movement == ["left"]:
             d_x = -1
+            self.load_left_image()
         else:
             d_x = 1
+            self.load_right_image()
 
         if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
@@ -67,3 +71,31 @@ class Enemy(pg.sprite.Sprite):
 
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
+        self.image.set_colorkey(BLACK)
+
+    def load_up_image(self):
+        ''' Load up facing sprite '''
+        self.image = pg.transform.scale(
+            pg.image.load('./images/skeleton/skeleton_b0.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_down_image(self):
+        ''' Load down facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load('./images/skeleton/skeleton_f0.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_left_image(self):
+        ''' Load left facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load('./images/skeleton/skeleton_l0.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_right_image(self):
+        ''' Load right facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load('./images/skeleton/skeleton_r0.png'),
+            (TILESIZE, TILESIZE)).convert()
