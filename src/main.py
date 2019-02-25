@@ -15,6 +15,7 @@ class Game:
         pg.init()
         pg.mixer.init()
         pg.mixer.music.load('./audio/Bridgeburner (8-Bit).mp3')
+        pg.mixer.music.set_volume(0.5)
         pg.mixer.music.play(-1)
         pg.display.set_caption(TITLE)
 

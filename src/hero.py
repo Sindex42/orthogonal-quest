@@ -3,6 +3,7 @@
 import os
 import pygame as pg
 
+
 from constants import TILESIZE
 
 
@@ -12,6 +13,7 @@ class Hero(pg.sprite.Sprite):
     def __init__(self, game, x_pos, y_pos):
 
         pg.sprite.Sprite.__init__(self)
+        pg.mixer.init()
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
@@ -25,7 +27,10 @@ class Hero(pg.sprite.Sprite):
         ''' Defines hero movement '''
 
         if not self.collide_with_walls(
-                d_x, d_y) and not self.collide_with_enemy(d_x, d_y):
+                d_x,
+                d_y) and not self.collide_with_enemy(
+                    d_x,
+                    d_y):
             self.x_pos += d_x
             self.y_pos += d_y
 
@@ -57,6 +62,10 @@ class Hero(pg.sprite.Sprite):
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
                 print("Wall collision")
+                sound_bump = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
+                chn_1 = pg.mixer.Channel(0)
+                chn_1.set_volume(0.5)
+                chn_1.play(sound_bump, 0)
                 return True
         return False
 
@@ -66,11 +75,15 @@ class Hero(pg.sprite.Sprite):
         for enemy in self.game.enemy_sprites:
             if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Game Over!")
+                sound_game_over = pg.mixer.Sound(os.path.join('audio', 'Game_Over.ogg'))
+                chn_2 = pg.mixer.Channel(1)
+                chn_2.set_volume(1.0)
+                chn_2.play(sound_game_over, 0)
                 self.kill()
+                pg.time.delay(2200)
                 self.game.playing = False
                 return True
         return False
-
     def link_animation_setup(self):
         ''' Loops through index arrays and correct sprite image load methods '''
 
