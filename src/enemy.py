@@ -46,8 +46,8 @@ class Enemy(pg.sprite.Sprite):
         ''' Load directional facing sprites '''
 
         self.image = pg.transform.scale(
-        pg.image.load(f'./images/skeleton/skeleton_{direction}.png'),
-        (TILESIZE, TILESIZE)).convert()
+            pg.image.load(f'./images/skeleton/skeleton_{direction}.png'),
+            (TILESIZE, TILESIZE)).convert()
 
     def end_game(self):
         ''' End game process '''
