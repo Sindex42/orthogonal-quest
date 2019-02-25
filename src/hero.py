@@ -3,7 +3,7 @@
 import os
 import pygame as pg
 from constants import TILESIZE
-from collision import collide
+from collision import collide, bump_sound
 
 
 class Hero(pg.sprite.Sprite):
@@ -25,8 +25,8 @@ class Hero(pg.sprite.Sprite):
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
 
-        if not collide(
-                self, self.game.walls_sprites, d_x, d_y, self.bump_sound) and not collide(self, self.game.enemy_sprites, d_x, d_y, self.end_game):
+        if not collide(self, self.game.walls_sprites, d_x, d_y, bump_sound) and not collide(
+                self, self.game.enemy_sprites, d_x, d_y, self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
 
@@ -52,16 +52,13 @@ class Hero(pg.sprite.Sprite):
                 self.up_index = 0
             self.image = self.up_images[self.up_index]
 
-    def bump_sound(self):
-        sound_bump = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
-        chn_1 = pg.mixer.Channel(0)
-        chn_1.set_volume(0.5)
-        chn_1.play(sound_bump, 0)
-
     def end_game(self):
+        ''' End game process '''
+
         print("Ran into enemy")
         print("Game Over!")
-        sound_game_over = pg.mixer.Sound(os.path.join('audio', 'Game_Over.ogg'))
+        sound_game_over = pg.mixer.Sound(
+            os.path.join('audio', 'Game_Over.ogg'))
         chn_2 = pg.mixer.Channel(1)
         chn_2.set_volume(1.0)
         chn_2.play(sound_game_over, 0)

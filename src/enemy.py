@@ -43,12 +43,14 @@ class Enemy(pg.sprite.Sprite):
             d_x = 1
             self.load_right_image()
 
-        if not collide(
-                self, self.game.walls_sprites, d_x, d_y) and not collide(self, self.game.all_sprites, d_x, d_y, self.end_game):
+        if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
+                self, self.game.all_sprites, d_x, d_y, self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
 
     def end_game(self):
+        ''' End game process '''
+
         print("Killed by enemy")
         print("Game Over!")
         self.kill()
