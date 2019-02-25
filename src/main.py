@@ -37,7 +37,8 @@ class Game:
 
         self.playing = True
         while self.playing:
-            self.move_enemies()
+            self.enemies_exist()
+            # self.move_enemies()
             self.events()
             self.update()
             self.draw()
@@ -99,6 +100,12 @@ class Game:
         self.enemy_sprites.draw(self.screen)
         pg.display.flip()
 
+    def enemies_exist(self):
+        ''' Ends game if all enemies dead '''
+        if not self.enemy_sprites:
+            self.playing = False
+
+
     def events(self):
         ''' Event listener '''
 
@@ -131,7 +138,6 @@ class Game:
                     self.hero.load_down_attack_image()
                     hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1)
                     hitbox.collide_with_enemy()
-
 
 # create instance of game
 GAME = Game()
