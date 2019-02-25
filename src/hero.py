@@ -5,6 +5,7 @@ import pygame as pg
 
 
 from constants import TILESIZE, BLACK
+from collision import collide, bump_sound
 
 
 class Hero(pg.sprite.Sprite):
@@ -17,7 +18,7 @@ class Hero(pg.sprite.Sprite):
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
-        self.orthogonal_boy_animation_setup()
+        self.animation_setup()
         string = './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'
         self.image = pg.transform.scale(pg.image.load(
             string), (TILESIZE - 1, TILESIZE - 1)).convert()
@@ -28,11 +29,8 @@ class Hero(pg.sprite.Sprite):
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
 
-        if not self.collide_with_walls(
-                d_x,
-                d_y) and not self.collide_with_enemy(
-                    d_x,
-                    d_y):
+        if not collide(self, self.game.walls_sprites, d_x, d_y, bump_sound) and not collide(
+                self, self.game.enemy_sprites, d_x, d_y, self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
 
@@ -58,38 +56,21 @@ class Hero(pg.sprite.Sprite):
                 self.up_index = 0
             self.image = self.up_images[self.up_index].convert()
 
-    def collide_with_walls(self, d_x=0, d_y=0):
-        ''' Check for wall collision '''
+    def end_game(self):
+        ''' End game process '''
 
-        for wall in self.game.walls_sprites:
-            if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
-                print("Wall collision")
-                sound_bump = pg.mixer.Sound(os.path.join(
-                    'audio', 'Wall_Bump_Obstruction.ogg'))
-                chn_1 = pg.mixer.Channel(0)
-                chn_1.set_volume(0.5)
-                chn_1.play(sound_bump, 0)
-                return True
-        return False
+        print("Ran into enemy")
+        print("Game Over!")
+        sound_game_over = pg.mixer.Sound(
+            os.path.join('audio', 'Game_Over.ogg'))
+        chn_2 = pg.mixer.Channel(1)
+        chn_2.set_volume(1.0)
+        chn_2.play(sound_game_over, 0)
+        self.kill()
+        pg.time.delay(2200)
+        self.game.playing = False
 
-    def collide_with_enemy(self, d_x=0, d_y=0):
-        ''' Check for enemy collision '''
-
-        for enemy in self.game.enemy_sprites:
-            if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
-                print("Game Over!")
-                sound_game_over = pg.mixer.Sound(
-                    os.path.join('audio', 'Game_Over.ogg'))
-                chn_2 = pg.mixer.Channel(1)
-                chn_2.set_volume(1.0)
-                chn_2.play(sound_game_over, 0)
-                self.kill()
-                pg.time.delay(2200)
-                self.game.playing = False
-                return True
-        return False
-
-    def orthogonal_boy_animation_setup(self):
+    def animation_setup(self):
         ''' Loops through index arrays and correct sprite image load methods '''
 
         self.up_index = self.right_index = self.down_index = self.left_index = 0
