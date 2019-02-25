@@ -26,6 +26,7 @@ class Game:
         self.enemy = None
 
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+        self.clock = pg.time.Clock()
         self.playing = None
         self.map_data = []
         self.load_data()
@@ -103,7 +104,16 @@ class Game:
 
     def show_start_screen(self):
         # game splash/start screen
-        pass
+         self.screen.fill(BGCOLOR)
+        self.draw_text(TITLE, 48, GREEN, WIDTH / 2, HEIGHT / 4)
+        self.draw_text("Arrows to move, Space bar to attack", 22, GREEN, WIDTH / 2, HEIGHT / 2)
+        self.draw_text("Press any key to play", 22, GREEN, WIDTH / 2, HEIGHT * 3 / 4)
+        pg.display.flip()
+        self.wait_for_key()
+    
+    def wait_for_key(self):
+       pass
+
     
     def show_end_screen(self):
         # game splash/end screen
