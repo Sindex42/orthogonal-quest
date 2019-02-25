@@ -107,16 +107,25 @@ class Game:
                 self.playing = False
 
             if event.type == pg.KEYDOWN:
-                if event.key == pg.K_LEFT:
+                if event.key == pg.K_a:
                     self.hero.move(d_x=-1)
-                if event.key == pg.K_RIGHT:
+                if event.key == pg.K_d:
                     self.hero.move(d_x=1)
-                if event.key == pg.K_UP:
+                if event.key == pg.K_w:
                     self.hero.move(d_y=-1)
-                if event.key == pg.K_DOWN:
+                if event.key == pg.K_s:
                     self.hero.move(d_y=1)
-                if event.key == pg.K_SPACE:
+                if event.key == pg.K_RIGHT:
                     hitbox = Hitbox(self, self.hero.x_pos + 1, self.hero.y_pos )
+                    hitbox.collide_with_enemy()
+                if event.key == pg.K_LEFT:
+                    hitbox = Hitbox(self, self.hero.x_pos - 1, self.hero.y_pos )
+                    hitbox.collide_with_enemy()
+                if event.key == pg.K_UP:
+                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos - 1 )
+                    hitbox.collide_with_enemy()
+                if event.key == pg.K_DOWN:
+                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1 )
                     hitbox.collide_with_enemy()
 
 
