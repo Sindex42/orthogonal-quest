@@ -117,22 +117,20 @@ class Game:
                     self.hero.move(d_y=1)
                 if event.key == pg.K_RIGHT:
                     self.hero.load_right_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos + 1, self.hero.y_pos )
+                    hitbox = Hitbox(self, self.hero.x_pos + 1, self.hero.y_pos)
                     hitbox.collide_with_enemy()
                 if event.key == pg.K_LEFT:
                     self.hero.load_left_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos - 1, self.hero.y_pos )
+                    hitbox = Hitbox(self, self.hero.x_pos - 1, self.hero.y_pos)
                     hitbox.collide_with_enemy()
                 if event.key == pg.K_UP:
                     self.hero.load_up_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos - 1 )
+                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos - 1)
                     hitbox.collide_with_enemy()
                 if event.key == pg.K_DOWN:
                     self.hero.load_down_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1 )
+                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1)
                     hitbox.collide_with_enemy()
-
-
 
 
 # create instance of game

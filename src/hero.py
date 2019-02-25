@@ -18,8 +18,9 @@ class Hero(pg.sprite.Sprite):
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.orthogonal_boy_animation_setup()
+        string = './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'
         self.image = pg.transform.scale(pg.image.load(
-            './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'), (TILESIZE - 1, TILESIZE - 1)).convert()
+            string), (TILESIZE - 1, TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.right_index = self.left_index = self.up_index = self.down_index = 0
@@ -63,7 +64,8 @@ class Hero(pg.sprite.Sprite):
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
                 print("Wall collision")
-                sound_bump = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
+                sound_bump = pg.mixer.Sound(os.path.join(
+                    'audio', 'Wall_Bump_Obstruction.ogg'))
                 chn_1 = pg.mixer.Channel(0)
                 chn_1.set_volume(0.5)
                 chn_1.play(sound_bump, 0)
@@ -76,7 +78,8 @@ class Hero(pg.sprite.Sprite):
         for enemy in self.game.enemy_sprites:
             if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Game Over!")
-                sound_game_over = pg.mixer.Sound(os.path.join('audio', 'Game_Over.ogg'))
+                sound_game_over = pg.mixer.Sound(
+                    os.path.join('audio', 'Game_Over.ogg'))
                 chn_2 = pg.mixer.Channel(1)
                 chn_2.set_volume(1.0)
                 chn_2.play(sound_game_over, 0)
@@ -85,6 +88,7 @@ class Hero(pg.sprite.Sprite):
                 self.game.playing = False
                 return True
         return False
+
     def orthogonal_boy_animation_setup(self):
         ''' Loops through index arrays and correct sprite image load methods '''
 
@@ -102,7 +106,8 @@ class Hero(pg.sprite.Sprite):
         ''' Loads upward facing sprites '''
 
         for image in os.listdir('images/orthogonal_boy/orthogonal_boy_up'):
-            path = os.path.join('images/orthogonal_boy/orthogonal_boy_up', image)
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_up', image)
             self.up_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
@@ -111,7 +116,8 @@ class Hero(pg.sprite.Sprite):
         ''' Loads rightward facing sprites '''
 
         for image in os.listdir('images/orthogonal_boy/orthogonal_boy_right'):
-            path = os.path.join('images/orthogonal_boy/orthogonal_boy_right', image)
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_right', image)
             self.right_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
@@ -120,7 +126,8 @@ class Hero(pg.sprite.Sprite):
         ''' Loads downward facing sprites '''
 
         for image in os.listdir('images/orthogonal_boy/orthogonal_boy_down'):
-            path = os.path.join('images/orthogonal_boy/orthogonal_boy_down', image)
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_down', image)
             self.down_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
@@ -129,7 +136,8 @@ class Hero(pg.sprite.Sprite):
         ''' Loads leftward facing sprites '''
 
         for image in os.listdir('images/orthogonal_boy/orthogonal_boy_left'):
-            path = os.path.join('images/orthogonal_boy/orthogonal_boy_left', image)
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_left', image)
             self.left_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
@@ -137,28 +145,32 @@ class Hero(pg.sprite.Sprite):
     def load_up_attack_image(self):
         ''' Load up facing sprite '''
         self.image = pg.transform.scale(
-            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ba.png'),
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ba.png'),
             (TILESIZE, TILESIZE)).convert()
 
     def load_down_attack_image(self):
         ''' Load down facing sprite '''
 
         self.image = pg.transform.scale(
-            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_fa.png'),
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_fa.png'),
             (TILESIZE, TILESIZE)).convert()
 
     def load_left_attack_image(self):
         ''' Load left facing sprite '''
 
         self.image = pg.transform.scale(
-            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_la.png'),
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_la.png'),
             (TILESIZE, TILESIZE)).convert()
 
     def load_right_attack_image(self):
         ''' Load right facing sprite '''
 
         self.image = pg.transform.scale(
-            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ra.png'),
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ra.png'),
             (TILESIZE, TILESIZE)).convert()
 
     def update(self):
