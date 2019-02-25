@@ -13,7 +13,7 @@ class Enemy(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
         self.game = game
         self.image = pg.transform.scale(
-            pg.image.load('./images/skeleton/skeleton_f0.png'),
+            pg.image.load('./images/skeleton/skeleton_down.png'),
             (TILESIZE - 1,
              TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
@@ -32,21 +32,28 @@ class Enemy(pg.sprite.Sprite):
 
         if movement == ["up"]:
             d_y = -1
-            self.load_up_image()
+            self.load_direction_image('up')
         elif movement == ["down"]:
             d_y = 1
-            self.load_down_image()
+            self.load_direction_image('down')
         elif movement == ["left"]:
             d_x = -1
-            self.load_left_image()
+            self.load_direction_image('left')
         else:
             d_x = 1
-            self.load_right_image()
+            self.load_direction_image('right')
 
         if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
                 self, self.game.all_sprites, d_x, d_y, self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
+
+    def load_direction_image(self, direction):
+        ''' Load directional facing sprites '''
+
+        self.image = pg.transform.scale(
+        pg.image.load(f'./images/skeleton/skeleton_{direction}.png'),
+        (TILESIZE, TILESIZE)).convert()
 
     def end_game(self):
         ''' End game process '''
@@ -62,30 +69,3 @@ class Enemy(pg.sprite.Sprite):
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
         self.image.set_colorkey(BLACK)
-
-    def load_up_image(self):
-        ''' Load up facing sprite '''
-        self.image = pg.transform.scale(
-            pg.image.load('./images/skeleton/skeleton_b0.png'),
-            (TILESIZE, TILESIZE)).convert()
-
-    def load_down_image(self):
-        ''' Load down facing sprite '''
-
-        self.image = pg.transform.scale(
-            pg.image.load('./images/skeleton/skeleton_f0.png'),
-            (TILESIZE, TILESIZE)).convert()
-
-    def load_left_image(self):
-        ''' Load left facing sprite '''
-
-        self.image = pg.transform.scale(
-            pg.image.load('./images/skeleton/skeleton_l0.png'),
-            (TILESIZE, TILESIZE)).convert()
-
-    def load_right_image(self):
-        ''' Load right facing sprite '''
-
-        self.image = pg.transform.scale(
-            pg.image.load('./images/skeleton/skeleton_r0.png'),
-            (TILESIZE, TILESIZE)).convert()
