@@ -5,6 +5,7 @@ import pygame as pg
 from hero import Hero
 from enemy import Enemy
 from wall import Wall
+from hitbox import Hitbox
 from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
 
 
@@ -114,6 +115,11 @@ class Game:
                     self.hero.move(d_y=-1)
                 if event.key == pg.K_DOWN:
                     self.hero.move(d_y=1)
+                if event.key == pg.K_SPACE:
+                    hitbox = Hitbox(self, self.hero.x_pos + 1, self.hero.y_pos )
+                    hitbox.collide_with_enemy()
+
+
 
 
 # create instance of game
