@@ -1,3 +1,5 @@
+''' Hitbox module '''
+
 class Hitbox:
     ''' Creates hitbox'''
 
