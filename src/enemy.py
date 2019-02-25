@@ -1,4 +1,4 @@
-''' Enemy module '''
+'''' Enemy module '''
 
 from random import sample
 import pygame as pg
@@ -26,22 +26,18 @@ class Enemy(pg.sprite.Sprite):
     def move(self):
         ''' Defines enemy movement '''
 
-        movement = sample(["up", "down", "left", "right"], 1)
-        d_x = 0
-        d_y = 0
+        movement = sample(['up', 'down', 'left', 'right'], 1).pop()
+        self.load_direction_image(movement)
+        d_x, d_y = 0, 0
 
-        if movement == ["up"]:
+        if movement == 'up':
             d_y = -1
-            self.load_direction_image('up')
-        elif movement == ["down"]:
+        elif movement == 'down':
             d_y = 1
-            self.load_direction_image('down')
-        elif movement == ["left"]:
+        elif movement == 'left':
             d_x = -1
-            self.load_direction_image('left')
         else:
             d_x = 1
-            self.load_direction_image('right')
 
         if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
                 self, self.game.all_sprites, d_x, d_y, self.end_game):
@@ -58,8 +54,8 @@ class Enemy(pg.sprite.Sprite):
     def end_game(self):
         ''' End game process '''
 
-        print("Killed by enemy")
-        print("Game Over!")
+        print('Killed by enemy')
+        print('Game Over!')
         self.kill()
         self.game.playing = False
 
