@@ -19,7 +19,6 @@ class Hero(pg.sprite.Sprite):
         self.x_pos = x_pos
         self.y_pos = y_pos
 
-        self.animation_setup()
         string = './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'
         self.image = pg.transform.scale(pg.image.load(
             string), (TILESIZE - 1, TILESIZE - 1)).convert()
@@ -125,8 +124,8 @@ class Hero(pg.sprite.Sprite):
 def load_direction_image(direction, image_list):
     ''' Loads sprites for specific directions '''
 
-    for image in os.listdir(f'images/link/link_{direction}'):
-        path = os.path.join(f'images/link/link_{direction}', image)
+    for image in os.listdir(f'images/orthogonal_boy/orthogonal_boy_{direction}'):
+        path = os.path.join(f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
         image_list.append(
             pg.transform.scale(
                 pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
