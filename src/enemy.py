@@ -42,7 +42,8 @@ class Enemy(pg.sprite.Sprite):
             d_x = 1
             self.load_right_image()
 
-        if not self.collide_with_walls(d_x, d_y) and not self.collide_with_hero(d_x, d_y):
+        if not self.collide_with_walls(
+                d_x, d_y) and not self.collide_with_hero(d_x, d_y):
             self.x_pos += d_x
             self.y_pos += d_y
 
