@@ -3,6 +3,7 @@
 from random import sample
 import pygame as pg
 from constants import TILESIZE, BLACK
+from collision import collide
 
 
 class Enemy(pg.sprite.Sprite):
@@ -42,30 +43,18 @@ class Enemy(pg.sprite.Sprite):
             d_x = 1
             self.load_right_image()
 
-        if not self.collide_with_walls(
-                d_x, d_y) and not self.collide_with_hero(d_x, d_y):
+        if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
+                self, self.game.all_sprites, d_x, d_y, self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
 
-    def collide_with_walls(self, d_x=0, d_y=0):
-        ''' Check for wall collision '''
+    def end_game(self):
+        ''' End game process '''
 
-        for wall in self.game.walls_sprites:
-            if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
-                print("Wall collision")
-                return True
-        return False
-
-    def collide_with_hero(self, d_x=0, d_y=0):
-        ''' Check for hero collision '''
-
-        for hero in self.game.all_sprites:
-            if hero.x_pos == self.x_pos + d_x and hero.y_pos == self.y_pos + d_y:
-                print("Collision with hero")
-                self.kill()
-                self.game.playing = False
-                return True
-        return False
+        print("Killed by enemy")
+        print("Game Over!")
+        self.kill()
+        self.game.playing = False
 
     def update(self):
         ''' Update position '''
