@@ -6,7 +6,7 @@ class Hitbox:
         self.x_pos = x_pos
         self.y_pos = y_pos
 
-    def collide_with_enemy(self, d_x=0, d_y=0):
+    def collide_with_enemy(self):
         ''' Check for enemy collision '''
 
         for enemy in self.game.enemy_sprites:

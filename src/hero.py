@@ -134,6 +134,33 @@ class Hero(pg.sprite.Sprite):
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
 
+    def load_up_attack_image(self):
+        ''' Load up facing sprite '''
+        self.image = pg.transform.scale(
+            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ba.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_down_attack_image(self):
+        ''' Load down facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_fa.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_left_attack_image(self):
+        ''' Load left facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_la.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_right_attack_image(self):
+        ''' Load right facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load('./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ra.png'),
+            (TILESIZE, TILESIZE)).convert()
+
     def update(self):
         ''' Update position '''
 
