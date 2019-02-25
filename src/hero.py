@@ -18,13 +18,16 @@ class Hero(pg.sprite.Sprite):
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
-        self.animation_setup()
+
         string = './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'
         self.image = pg.transform.scale(pg.image.load(
             string), (TILESIZE - 1, TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.right_index = self.left_index = self.up_index = self.down_index = 0
+        self.right_index, self.left_index, self.up_index, self.down_index = 0, 0, 0, 0
+        self.up_images, self.right_images, self.down_images, self.left_images = [], [], [], []
+
+        self.animation_setup()
 
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
@@ -71,57 +74,12 @@ class Hero(pg.sprite.Sprite):
         self.game.playing = False
 
     def animation_setup(self):
-        ''' Loops through index arrays and correct sprite image load methods '''
+        ''' Assigns directional images to appropriate lists '''
 
-        self.up_index = self.right_index = self.down_index = self.left_index = 0
-        self.up_images = []
-        self.load_up_image()
-        self.right_images = []
-        self.load_right_image()
-        self.down_images = []
-        self.load_down_image()
-        self.left_images = []
-        self.load_left_image()
-
-    def load_up_image(self):
-        ''' Loads upward facing sprites '''
-
-        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_up'):
-            path = os.path.join(
-                'images/orthogonal_boy/orthogonal_boy_up', image)
-            self.up_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_right_image(self):
-        ''' Loads rightward facing sprites '''
-
-        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_right'):
-            path = os.path.join(
-                'images/orthogonal_boy/orthogonal_boy_right', image)
-            self.right_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_down_image(self):
-        ''' Loads downward facing sprites '''
-
-        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_down'):
-            path = os.path.join(
-                'images/orthogonal_boy/orthogonal_boy_down', image)
-            self.down_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_left_image(self):
-        ''' Loads leftward facing sprites '''
-
-        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_left'):
-            path = os.path.join(
-                'images/orthogonal_boy/orthogonal_boy_left', image)
-            self.left_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
+        load_direction_image('up', self.up_images)
+        load_direction_image('right', self.right_images)
+        load_direction_image('down', self.down_images)
+        load_direction_image('left', self.left_images)
 
     def load_up_attack_image(self):
         ''' Load up facing sprite '''
@@ -160,3 +118,14 @@ class Hero(pg.sprite.Sprite):
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
         self.image.set_colorkey(BLACK)
+
+
+
+def load_direction_image(direction, image_list):
+    ''' Loads sprites for specific directions '''
+
+    for image in os.listdir(f'images/orthogonal_boy/orthogonal_boy_{direction}'):
+        path = os.path.join(f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
+        image_list.append(
+            pg.transform.scale(
+                pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
