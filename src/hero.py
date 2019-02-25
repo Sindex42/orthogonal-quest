@@ -2,7 +2,9 @@
 
 import os
 import pygame as pg
-from constants import TILESIZE
+
+
+from constants import TILESIZE, BLACK
 from collision import collide, bump_sound
 
 
@@ -16,9 +18,11 @@ class Hero(pg.sprite.Sprite):
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
-        self.link_animation_setup()
+        self.animation_setup()
+        string = './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'
         self.image = pg.transform.scale(pg.image.load(
-            './images/link/link_down/link_f0.png'), (TILESIZE - 1, TILESIZE - 1))
+            string), (TILESIZE - 1, TILESIZE - 1)).convert()
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.right_index = self.left_index = self.up_index = self.down_index = 0
 
@@ -30,27 +34,27 @@ class Hero(pg.sprite.Sprite):
             self.x_pos += d_x
             self.y_pos += d_y
 
-        # Changes link image on each arrow key push
+        # Changes orthogonal_boy image on each arrow key push
         if d_x == 1:
             self.right_index += 1
             if self.right_index >= len(self.right_images):
                 self.right_index = 0
-            self.image = self.right_images[self.right_index]
+            self.image = self.right_images[self.right_index].convert()
         if d_x == -1:
             self.left_index += 1
             if self.left_index >= len(self.left_images):
                 self.left_index = 0
-            self.image = self.left_images[self.left_index]
+            self.image = self.left_images[self.left_index].convert()
         if d_y == 1:
             self.down_index += 1
             if self.down_index >= len(self.down_images):
                 self.down_index = 0
-            self.image = self.down_images[self.down_index]
+            self.image = self.down_images[self.down_index].convert()
         if d_y == -1:
             self.up_index += 1
             if self.up_index >= len(self.up_images):
                 self.up_index = 0
-            self.image = self.up_images[self.up_index]
+            self.image = self.up_images[self.up_index].convert()
 
     def end_game(self):
         ''' End game process '''
@@ -66,7 +70,7 @@ class Hero(pg.sprite.Sprite):
         pg.time.delay(2200)
         self.game.playing = False
 
-    def link_animation_setup(self):
+    def animation_setup(self):
         ''' Loops through index arrays and correct sprite image load methods '''
 
         self.up_index = self.right_index = self.down_index = self.left_index = 0
@@ -82,8 +86,9 @@ class Hero(pg.sprite.Sprite):
     def load_up_image(self):
         ''' Loads upward facing sprites '''
 
-        for image in os.listdir('images/link/link_up'):
-            path = os.path.join('images/link/link_up', image)
+        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_up'):
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_up', image)
             self.up_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
@@ -91,8 +96,9 @@ class Hero(pg.sprite.Sprite):
     def load_right_image(self):
         ''' Loads rightward facing sprites '''
 
-        for image in os.listdir('images/link/link_right'):
-            path = os.path.join('images/link/link_right', image)
+        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_right'):
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_right', image)
             self.right_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
@@ -100,8 +106,9 @@ class Hero(pg.sprite.Sprite):
     def load_down_image(self):
         ''' Loads downward facing sprites '''
 
-        for image in os.listdir('images/link/link_down'):
-            path = os.path.join('images/link/link_down', image)
+        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_down'):
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_down', image)
             self.down_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
@@ -109,14 +116,47 @@ class Hero(pg.sprite.Sprite):
     def load_left_image(self):
         ''' Loads leftward facing sprites '''
 
-        for image in os.listdir('images/link/link_left'):
-            path = os.path.join('images/link/link_left', image)
+        for image in os.listdir('images/orthogonal_boy/orthogonal_boy_left'):
+            path = os.path.join(
+                'images/orthogonal_boy/orthogonal_boy_left', image)
             self.left_images.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
+
+    def load_up_attack_image(self):
+        ''' Load up facing sprite '''
+        self.image = pg.transform.scale(
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ba.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_down_attack_image(self):
+        ''' Load down facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_fa.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_left_attack_image(self):
+        ''' Load left facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_la.png'),
+            (TILESIZE, TILESIZE)).convert()
+
+    def load_right_attack_image(self):
+        ''' Load right facing sprite '''
+
+        self.image = pg.transform.scale(
+            pg.image.load(
+                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ra.png'),
+            (TILESIZE, TILESIZE)).convert()
 
     def update(self):
         ''' Update position '''
 
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
+        self.image.set_colorkey(BLACK)
