@@ -5,7 +5,7 @@ import pygame as pg
 from hero import Hero
 from enemy import Enemy
 from wall import Wall
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, FONT_NAME, GREEN
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, FONT_NAME, GOLD
 
 
 class Game:
@@ -104,9 +104,9 @@ class Game:
     def show_start_screen(self):
         # game splash/start screen
         self.screen.fill(BG_COLOUR)
-        self.draw_text_on_screen(TITLE, 48, GREEN, WIDTH / 2, HEIGHT / 4)
-        self.draw_text_on_screen("Arrows to move, Space bar to attack", 22, GREEN, WIDTH / 2, HEIGHT / 2)
-        self.draw_text_on_screen("Press any key to play", 22, GREEN, WIDTH / 2, HEIGHT * 3 / 4)
+        self.draw_text_on_screen(TITLE, 48, GOLD, WIDTH / 2, HEIGHT / 4)
+        self.draw_text_on_screen("Arrows to move, Space bar to attack", 22, GOLD, WIDTH / 2, HEIGHT / 2)
+        self.draw_text_on_screen("Press any key to play", 22, GOLD, WIDTH / 2, HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
     
@@ -114,9 +114,9 @@ class Game:
         # game splash/end screen
         if not self.running:
             return
-        self.screen.fill(BG_COLOR)
-        self.draw_text_on_screen("GAME OVER", 48, WHITE, WIDTH / 2, HEIGHT / 4)
-        self.draw_text_on_screen("Press a key to play again", 22, WHITE, WIDTH / 2, HEIGHT * 3 / 4)
+        self.screen.fill(BG_COLOUR)
+        self.draw_text_on_screen("GAME OVER", 48, GOLD, WIDTH / 2, HEIGHT / 4)
+        self.draw_text_on_screen("Press a key to play again", 22, GOLD, WIDTH / 2, HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
     
@@ -161,7 +161,7 @@ class Game:
 # create instance of game
 GAME = Game()
 GAME.show_start_screen()
-while GAME.playing:
+while GAME.playing: 
     GAME.new()
     GAME.run()
     GAME.show_end_screen()
