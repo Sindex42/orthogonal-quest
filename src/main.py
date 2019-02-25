@@ -104,24 +104,31 @@ class Game:
 
     def show_start_screen(self):
         # game splash/start screen
-         self.screen.fill(BGCOLOR)
-        self.draw_text(TITLE, 48, GREEN, WIDTH / 2, HEIGHT / 4)
-        self.draw_text("Arrows to move, Space bar to attack", 22, GREEN, WIDTH / 2, HEIGHT / 2)
-        self.draw_text("Press any key to play", 22, GREEN, WIDTH / 2, HEIGHT * 3 / 4)
+        self.screen.fill(BG_COLOUR)
+        self.draw_text_on_screen(TITLE, 48, GREEN, WIDTH / 2, HEIGHT / 4)
+        self.draw_text_on_screen("Arrows to move, Space bar to attack", 22, GREEN, WIDTH / 2, HEIGHT / 2)
+        self.draw_text_on_screen("Press any key to play", 22, GREEN, WIDTH / 2, HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
-    
-    def wait_for_key(self):
-       pass
-
     
     def show_end_screen(self):
         # game splash/end screen
         pass
+    
+    def wait_for_key(self):
+        waiting = True
+        while waiting:
+            self.clock.tick(30)
+            for event in pg.event.get():
+                if event == pg.QUIT:
+                    waiting = False
+                    self.playing = False
+                if event == pg.KEYDOWN:
+                    waiting = False
 
-    def draw_text_on_screen(self, text, size, color, x, y):
+    def draw_text_on_screen(self, text, size, colour, x, y):
         font = pg.font.Font(self.font_name, size)
-        text_surface = font.render(text, True, color)
+        text_surface = font.render(text, True, colour)
         text_rect = text_surface.get_rect()
         text_rect.midtop = (x, y)
         self.screen.blit(text_surface, text_rect)
@@ -148,5 +155,7 @@ class Game:
 # create instance of game
 GAME = Game()
 GAME.show_start_screen()
-GAME.new()
-GAME.run()
+while GAME.playing:
+    GAME.new()
+    GAME.run()
+pg.QUIT
