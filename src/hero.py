@@ -4,7 +4,7 @@ import os
 import pygame as pg
 
 
-from constants import TILESIZE
+from constants import TILESIZE, BLACK
 
 
 class Hero(pg.sprite.Sprite):
@@ -19,7 +19,8 @@ class Hero(pg.sprite.Sprite):
         self.y_pos = y_pos
         self.orthogonal_boy_animation_setup()
         self.image = pg.transform.scale(pg.image.load(
-            './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'), (TILESIZE - 1, TILESIZE - 1))
+            './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'), (TILESIZE - 1, TILESIZE - 1)).convert()
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.right_index = self.left_index = self.up_index = self.down_index = 0
 
@@ -39,22 +40,22 @@ class Hero(pg.sprite.Sprite):
             self.right_index += 1
             if self.right_index >= len(self.right_images):
                 self.right_index = 0
-            self.image = self.right_images[self.right_index]
+            self.image = self.right_images[self.right_index].convert()
         if d_x == -1:
             self.left_index += 1
             if self.left_index >= len(self.left_images):
                 self.left_index = 0
-            self.image = self.left_images[self.left_index]
+            self.image = self.left_images[self.left_index].convert()
         if d_y == 1:
             self.down_index += 1
             if self.down_index >= len(self.down_images):
                 self.down_index = 0
-            self.image = self.down_images[self.down_index]
+            self.image = self.down_images[self.down_index].convert()
         if d_y == -1:
             self.up_index += 1
             if self.up_index >= len(self.up_images):
                 self.up_index = 0
-            self.image = self.up_images[self.up_index]
+            self.image = self.up_images[self.up_index].convert()
 
     def collide_with_walls(self, d_x=0, d_y=0):
         ''' Check for wall collision '''
@@ -138,3 +139,4 @@ class Hero(pg.sprite.Sprite):
 
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
+        self.image.set_colorkey(BLACK)
