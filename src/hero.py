@@ -71,47 +71,20 @@ class Hero(pg.sprite.Sprite):
 
         self.up_index = self.right_index = self.down_index = self.left_index = 0
         self.up_images = []
-        self.load_up_image()
+        self.load_direction_image('up', self.up_images)
         self.right_images = []
-        self.load_right_image()
+        self.load_direction_image('right', self.right_images)
         self.down_images = []
-        self.load_down_image()
+        self.load_direction_image('down', self.down_images)
         self.left_images = []
-        self.load_left_image()
+        self.load_direction_image('left', self.left_images)
 
-    def load_up_image(self):
-        ''' Loads upward facing sprites '''
+    def load_direction_image(self, direction, image_list):
+        ''' Loads sprites for specific directions '''
 
-        for image in os.listdir('images/link/link_up'):
-            path = os.path.join('images/link/link_up', image)
-            self.up_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_right_image(self):
-        ''' Loads rightward facing sprites '''
-
-        for image in os.listdir('images/link/link_right'):
-            path = os.path.join('images/link/link_right', image)
-            self.right_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_down_image(self):
-        ''' Loads downward facing sprites '''
-
-        for image in os.listdir('images/link/link_down'):
-            path = os.path.join('images/link/link_down', image)
-            self.down_images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
-
-    def load_left_image(self):
-        ''' Loads leftward facing sprites '''
-
-        for image in os.listdir('images/link/link_left'):
-            path = os.path.join('images/link/link_left', image)
-            self.left_images.append(
+        for image in os.listdir(f'images/link/link_{direction}'):
+            path = os.path.join(f'images/link/link_{direction}', image)
+            image_list.append(
                 pg.transform.scale(
                     pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
 
