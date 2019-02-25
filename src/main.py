@@ -27,6 +27,7 @@ class Game:
 
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.clock = pg.time.Clock()
+        self.running = True
         self.playing = None
         self.map_data = []
         self.load_data()
@@ -98,8 +99,6 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
         self.enemy_sprites.draw(self.screen)
-        #Currently draws text in game, this is for testing purposes
-        self.draw_text_on_screen("Hello World!", 100, GREEN, 24, 24) 
         pg.display.flip()
 
     def show_start_screen(self):
@@ -113,18 +112,25 @@ class Game:
     
     def show_end_screen(self):
         # game splash/end screen
-        pass
+        if not self.running:
+            return
+        self.screen.fill(BG_COLOR)
+        self.draw_text_on_screen("GAME OVER", 48, WHITE, WIDTH / 2, HEIGHT / 4)
+        self.draw_text_on_screen("Press a key to play again", 22, WHITE, WIDTH / 2, HEIGHT * 3 / 4)
+        pg.display.flip()
+        self.wait_for_key()
     
     def wait_for_key(self):
         waiting = True
         while waiting:
             self.clock.tick(30)
             for event in pg.event.get():
-                if event == pg.QUIT:
+                if event.type == pg.QUIT:
                     waiting = False
-                    self.playing = False
-                if event == pg.KEYDOWN:
+                    self.running = False
+                if event.type == pg.KEYUP:
                     waiting = False
+                    self.playing = True
 
     def draw_text_on_screen(self, text, size, colour, x, y):
         font = pg.font.Font(self.font_name, size)
@@ -158,4 +164,5 @@ GAME.show_start_screen()
 while GAME.playing:
     GAME.new()
     GAME.run()
+    GAME.show_end_screen()
 pg.QUIT
