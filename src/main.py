@@ -38,7 +38,7 @@ class Game:
         self.playing = True
         while self.playing:
             self.enemies_exist()
-            # self.move_enemies()
+            self.move_enemies()
             self.events()
             self.update()
             self.draw()
