@@ -5,7 +5,7 @@ import pygame as pg
 from hero import Hero
 from enemy import Enemy
 from wall import Wall
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, FONT_NAME, GREEN
 
 
 class Game:
@@ -97,16 +97,24 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
         self.enemy_sprites.draw(self.screen)
+        #Currently draws text in game, this is for testing purposes
+        self.draw_text_on_screen("Hello World!", 100, GREEN, 24, 24) 
         pg.display.flip()
 
     def show_start_screen(self):
+        # game splash/start screen
         pass
     
     def show_end_screen(self):
+        # game splash/end screen
         pass
 
     def draw_text_on_screen(self, text, size, color, x, y):
-        pass
+        font = pg.font.Font(self.font_name, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect()
+        text_rect.midtop = (x, y)
+        self.screen.blit(text_surface, text_rect)
 
 
     def events(self):
