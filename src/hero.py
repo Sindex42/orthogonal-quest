@@ -16,11 +16,13 @@ class Hero(pg.sprite.Sprite):
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
-        self.link_animation_setup()
         self.image = pg.transform.scale(pg.image.load(
             './images/link/link_down/link_f0.png'), (TILESIZE - 1, TILESIZE - 1))
         self.rect = self.image.get_rect()
-        self.right_index = self.left_index = self.up_index = self.down_index = 0
+        self.right_index, self.left_index, self.up_index, self.down_index = 0, 0, 0, 0
+        self.up_images, self.right_images, self.down_images, self.left_images = [], [], [], []
+
+        self.animation_setup()
 
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
@@ -66,30 +68,27 @@ class Hero(pg.sprite.Sprite):
         pg.time.delay(2200)
         self.game.playing = False
 
-    def link_animation_setup(self):
-        ''' Loops through index arrays and correct sprite image load methods '''
+    def animation_setup(self):
+        ''' Assigns directional images to appropriate lists '''
 
-        self.up_index = self.right_index = self.down_index = self.left_index = 0
-        self.up_images = []
-        self.load_direction_image('up', self.up_images)
-        self.right_images = []
-        self.load_direction_image('right', self.right_images)
-        self.down_images = []
-        self.load_direction_image('down', self.down_images)
-        self.left_images = []
-        self.load_direction_image('left', self.left_images)
-
-    def load_direction_image(self, direction, image_list):
-        ''' Loads sprites for specific directions '''
-
-        for image in os.listdir(f'images/link/link_{direction}'):
-            path = os.path.join(f'images/link/link_{direction}', image)
-            image_list.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
+        load_direction_image('up', self.up_images)
+        load_direction_image('right', self.right_images)
+        load_direction_image('down', self.down_images)
+        load_direction_image('left', self.left_images)
 
     def update(self):
         ''' Update position '''
 
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
+
+
+
+def load_direction_image(direction, image_list):
+    ''' Loads sprites for specific directions '''
+
+    for image in os.listdir(f'images/link/link_{direction}'):
+        path = os.path.join(f'images/link/link_{direction}', image)
+        image_list.append(
+            pg.transform.scale(
+                pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
