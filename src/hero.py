@@ -32,17 +32,8 @@ class Hero(pg.sprite.Sprite):
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
 
-        if not collide(
-                self,
-                self.game.walls_sprites,
-                d_x,
-                d_y,
-                bump_sound) and not collide(
-                    self,
-                    self.game.enemy_sprites,
-                    d_x,
-                    d_y,
-                    self.end_game):
+        if not collide(self, self.game.walls_sprites, d_x, d_y, bump_sound) and not collide(
+                self, self.game.enemy_sprites, d_x, d_y, self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
 
