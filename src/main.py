@@ -5,7 +5,7 @@ import pygame as pg
 from hero import Hero
 from enemy import Enemy
 from wall import Wall
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, FONT_NAME, GOLD
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, FONT_NAME, GOLD, GAME_SPEED
 from hitbox import Hitbox
 
 
@@ -34,7 +34,7 @@ class Game:
 
     def run(self):
         ''' Game loop '''
-        
+
         self.playing = True
         while self.playing:
             self.enemies_exist()
@@ -84,9 +84,9 @@ class Game:
         ''' Allows enemy to move '''
 
         for enemy in self.enemy_sprites:
-            if self.counter > 30:
+            if self.counter > GAME_SPEED:
                 enemy.move()
-        if self.counter > 30:
+        if self.counter > GAME_SPEED:
             self.counter = 0
 
     def draw(self):
