@@ -132,6 +132,8 @@ class Game:
                     self.attack_event('down', 0, 1)
 
     def attack_event(self, direction, d_x, d_y):
+        ''' Executes player attack '''
+        
         self.hero.load_attack_image(direction)
         hitbox = Hitbox(self, self.hero.x_pos + d_x, self.hero.y_pos + d_y)
         hitbox.collide_with_enemy()
