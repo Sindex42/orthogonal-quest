@@ -3,7 +3,7 @@
 import os
 from random import sample
 import pygame as pg
-from constants import TILESIZE, BLACK
+from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
 from collision import collide, game_over_voice
 
 
@@ -22,6 +22,7 @@ class Enemy(pg.sprite.Sprite):
         self.rect.x = TILESIZE * x_pos + 1
         self.rect.y = TILESIZE * y_pos + 1
 
+
     def move(self):
         ''' Defines enemy movement '''
 
@@ -39,10 +40,11 @@ class Enemy(pg.sprite.Sprite):
             d_x = 1
 
         if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
-                self, self.game.all_sprites, d_x, d_y, self.end_game):
+                self, self.game.all_sprites, d_x, d_y, self.end_game) and not collide(
+                self, self.game.all_sprites, d_x, d_y, self.enemy_touches_hero):
             self.x_pos += d_x
             self.y_pos += d_y
-
+  
     def load_direction_image(self, direction):
         ''' Load directional facing sprites '''
 
@@ -53,12 +55,15 @@ class Enemy(pg.sprite.Sprite):
     def end_game(self):
         ''' End game process '''
 
-        print("Ran into enemy")
+        print("Enemy hit hero")
         print("Game Over!")
         game_over_voice()
         self.kill()
         pg.time.delay(2200)
         self.game.playing = False
+
+    def enemy_touches_hero(self):
+        self.hero.health -= MOB_DAMAGE  
 
     def update(self):
         ''' Update position '''

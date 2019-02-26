@@ -35,10 +35,12 @@ class Hero(pg.sprite.Sprite):
         ''' Defines hero movement '''
 
         if not collide(self, self.game.walls_sprites, d_x, d_y, bump_sound) and not collide(
-                self, self.game.enemy_sprites, d_x, d_y, self.end_game):
+                self, self.game.enemy_sprites, d_x, d_y, self.hero_touches_enemy):
             self.x_pos += d_x
             self.y_pos += d_y
-        
+
+        if collide(self, self.game.enemy_sprites, d_x, d_y):
+            self.hero_touches_enemy
 
         # Changes orthogonal_boy image on each arrow key push
         if d_x == 1:
@@ -62,15 +64,22 @@ class Hero(pg.sprite.Sprite):
                 self.up_index = 0
             self.image = self.up_images[self.up_index].convert()
 
+    def hero_touches_enemy(self):
+        self.health -= MOB_DAMAGE
+        if self.health <= 0:
+            self.end_game()
+    
     def end_game(self):
         ''' End game process '''
-
         print("Ran into enemy")
         print("Game Over!")
         game_over_voice()
         self.kill()
         pg.time.delay(2200)
         self.game.playing = False
+
+    
+
 
     def animation_setup(self):
         ''' Assigns directional images to appropriate lists '''

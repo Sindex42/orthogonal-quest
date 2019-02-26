@@ -6,7 +6,8 @@ from hero import Hero
 from enemy import Enemy
 from wall import Wall
 from hitbox import Hitbox
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, WHITE, GREEN, RED, YELLOW, HERO_HEALTH
+from collision import collide
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, WHITE, GREEN, RED, YELLOW, HERO_HEALTH, MOB_DAMAGE
 
 # HUD functions
 def draw_hero_health(surf, x, y, pct):
@@ -79,7 +80,7 @@ class Game:
 
         self.all_sprites.update()
         self.enemy_sprites.update()
-
+        
     def load_data(self):
         ''' Loads map '''
 
@@ -107,6 +108,8 @@ class Game:
         if self.counter > 30:
             self.counter = 0
 
+               
+
     def draw(self):
         ''' Refreshes screen on every loop '''
 
@@ -115,7 +118,7 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
         self.enemy_sprites.draw(self.screen)
-        draw_hero_health(self.screen, 10, 10, self.hero.health / HERO_HEALTH)
+        draw_hero_health(self.screen, 10, 10, self.hero.health / 100)
         pg.display.flip()
 
     def enemies_exist(self):
