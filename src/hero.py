@@ -64,14 +64,15 @@ class Hero(pg.sprite.Sprite):
 
         print("Ran into enemy")
         print("Game Over!")
+        self.kill()
+        self.game.show_end_screen()
+        self.game.playing = False
         sound_game_over = pg.mixer.Sound(
             os.path.join('audio', 'Game_Over.ogg'))
         chn_2 = pg.mixer.Channel(1)
         chn_2.set_volume(1.0)
         chn_2.play(sound_game_over, 0)
-        self.kill()
-        pg.time.delay(2200)
-        self.game.playing = False
+
 
     def animation_setup(self):
         ''' Assigns directional images to appropriate lists '''
