@@ -31,3 +31,4 @@ def game_over_voice():
     chn_2.set_volume(1.0)
     chn_2.play(sound_game_over, 0)
 
+        

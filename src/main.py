@@ -6,7 +6,7 @@ from hero import Hero
 from enemy import Enemy
 from wall import Wall
 from hitbox import Hitbox
-from collision import collide
+from collision import collide, game_over_voice
 from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, WHITE, GREEN, RED, YELLOW, HERO_HEALTH, MOB_DAMAGE
 
 # HUD functions
@@ -108,8 +108,6 @@ class Game:
         if self.counter > 30:
             self.counter = 0
 
-               
-
     def draw(self):
         ''' Refreshes screen on every loop '''
 
@@ -126,6 +124,14 @@ class Game:
         if not self.enemy_sprites:
             self.playing = False
 
+    def end_game(self):
+        ''' End game process '''
+
+        print("Game Over!")
+        game_over_voice()
+        self.hero.kill()
+        pg.time.delay(2200)
+        self.playing = False        
 
     def events(self):
         ''' Event listener '''

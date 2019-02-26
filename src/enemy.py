@@ -61,16 +61,7 @@ class Enemy(pg.sprite.Sprite):
         print("Enemy hit hero")
         self.game.hero.health -= MOB_DAMAGE
         if self.game.hero.health <= 0:
-            self.end_game()
-
-    def end_game(self):
-        ''' End game process '''
-
-        print("Game Over!")
-        game_over_voice()
-        self.kill()
-        pg.time.delay(2200)
-        self.game.playing = False  
+            self.game.end_game() 
 
     def update(self):
         ''' Update position '''

@@ -26,10 +26,8 @@ class Hero(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.right_index, self.left_index, self.up_index, self.down_index = 0, 0, 0, 0
         self.up_images, self.right_images, self.down_images, self.left_images = [], [], [], []
-
-        self.health = HERO_HEALTH
-
         self.animation_setup()
+        self.health = HERO_HEALTH
 
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
@@ -68,20 +66,8 @@ class Hero(pg.sprite.Sprite):
         print("Ran into enemy")
         self.health -= MOB_DAMAGE
         if self.health <= 0:
-            self.end_game()
+            self.game.end_game() 
     
-    def end_game(self):
-        ''' End game process '''
-
-        print("Game Over!")
-        game_over_voice()
-        self.kill()
-        pg.time.delay(2200)
-        self.game.playing = False
-
-    
-
-
     def animation_setup(self):
         ''' Assigns directional images to appropriate lists '''
 
