@@ -5,11 +5,11 @@ import pygame as pg
 from hero import Hero
 from enemy import Enemy
 from wall import Wall
-from constants import (WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE,
-                       FONT_NAME, GOLD, GAME_SPEED)
 from hitbox import Hitbox
 from collision import game_over_voice
-from constants import WHITE, GREEN, RED, YELLOW, BAR_LENGTH, BAR_HEIGHT
+from constants import (WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE,
+                       FONT_NAME, GOLD, GAME_SPEED, WHITE, GREEN, RED, YELLOW,
+                       BAR_LENGTH, BAR_HEIGHT)
 
 # HUD functions
 def draw_hero_health(surf, x_pos, y_pos, pct):
