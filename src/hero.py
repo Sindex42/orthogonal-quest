@@ -2,8 +2,6 @@
 
 import os
 import pygame as pg
-
-
 from constants import TILESIZE, BLACK
 from collision import collide, bump_sound
 
@@ -81,43 +79,20 @@ class Hero(pg.sprite.Sprite):
         load_direction_image('down', self.down_images)
         load_direction_image('left', self.left_images)
 
-    def load_up_attack_image(self):
-        ''' Load up facing sprite '''
-        self.image = pg.transform.scale(
-            pg.image.load(
-                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ba.png'),
-            (TILESIZE, TILESIZE)).convert()
-
-    def load_down_attack_image(self):
-        ''' Load down facing sprite '''
-
-        self.image = pg.transform.scale(
-            pg.image.load(
-                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_fa.png'),
-            (TILESIZE, TILESIZE)).convert()
-
-    def load_left_attack_image(self):
-        ''' Load left facing sprite '''
-
-        self.image = pg.transform.scale(
-            pg.image.load(
-                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_la.png'),
-            (TILESIZE, TILESIZE)).convert()
-
-    def load_right_attack_image(self):
-        ''' Load right facing sprite '''
-
-        self.image = pg.transform.scale(
-            pg.image.load(
-                './images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_ra.png'),
-            (TILESIZE, TILESIZE)).convert()
-
     def update(self):
         ''' Update position '''
 
         self.rect.x = self.x_pos * TILESIZE + 1
         self.rect.y = self.y_pos * TILESIZE + 1
         self.image.set_colorkey(BLACK)
+
+    def load_attack_image(self, direction):
+        ''' Loads sprites for directional attacking '''
+
+        self.image = pg.transform.scale(
+            pg.image.load(
+                f'./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_{direction}.png'),
+            (TILESIZE, TILESIZE)).convert()
 
 
 def load_direction_image(direction, image_list):
