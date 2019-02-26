@@ -5,10 +5,29 @@ import pygame as pg
 from hero import Hero
 from enemy import Enemy
 from wall import Wall
-from constants import (WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE,
-                       FONT_NAME, GOLD, GAME_SPEED)
 from hitbox import Hitbox
+from collision import game_over_voice
+from constants import (WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE,
+                       FONT_NAME, GOLD, GAME_SPEED, WHITE, GREEN, RED, YELLOW,
+                       BAR_LENGTH, BAR_HEIGHT)
 
+# HUD functions
+def draw_hero_health(surf, x_pos, y_pos, pct):
+    ''' Draws Hero Health Bar'''
+
+    if pct < 0:
+        pct = 0
+    fill = pct * BAR_LENGTH
+    outline_rect = pg.Rect(x_pos, y_pos, BAR_LENGTH, BAR_HEIGHT)
+    fill_rect = pg.Rect(x_pos, y_pos, fill, BAR_HEIGHT)
+    if pct > 0.6:
+        col = GREEN
+    elif pct > 0.3:
+        col = YELLOW
+    else:
+        col = RED
+    pg.draw.rect(surf, col, fill_rect)
+    pg.draw.rect(surf, WHITE, outline_rect, 2)
 
 class Game:
     ''' Setup and run game instance '''
@@ -98,6 +117,7 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
         self.enemy_sprites.draw(self.screen)
+        draw_hero_health(self.screen, 10, 10, self.hero.health / 100)
         pg.display.flip()
 
 
@@ -161,6 +181,13 @@ class Game:
         if not self.enemy_sprites:
             self.playing = False
 
+    def end_game(self):
+        ''' End game process '''
+
+        print("Game Over!")
+        game_over_voice()
+        self.hero.kill()
+        self.playing = False
 
     def events(self):
         ''' Event listener '''
@@ -195,6 +222,7 @@ class Game:
         self.hero.load_attack_image(direction)
         hitbox = Hitbox(self, self.hero.x_pos + d_x, self.hero.y_pos + d_y)
         hitbox.collide_with_enemy()
+
 
 
 # create instance of game

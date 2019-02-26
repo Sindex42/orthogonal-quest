@@ -2,7 +2,7 @@
 
 from random import sample
 import pygame as pg
-from constants import TILESIZE, BLACK
+from constants import TILESIZE, BLACK, MOB_DAMAGE
 from collision import collide
 
 
@@ -39,9 +39,12 @@ class Enemy(pg.sprite.Sprite):
             d_x = 1
 
         if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
-                self, self.game.all_sprites, d_x, d_y, self.end_game):
+                self, self.game.all_sprites, d_x, d_y, self.enemy_touches_hero):
             self.x_pos += d_x
             self.y_pos += d_y
+
+        if collide(self, self.game.all_sprites, d_x, d_y):
+            self.enemy_touches_hero()
 
     def load_direction_image(self, direction):
         ''' Load directional facing sprites '''
@@ -50,13 +53,13 @@ class Enemy(pg.sprite.Sprite):
             pg.image.load(f'./images/{self.type}/{self.type}_{direction}.png'),
             (TILESIZE, TILESIZE)).convert()
 
-    def end_game(self):
-        ''' End game process '''
+    def enemy_touches_hero(self):
+        ''' Updates Hero Health '''
 
-        print('Killed by enemy')
-        print('Game Over!')
-        self.kill()
-        self.game.playing = False
+        print("Enemy hit hero")
+        self.game.hero.health -= MOB_DAMAGE
+        if self.game.hero.health <= 0:
+            self.game.end_game()
 
     def update(self):
         ''' Update position '''
