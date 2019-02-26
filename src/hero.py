@@ -120,12 +120,13 @@ class Hero(pg.sprite.Sprite):
         self.image.set_colorkey(BLACK)
 
 
-
 def load_direction_image(direction, image_list):
     ''' Loads sprites for specific directions '''
 
-    for image in os.listdir(f'images/orthogonal_boy/orthogonal_boy_{direction}'):
-        path = os.path.join(f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
+    for image in os.listdir(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}'):
+        path = os.path.join(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
         image_list.append(
             pg.transform.scale(
                 pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
