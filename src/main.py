@@ -106,7 +106,7 @@ class Game:
         self.screen.fill(BG_COLOUR)
         self.draw_text_on_screen(TITLE, 48, WIDTH / 2, HEIGHT / 4)
         self.draw_text_on_screen(
-            "Use the arrow keys to move, Space bar to attack",
+            "Use 'w/a/s/d' keys to move and arrow keys to attack in their direction",
             22,
             WIDTH / 2,
             HEIGHT / 2)
