@@ -35,7 +35,7 @@ class Game:
     def run(self):
         ''' Game loop '''
         self.playing = True
-        while self.playing: 
+        while self.playing:
             self.move_enemies()
             self.events()
             self.update()
@@ -101,11 +101,21 @@ class Game:
         # game splash/start screen
         self.screen.fill(BG_COLOUR)
         self.draw_text_on_screen(TITLE, 48, GOLD, WIDTH / 2, HEIGHT / 4)
-        self.draw_text_on_screen("Use the arrow keys to move, Space bar to attack", 22, GOLD, WIDTH / 2, HEIGHT / 2)
-        self.draw_text_on_screen("Press any key to play", 22, GOLD, WIDTH / 2, HEIGHT * 3 / 4)
+        self.draw_text_on_screen(
+            "Use the arrow keys to move, Space bar to attack",
+            22,
+            GOLD,
+            WIDTH / 2,
+            HEIGHT / 2)
+        self.draw_text_on_screen(
+            "Press any key to play",
+            22,
+            GOLD,
+            WIDTH / 2,
+            HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
-    
+
     def show_end_screen(self):
         # game splash/end screen
         self.enemy_sprites.empty()
@@ -113,11 +123,15 @@ class Game:
         self.walls_sprites.empty()
         self.screen.fill(BG_COLOUR)
         self.draw_text_on_screen("GAME OVER", 40, GOLD, WIDTH / 2, HEIGHT / 2)
-        self.draw_text_on_screen("Press a key to play again", 22, GOLD, WIDTH / 2, HEIGHT * 3 / 4)
+        self.draw_text_on_screen(
+            "Press a key to play again",
+            22,
+            GOLD,
+            WIDTH / 2,
+            HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
-    
-    
+
     def wait_for_key(self):
         waiting = True
         while waiting:
@@ -137,7 +151,6 @@ class Game:
         text_rect = text_surface.get_rect()
         text_rect.midtop = (x, y)
         self.screen.blit(text_surface, text_rect)
-
 
     def events(self):
         ''' Event listener '''
@@ -161,7 +174,7 @@ class Game:
 # create instance of game
 GAME = Game()
 GAME.show_start_screen()
-while GAME.playing: 
+while GAME.playing:
     GAME.new()
     GAME.run()
     GAME.show_end_screen()

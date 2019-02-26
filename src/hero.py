@@ -62,7 +62,8 @@ class Hero(pg.sprite.Sprite):
         for wall in self.game.walls_sprites:
             if wall.x_pos == self.x_pos + d_x and wall.y_pos == self.y_pos + d_y:
                 print("Wall collision")
-                sound_bump = pg.mixer.Sound(os.path.join('audio', 'Wall_Bump_Obstruction.ogg'))
+                sound_bump = pg.mixer.Sound(os.path.join(
+                    'audio', 'Wall_Bump_Obstruction.ogg'))
                 chn_1 = pg.mixer.Channel(0)
                 chn_1.set_volume(0.5)
                 chn_1.play(sound_bump, 0)
@@ -76,7 +77,8 @@ class Hero(pg.sprite.Sprite):
             if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Game Over!")
                 self.game.show_end_screen()
-                sound_game_over = pg.mixer.Sound(os.path.join('audio', 'Game_Over.ogg'))
+                sound_game_over = pg.mixer.Sound(
+                    os.path.join('audio', 'Game_Over.ogg'))
                 chn_2 = pg.mixer.Channel(1)
                 chn_2.set_volume(1.0)
                 chn_2.play(sound_game_over, 0)
@@ -85,6 +87,7 @@ class Hero(pg.sprite.Sprite):
                 self.game.playing = False
                 return True
         return False
+
     def link_animation_setup(self):
         ''' Loops through index arrays and correct sprite image load methods '''
 
