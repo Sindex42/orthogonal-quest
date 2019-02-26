@@ -12,8 +12,8 @@ RED = (124, 10, 2)
 BG_COLOUR = DARK_GREY
 
 # game settings
-HEIGHT = 384
-WIDTH = 512
+HEIGHT = 736
+WIDTH = 1024
 TITLE = 'Orthogonal Quest'
 FONT_NAME = 'arial'
 

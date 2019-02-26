@@ -6,6 +6,7 @@ from hero import Hero
 from enemy import Enemy
 from wall import Wall
 from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, FONT_NAME, GOLD
+from hitbox import Hitbox
 
 
 class Game:
@@ -36,6 +37,7 @@ class Game:
         ''' Game loop '''
         self.playing = True
         while self.playing:
+            self.enemies_exist()
             self.move_enemies()
             self.events()
             self.update()
@@ -97,6 +99,7 @@ class Game:
         self.enemy_sprites.draw(self.screen)
         pg.display.flip()
 
+
     def show_start_screen(self):
         ''' Shows the start screen '''
         # game splash/start screen
@@ -153,6 +156,12 @@ class Game:
         text_rect.midtop = (x_pos, y_pos)
         self.screen.blit(text_surface, text_rect)
 
+    def enemies_exist(self):
+        ''' Ends game if all enemies dead '''
+        if not self.enemy_sprites:
+            self.playing = False
+
+
     def events(self):
         ''' Event listener '''
 
@@ -162,14 +171,30 @@ class Game:
                 pg.quit()
 
             if event.type == pg.KEYDOWN:
-                if event.key == pg.K_LEFT:
+                if event.key == pg.K_a:
                     self.hero.move(d_x=-1)
-                if event.key == pg.K_RIGHT:
+                if event.key == pg.K_d:
                     self.hero.move(d_x=1)
-                if event.key == pg.K_UP:
+                if event.key == pg.K_w:
                     self.hero.move(d_y=-1)
-                if event.key == pg.K_DOWN:
+                if event.key == pg.K_s:
                     self.hero.move(d_y=1)
+                if event.key == pg.K_RIGHT:
+                    self.hero.load_right_attack_image()
+                    hitbox = Hitbox(self, self.hero.x_pos + 1, self.hero.y_pos)
+                    hitbox.collide_with_enemy()
+                if event.key == pg.K_LEFT:
+                    self.hero.load_left_attack_image()
+                    hitbox = Hitbox(self, self.hero.x_pos - 1, self.hero.y_pos)
+                    hitbox.collide_with_enemy()
+                if event.key == pg.K_UP:
+                    self.hero.load_up_attack_image()
+                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos - 1)
+                    hitbox.collide_with_enemy()
+                if event.key == pg.K_DOWN:
+                    self.hero.load_down_attack_image()
+                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1)
+                    hitbox.collide_with_enemy()
 
 
 # create instance of game
