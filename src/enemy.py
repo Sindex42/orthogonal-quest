@@ -1,9 +1,10 @@
 '''' Enemy module '''
 
+import os
 from random import sample
 import pygame as pg
 from constants import TILESIZE, BLACK
-from collision import collide
+from collision import collide, game_over_voice
 
 
 class Enemy(pg.sprite.Sprite):
@@ -52,11 +53,11 @@ class Enemy(pg.sprite.Sprite):
     def end_game(self):
         ''' End game process '''
 
-        print('Attacked by enemy')
-        
-        print('Game Over!')
-
+        print("Ran into enemy")
+        print("Game Over!")
+        game_over_voice()
         self.kill()
+        pg.time.delay(2200)
         self.game.playing = False
 
     def update(self):

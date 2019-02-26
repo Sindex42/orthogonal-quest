@@ -5,7 +5,7 @@ import pygame as pg
 
 
 from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
-from collision import collide, bump_sound
+from collision import collide, bump_sound, game_over_voice
 
 
 class Hero(pg.sprite.Sprite):
@@ -38,6 +38,7 @@ class Hero(pg.sprite.Sprite):
                 self, self.game.enemy_sprites, d_x, d_y, self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
+        
 
         # Changes orthogonal_boy image on each arrow key push
         if d_x == 1:
@@ -66,11 +67,7 @@ class Hero(pg.sprite.Sprite):
 
         print("Ran into enemy")
         print("Game Over!")
-        sound_game_over = pg.mixer.Sound(
-            os.path.join('audio', 'Game_Over.ogg'))
-        chn_2 = pg.mixer.Channel(1)
-        chn_2.set_volume(1.0)
-        chn_2.play(sound_game_over, 0)
+        game_over_voice()
         self.kill()
         pg.time.delay(2200)
         self.game.playing = False
