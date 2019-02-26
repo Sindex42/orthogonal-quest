@@ -199,8 +199,9 @@ class Game:
 
 # create instance of game
 GAME = Game()
-GAME.show_start_screen()
+GAME.playing = True
 while GAME.playing:
+    GAME.show_start_screen()
     GAME.new()
     GAME.run()
     GAME.show_end_screen()
