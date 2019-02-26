@@ -179,22 +179,22 @@ class Game:
                     self.hero.move(d_y=-1)
                 if event.key == pg.K_s:
                     self.hero.move(d_y=1)
+
                 if event.key == pg.K_RIGHT:
-                    self.hero.load_right_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos + 1, self.hero.y_pos)
-                    hitbox.collide_with_enemy()
+                    self.attack_event('right', 1, 0)
                 if event.key == pg.K_LEFT:
-                    self.hero.load_left_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos - 1, self.hero.y_pos)
-                    hitbox.collide_with_enemy()
+                    self.attack_event('left', -1, 0)
                 if event.key == pg.K_UP:
-                    self.hero.load_up_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos - 1)
-                    hitbox.collide_with_enemy()
+                    self.attack_event('up', 0, -1)
                 if event.key == pg.K_DOWN:
-                    self.hero.load_down_attack_image()
-                    hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1)
-                    hitbox.collide_with_enemy()
+                    self.attack_event('down', 0, 1)
+
+    def attack_event(self, direction, d_x, d_y):
+        ''' Executes player attack '''
+
+        self.hero.load_attack_image(direction)
+        hitbox = Hitbox(self, self.hero.x_pos + d_x, self.hero.y_pos + d_y)
+        hitbox.collide_with_enemy()
 
 
 # create instance of game
