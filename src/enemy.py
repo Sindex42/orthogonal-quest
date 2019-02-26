@@ -52,8 +52,10 @@ class Enemy(pg.sprite.Sprite):
     def end_game(self):
         ''' End game process '''
 
-        print('Killed by enemy')
+        print('Attacked by enemy')
+        
         print('Game Over!')
+
         self.kill()
         self.game.playing = False
 

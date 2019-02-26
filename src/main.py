@@ -6,8 +6,25 @@ from hero import Hero
 from enemy import Enemy
 from wall import Wall
 from hitbox import Hitbox
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, WHITE, GREEN, RED, YELLOW, HERO_HEALTH
 
+# HUD functions
+def draw_hero_health(surf, x, y, pct):
+    if pct < 0:
+        pct = 0
+    BAR_LENGTH = 100
+    BAR_HEIGHT = 20
+    fill = pct * BAR_LENGTH
+    outline_rect = pg.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
+    fill_rect = pg.Rect(x, y, fill, BAR_HEIGHT)
+    if pct > 0.6:
+        col = GREEN
+    elif pct > 0.3:
+        col = YELLOW
+    else:
+        col = RED
+    pg.draw.rect(surf, col, fill_rect)
+    pg.draw.rect(surf, WHITE, outline_rect, 2)
 
 class Game:
     ''' Setup and run game instance '''
@@ -98,6 +115,7 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
         self.enemy_sprites.draw(self.screen)
+        draw_hero_health(self.screen, 10, 10, self.hero.health / HERO_HEALTH)
         pg.display.flip()
 
     def enemies_exist(self):

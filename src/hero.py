@@ -4,7 +4,7 @@ import os
 import pygame as pg
 
 
-from constants import TILESIZE, BLACK
+from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
 from collision import collide, bump_sound
 
 
@@ -26,6 +26,8 @@ class Hero(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.right_index, self.left_index, self.up_index, self.down_index = 0, 0, 0, 0
         self.up_images, self.right_images, self.down_images, self.left_images = [], [], [], []
+
+        self.health = HERO_HEALTH
 
         self.animation_setup()
 
