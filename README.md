@@ -168,6 +168,22 @@ I would like there to be multiple enemies
 As a game dev
 To make my game sound good
 I would like to embed sounds on events
+
+As a game dev,
+So I can know how to play the game, 
+I want a start screen
+
+As a game dev, 
+So I know the game is over,
+I want a game over screen
+
+As a game dev, 
+So I can play again after game over,
+I want to press a key to restart the game
+
+As a game dev, 
+So I can allow another player to see instructions after game over,
+I want to press a key to redirect back to start screen
 ```
 
 
