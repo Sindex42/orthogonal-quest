@@ -24,3 +24,7 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 
 HERO_HEALTH = 100
 MOB_DAMAGE = 20
+
+# player health bar settings
+BAR_LENGTH = 100
+BAR_HEIGHT = 20

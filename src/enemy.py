@@ -1,11 +1,9 @@
 '''' Enemy module '''
 
-import os
 from random import sample
 import pygame as pg
-from hero import Hero
-from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
-from collision import collide, game_over_voice
+from constants import TILESIZE, BLACK, MOB_DAMAGE
+from collision import collide
 
 
 class Enemy(pg.sprite.Sprite):
@@ -24,7 +22,7 @@ class Enemy(pg.sprite.Sprite):
         self.y_pos = y_pos
         self.rect.x = TILESIZE * x_pos + 1
         self.rect.y = TILESIZE * y_pos + 1
-      
+
     def move(self):
         ''' Defines enemy movement '''
 
@@ -48,8 +46,7 @@ class Enemy(pg.sprite.Sprite):
 
         if collide(self, self.game.all_sprites, d_x, d_y):
             self.enemy_touches_hero()
-    
-  
+
     def load_direction_image(self, direction):
         ''' Load directional facing sprites '''
 
@@ -58,10 +55,12 @@ class Enemy(pg.sprite.Sprite):
             (TILESIZE, TILESIZE)).convert()
 
     def enemy_touches_hero(self):
+        ''' Updates Hero Health '''
+
         print("Enemy hit hero")
         self.game.hero.health -= MOB_DAMAGE
         if self.game.hero.health <= 0:
-            self.game.end_game() 
+            self.game.end_game()
 
     def update(self):
         ''' Update position '''

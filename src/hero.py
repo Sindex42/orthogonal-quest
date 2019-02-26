@@ -5,7 +5,7 @@ import pygame as pg
 
 
 from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
-from collision import collide, bump_sound, game_over_voice
+from collision import collide, bump_sound
 
 
 class Hero(pg.sprite.Sprite):
@@ -38,7 +38,7 @@ class Hero(pg.sprite.Sprite):
             self.y_pos += d_y
 
         if collide(self, self.game.enemy_sprites, d_x, d_y):
-            self.hero_touches_enemy
+            self.hero_touches_enemy()
 
         # Changes orthogonal_boy image on each arrow key push
         if d_x == 1:
@@ -63,11 +63,13 @@ class Hero(pg.sprite.Sprite):
             self.image = self.up_images[self.up_index].convert()
 
     def hero_touches_enemy(self):
+        ''' Updates Hero Health '''
+
         print("Ran into enemy")
         self.health -= MOB_DAMAGE
         if self.health <= 0:
-            self.game.end_game() 
-    
+            self.game.end_game()
+
     def animation_setup(self):
         ''' Assigns directional images to appropriate lists '''
 
@@ -115,12 +117,13 @@ class Hero(pg.sprite.Sprite):
         self.image.set_colorkey(BLACK)
 
 
-
 def load_direction_image(direction, image_list):
     ''' Loads sprites for specific directions '''
 
-    for image in os.listdir(f'images/orthogonal_boy/orthogonal_boy_{direction}'):
-        path = os.path.join(f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
+    for image in os.listdir(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}'):
+        path = os.path.join(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
         image_list.append(
             pg.transform.scale(
                 pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))

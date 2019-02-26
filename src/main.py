@@ -6,18 +6,19 @@ from hero import Hero
 from enemy import Enemy
 from wall import Wall
 from hitbox import Hitbox
-from collision import collide, game_over_voice
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, WHITE, GREEN, RED, YELLOW, HERO_HEALTH, MOB_DAMAGE
+from collision import game_over_voice
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE
+from constants import WHITE, GREEN, RED, YELLOW, BAR_LENGTH, BAR_HEIGHT
 
 # HUD functions
-def draw_hero_health(surf, x, y, pct):
+def draw_hero_health(surf, x_pos, y_pos, pct):
+    ''' Draws Hero Health Bar'''
+
     if pct < 0:
         pct = 0
-    BAR_LENGTH = 100
-    BAR_HEIGHT = 20
     fill = pct * BAR_LENGTH
-    outline_rect = pg.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
-    fill_rect = pg.Rect(x, y, fill, BAR_HEIGHT)
+    outline_rect = pg.Rect(x_pos, y_pos, BAR_LENGTH, BAR_HEIGHT)
+    fill_rect = pg.Rect(x_pos, y_pos, fill, BAR_HEIGHT)
     if pct > 0.6:
         col = GREEN
     elif pct > 0.3:
@@ -80,7 +81,7 @@ class Game:
 
         self.all_sprites.update()
         self.enemy_sprites.update()
-        
+
     def load_data(self):
         ''' Loads map '''
 
@@ -131,7 +132,7 @@ class Game:
         game_over_voice()
         self.hero.kill()
         pg.time.delay(2200)
-        self.playing = False        
+        self.playing = False
 
     def events(self):
         ''' Event listener '''
@@ -165,6 +166,7 @@ class Game:
                     self.hero.load_down_attack_image()
                     hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1)
                     hitbox.collide_with_enemy()
+
 
 # create instance of game
 GAME = Game()
