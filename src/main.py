@@ -26,7 +26,6 @@ class Game:
         self.hero = None
         self.enemy = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
-        self.clock = pg.time.Clock()
         self.playing = None
         self.map_data = []
         self.load_data()
@@ -35,6 +34,7 @@ class Game:
 
     def run(self):
         ''' Game loop '''
+        
         self.playing = True
         while self.playing:
             self.enemies_exist()
@@ -138,7 +138,6 @@ class Game:
         ''' Allows user to start game and quit '''
         waiting = True
         while waiting:
-            self.clock.tick(30)
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     waiting = False
