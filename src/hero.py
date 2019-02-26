@@ -65,13 +65,14 @@ class Hero(pg.sprite.Sprite):
             self.image = self.up_images[self.up_index].convert()
 
     def hero_touches_enemy(self):
+        print("Ran into enemy")
         self.health -= MOB_DAMAGE
         if self.health <= 0:
             self.end_game()
     
     def end_game(self):
         ''' End game process '''
-        print("Ran into enemy")
+
         print("Game Over!")
         game_over_voice()
         self.kill()
