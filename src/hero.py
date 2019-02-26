@@ -64,15 +64,16 @@ class Hero(pg.sprite.Sprite):
 
         print("Ran into enemy")
         print("Game Over!")
+        self.kill()
+        self.game.show_end_screen()
+        self.game.playing = False
         sound_game_over = pg.mixer.Sound(
             os.path.join('audio', 'Game_Over.ogg'))
         chn_2 = pg.mixer.Channel(1)
         chn_2.set_volume(1.0)
         chn_2.play(sound_game_over, 0)
-        self.kill()
-        self.game.show_end_screen()
         pg.time.delay(2200)
-       
+
 
     def animation_setup(self):
         ''' Assigns directional images to appropriate lists '''
@@ -120,13 +121,14 @@ class Hero(pg.sprite.Sprite):
         self.rect.y = self.y_pos * TILESIZE + 1
         self.image.set_colorkey(BLACK)
 
-    def load_direction_image(direction, image_list):
-        ''' Loads sprites for specific directions '''
 
-        for image in os.listdir(
-                f'images/orthogonal_boy/orthogonal_boy_{direction}'):
-            path = os.path.join(
-                f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
-            image_list.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
+def load_direction_image(direction, image_list):
+    ''' Loads sprites for specific directions '''
+
+    for image in os.listdir(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}'):
+        path = os.path.join(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
+        image_list.append(
+            pg.transform.scale(
+                pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
