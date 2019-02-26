@@ -98,41 +98,41 @@ class Game:
         pg.display.flip()
 
     def show_start_screen(self):
+        ''' Shows the start screen '''
         # game splash/start screen
         self.screen.fill(BG_COLOUR)
-        self.draw_text_on_screen(TITLE, 48, GOLD, WIDTH / 2, HEIGHT / 4)
+        self.draw_text_on_screen(TITLE, 48, WIDTH / 2, HEIGHT / 4)
         self.draw_text_on_screen(
             "Use the arrow keys to move, Space bar to attack",
             22,
-            GOLD,
             WIDTH / 2,
             HEIGHT / 2)
         self.draw_text_on_screen(
             "Press any key to play",
             22,
-            GOLD,
             WIDTH / 2,
             HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
 
     def show_end_screen(self):
+        ''' Shows the end screen '''
         # game splash/end screen
         self.enemy_sprites.empty()
         self.all_sprites.empty()
         self.walls_sprites.empty()
         self.screen.fill(BG_COLOUR)
-        self.draw_text_on_screen("GAME OVER", 40, GOLD, WIDTH / 2, HEIGHT / 2)
+        self.draw_text_on_screen("GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
         self.draw_text_on_screen(
             "Press a key to play again",
             22,
-            GOLD,
             WIDTH / 2,
             HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
 
     def wait_for_key(self):
+        ''' Allows user to start game and quit '''
         waiting = True
         while waiting:
             self.clock.tick(30)
@@ -145,11 +145,12 @@ class Game:
                     waiting = False
                     self.playing = True
 
-    def draw_text_on_screen(self, text, size, colour, x, y):
+    def draw_text_on_screen(self, text, size, x_pos, y_pos):
+        ''' Draws text on screen '''
         font = pg.font.Font(self.font_name, size)
-        text_surface = font.render(text, True, colour)
+        text_surface = font.render(text, True, GOLD)
         text_rect = text_surface.get_rect()
-        text_rect.midtop = (x, y)
+        text_rect.midtop = (x_pos, y_pos)
         self.screen.blit(text_surface, text_rect)
 
     def events(self):
@@ -178,4 +179,4 @@ while GAME.playing:
     GAME.new()
     GAME.run()
     GAME.show_end_screen()
-pg.QUIT
+pg.quit()
