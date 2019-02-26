@@ -105,7 +105,6 @@ class Game:
         if not self.enemy_sprites:
             self.playing = False
 
-
     def events(self):
         ''' Event listener '''
 
@@ -138,6 +137,7 @@ class Game:
                     self.hero.load_down_attack_image()
                     hitbox = Hitbox(self, self.hero.x_pos, self.hero.y_pos + 1)
                     hitbox.collide_with_enemy()
+
 
 # create instance of game
 GAME = Game()

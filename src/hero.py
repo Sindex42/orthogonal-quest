@@ -32,8 +32,17 @@ class Hero(pg.sprite.Sprite):
     def move(self, d_x=0, d_y=0):
         ''' Defines hero movement '''
 
-        if not collide(self, self.game.walls_sprites, d_x, d_y, bump_sound) and not collide(
-                self, self.game.enemy_sprites, d_x, d_y, self.end_game):
+        if not collide(
+                self,
+                self.game.walls_sprites,
+                d_x,
+                d_y,
+                bump_sound) and not collide(
+                    self,
+                    self.game.enemy_sprites,
+                    d_x,
+                    d_y,
+                    self.end_game):
             self.x_pos += d_x
             self.y_pos += d_y
 
@@ -120,12 +129,13 @@ class Hero(pg.sprite.Sprite):
         self.image.set_colorkey(BLACK)
 
 
-
 def load_direction_image(direction, image_list):
     ''' Loads sprites for specific directions '''
 
-    for image in os.listdir(f'images/orthogonal_boy/orthogonal_boy_{direction}'):
-        path = os.path.join(f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
+    for image in os.listdir(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}'):
+        path = os.path.join(
+            f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
         image_list.append(
             pg.transform.scale(
                 pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
