@@ -14,6 +14,7 @@ class Enemy(pg.sprite.Sprite):
         #Hero.__init__(self)
         #super(Hero, self).__init__()
         self.game = game
+        self.type = sample(['knight', 'skeleton', 'imp'], 1).pop()
         self.image = None
         self.load_direction_image('down')
         self.image.set_colorkey(BLACK)
@@ -51,7 +52,7 @@ class Enemy(pg.sprite.Sprite):
         ''' Load directional facing sprites '''
 
         self.image = pg.transform.scale(
-            pg.image.load(f'./images/skeleton/skeleton_{direction}.png'),
+            pg.image.load(f'./images/{self.type}/{self.type}_{direction}.png'),
             (TILESIZE, TILESIZE)).convert()
 
     def enemy_touches_hero(self):

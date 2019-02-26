@@ -17,6 +17,8 @@ BG_COLOUR = DARK_GREY
 HEIGHT = 736
 WIDTH = 1024
 TITLE = 'Orthogonal Quest'
+FONT_NAME = 'arial'
+GAME_SPEED = 30 # smaller is faster
 
 TILESIZE = 32
 GRIDWIDTH = WIDTH / TILESIZE
