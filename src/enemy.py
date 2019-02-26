@@ -11,8 +11,6 @@ class Enemy(pg.sprite.Sprite):
 
     def __init__(self, game, x_pos, y_pos):
         pg.sprite.Sprite.__init__(self)
-        #Hero.__init__(self)
-        #super(Hero, self).__init__()
         self.game = game
         self.type = sample(['knight', 'skeleton', 'imp'], 1).pop()
         self.image = None
