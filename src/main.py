@@ -24,10 +24,8 @@ class Game:
         self.enemy_sprites = pg.sprite.Group()
         self.hero = None
         self.enemy = None
-
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.clock = pg.time.Clock()
-        self.running = True
         self.playing = None
         self.map_data = []
         self.load_data()
@@ -36,9 +34,8 @@ class Game:
 
     def run(self):
         ''' Game loop '''
-
         self.playing = True
-        while self.playing:
+        while self.playing: 
             self.move_enemies()
             self.events()
             self.update()
@@ -87,7 +84,6 @@ class Game:
         for enemy in self.enemy_sprites:
             if self.counter > 30:
                 enemy.move()
-
         if self.counter > 30:
             self.counter = 0
 
@@ -105,20 +101,22 @@ class Game:
         # game splash/start screen
         self.screen.fill(BG_COLOUR)
         self.draw_text_on_screen(TITLE, 48, GOLD, WIDTH / 2, HEIGHT / 4)
-        self.draw_text_on_screen("Arrows to move, Space bar to attack", 22, GOLD, WIDTH / 2, HEIGHT / 2)
+        self.draw_text_on_screen("Use the arrow keys to move, Space bar to attack", 22, GOLD, WIDTH / 2, HEIGHT / 2)
         self.draw_text_on_screen("Press any key to play", 22, GOLD, WIDTH / 2, HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
     
     def show_end_screen(self):
         # game splash/end screen
-        if not self.running:
-            return
+        self.enemy_sprites.empty()
+        self.all_sprites.empty()
+        self.walls_sprites.empty()
         self.screen.fill(BG_COLOUR)
-        self.draw_text_on_screen("GAME OVER", 48, GOLD, WIDTH / 2, HEIGHT / 4)
+        self.draw_text_on_screen("GAME OVER", 40, GOLD, WIDTH / 2, HEIGHT / 2)
         self.draw_text_on_screen("Press a key to play again", 22, GOLD, WIDTH / 2, HEIGHT * 3 / 4)
         pg.display.flip()
         self.wait_for_key()
+    
     
     def wait_for_key(self):
         waiting = True
@@ -127,7 +125,7 @@ class Game:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     waiting = False
-                    self.running = False
+                    self.playing = False
                 if event.type == pg.KEYUP:
                     waiting = False
                     self.playing = True

@@ -75,6 +75,7 @@ class Hero(pg.sprite.Sprite):
         for enemy in self.game.enemy_sprites:
             if enemy.x_pos == self.x_pos + d_x and enemy.y_pos == self.y_pos + d_y:
                 print("Game Over!")
+                self.game.show_end_screen()
                 sound_game_over = pg.mixer.Sound(os.path.join('audio', 'Game_Over.ogg'))
                 chn_2 = pg.mixer.Channel(1)
                 chn_2.set_volume(1.0)
