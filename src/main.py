@@ -183,9 +183,10 @@ class Game:
     def enemies_exist(self):
         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
-            self.win_game()  
-    
+            self.win_game()
+
     def win_game(self):
+        ''' Win game process'''
         self.win = True
         self.end_game()
 
