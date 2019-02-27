@@ -47,6 +47,7 @@ class Game:
         self.enemy = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
+        self.win = None
         self.map_data = []
         self.load_data()
         self.counter = 0
@@ -120,7 +121,6 @@ class Game:
         draw_hero_health(self.screen, 10, 10, self.hero.health / 100)
         pg.display.flip()
 
-
     def show_start_screen(self):
         ''' Shows the start screen '''
         # game splash/start screen
@@ -146,7 +146,10 @@ class Game:
         self.all_sprites.empty()
         self.walls_sprites.empty()
         self.screen.fill(BG_COLOUR)
-        self.draw_text_on_screen("GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
+        if self.win:
+            self.draw_text_on_screen("YOU WIN!", 40, WIDTH / 2, HEIGHT / 2)
+        else:
+            self.draw_text_on_screen("GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
         self.draw_text_on_screen(
             "Press a key to play again",
             22,
@@ -167,6 +170,7 @@ class Game:
                 if event.type == pg.KEYUP:
                     waiting = False
                     self.playing = True
+                    self.win = False
 
     def draw_text_on_screen(self, text, size, x_pos, y_pos):
         ''' Draws text on screen '''
@@ -179,7 +183,12 @@ class Game:
     def enemies_exist(self):
         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
-            self.playing = False
+            self.win_game()
+
+    def win_game(self):
+        ''' Win game process'''
+        self.win = True
+        self.end_game()
 
     def end_game(self):
         ''' End game process '''
