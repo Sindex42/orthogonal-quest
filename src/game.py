@@ -27,6 +27,7 @@ class Game:
         self.enemy_sprites = pg.sprite.Group()
         self.hero = None
         self.enemy = None
+        self.win = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
@@ -106,6 +107,8 @@ class Game:
         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
             self.playing = False
+            self.win = True
+            self.end_game()
 
     def end_game(self):
         ''' End game process '''
@@ -161,3 +164,4 @@ class Game:
                 if event.type == pg.KEYUP:
                     waiting = False
                     self.playing = True
+                    self.win = False

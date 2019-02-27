@@ -5,7 +5,7 @@ from game import Game
 from info_screens import show_end_screen, show_start_screen
 
 
-GAME = Game()
+GAME = Game('map2.txt')
 GAME.playing = True
 
 while GAME.playing:
