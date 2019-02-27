@@ -3,7 +3,7 @@
 import os
 import pygame as pg
 
-from constants import TILESIZE, BLACK, HERO_HEALTH
+from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
 from collision import collide, bump_sound
 
 
@@ -32,7 +32,7 @@ class Hero(pg.sprite.Sprite):
         ''' Defines hero movement '''
 
         if not collide(self, self.game.walls_sprites, d_x, d_y, bump_sound) and not collide(
-                self, self.game.enemy_sprites, d_x, d_y):
+                self, self.game.enemy_sprites, d_x, d_y, self.hero_touches_enemy):
             self.x_pos += d_x
             self.y_pos += d_y
 
@@ -56,6 +56,14 @@ class Hero(pg.sprite.Sprite):
             if self.up_index >= len(self.up_images):
                 self.up_index = 0
             self.image = self.up_images[self.up_index].convert()
+
+    def hero_touches_enemy(self):
+        ''' Updates Hero Health '''
+
+        print("Ran into enemy")
+        self.health -= MOB_DAMAGE
+        if self.health <= 0:
+            self.game.end_game()
 
     def animation_setup(self):
         ''' Assigns directional images to appropriate lists '''
