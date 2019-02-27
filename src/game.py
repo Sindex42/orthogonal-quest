@@ -107,7 +107,7 @@ class Game:
         if not self.enemy_sprites:
             self.win = True
             self.end_game()
-    
+
     def end_game(self):
         ''' End game process '''
 
