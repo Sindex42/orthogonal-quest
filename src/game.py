@@ -71,9 +71,9 @@ class Game:
         ''' Loads map '''
 
         self.map_data = []
-        game_folder = path.dirname(__file__)
+        map_folder = path.join(path.dirname(__file__), 'maps')
 
-        with open(path.join(game_folder, f'{self.map_list[self.map_nr]}'), 'r') as file:
+        with open(path.join(map_folder, f'{self.map_list[self.map_nr]}'), 'r') as file:
             for line in file:
                 self.map_data.append(line)
 

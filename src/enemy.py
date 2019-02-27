@@ -39,7 +39,8 @@ class Enemy(pg.sprite.Sprite):
             d_x = 1
 
         if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
-                self, self.game.all_sprites, d_x, d_y, self.enemy_touches_hero):
+                self, self.game.all_sprites, d_x, d_y, self.enemy_touches_hero) and not collide(
+                self, self.game.enemy_sprites, d_x, d_y):
             self.x_pos += d_x
             self.y_pos += d_y
 
