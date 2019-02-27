@@ -43,9 +43,6 @@ class Enemy(pg.sprite.Sprite):
             self.x_pos += d_x
             self.y_pos += d_y
 
-        if collide(self, self.game.all_sprites, d_x, d_y):
-            self.enemy_touches_hero()
-
     def load_direction_image(self, direction):
         ''' Load directional facing sprites '''
 

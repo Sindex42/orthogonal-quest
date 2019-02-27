@@ -4,7 +4,7 @@
 BLACK = (0, 0, 0)
 BROWN = (59, 15, 15)
 DARK_GREY = (73, 75, 75)
-DARK_LINE = (23, 25, 25)
+DARK_LINE = (60, 60, 60)
 GREEN = (0, 255, 0)
 GOLD = (212, 206, 70)
 RED = (255, 0, 0)

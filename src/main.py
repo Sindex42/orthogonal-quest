@@ -1,8 +1,8 @@
 ''' Runs the game '''
 
-from game import Game
 import pygame as pg
-from info_screens import draw_text_on_screen, show_end_screen, show_start_screen
+from game import Game
+from info_screens import show_end_screen, show_start_screen
 
 
 GAME = Game()
@@ -15,5 +15,5 @@ while GAME.playing:
     GAME.run()
     show_end_screen(GAME)
     GAME.wait_for_key()
-    
+
 pg.quit()

@@ -8,9 +8,7 @@ from wall import Wall
 from hitbox import Hitbox
 from collision import game_over_voice
 from hud import draw_hero_health
-from constants import (WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE,
-                       FONT_NAME, GOLD, GAME_SPEED, WHITE, GREEN, RED, YELLOW,
-                       BAR_LENGTH, BAR_HEIGHT)
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, GAME_SPEED
 
 
 class Game:
