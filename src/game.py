@@ -4,11 +4,12 @@ from os import path
 import pygame as pg
 from hero import Hero
 from enemy import Enemy
+from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
 from collision import game_over_voice
 from hud import draw_hero_health
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, GRID_COLOUR, GAME_SPEED
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, GRID_COLOUR, GAME_SPEED, HERO_HEALTH
 
 
 class Game:
@@ -40,7 +41,7 @@ class Game:
 
         self.playing = True
         while self.playing:
-            self.enemies_exist()
+            self.spawn_boss()
             self.move_enemies()
             self.events()
             self.update()
@@ -102,15 +103,23 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
         self.enemy_sprites.draw(self.screen)
-        draw_hero_health(self.screen, 10, 10, self.hero.health / 100)
+        draw_hero_health(self.screen, 10, 10, self.hero.health / HERO_HEALTH)
         pg.display.flip()
 
-    def enemies_exist(self):
-        ''' Ends game if all enemies dead '''
+    # def enemies_exist(self):
+    #     ''' Ends game if all enemies dead '''
+    #     if not self.enemy_sprites:
+    #         self.playing = False
+
+    def spawn_boss(self):
         if not self.enemy_sprites:
-            self.playing = False
-            self.win = True
-            self.end_game()
+            #self.playing = False
+            #self.win = True
+            #self.end_game()
+            for row, tiles in enumerate(self.map_data):
+                for col, tile in enumerate(tiles):
+                    if tile == 'B':
+                        self.enemy_sprites.add(Boss(self, col, row))
 
     def end_game(self):
         ''' End game process '''

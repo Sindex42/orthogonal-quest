@@ -1,7 +1,7 @@
 ''' HUD module '''
 
 import pygame as pg
-from constants import BAR_HEIGHT, BAR_LENGTH, WHITE, GREEN, YELLOW, RED
+from constants import BAR_HEIGHT, BAR_LENGTH, WHITE, GREEN, YELLOW, RED 
 
 
 def draw_hero_health(surf, x_pos, y_pos, pct):
