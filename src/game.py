@@ -133,7 +133,7 @@ class Game:
             self.hero.move(d_y=-1)
         if keys_pressed[pg.K_s]:
             self.hero.move(d_y=1)
-        
+
         if keys_pressed[pg.K_RIGHT]:
             self.attack_event('right', 1, 0)
         if keys_pressed[pg.K_LEFT]:
