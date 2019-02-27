@@ -169,29 +169,33 @@ As a game dev
 To make my game sound good
 I would like to embed sounds on events
 
-As a game dev,
+As a user,
 So I can know how to play the game, 
-I want a start screen
+I want to see instructions on a start screen
 
-As a game dev, 
-So I know the game is over,
-I want a game over screen
+As a user, 
+So I know when I die
+I want to see a game over screen
 
-As a game dev, 
+As a user, 
 So I can play again after game over,
-I want to press a key to restart the game
+I want to be redirected to the start screen
 
-As a game dev, 
-So I can allow another player to see instructions after game over,
-I want to press a key to redirect back to start screen
-
-As a game dev, 
+As a user, 
 So I can win the game when I kill all enemies,
 I would like to have a win screen
 
-As a game dev, 
+As a user, 
+So I can play again after winning,
+I want to be redirected to the start screen
+
+As a user,
 So I don't die as as easily,
 I would like some Hitpoints
+
+As a user, 
+So I know how much health I have,
+I would like see my health bar
 
 As a game dev,
 So I can go to various levels of the game when I defeat all enemies,
