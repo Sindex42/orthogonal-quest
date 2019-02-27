@@ -19,7 +19,7 @@ def show_start_screen(game):
     draw_text_on_screen(game, TITLE, 48, WIDTH / 2, HEIGHT / 4)
     draw_text_on_screen(
         game,
-        "Use 'w/a/s/d' keys to move and arrow keys to attack in their direction",
+        "Use 'W/A/S/D' keys to move and arrow keys to attack in their direction",
         22,
         WIDTH / 2,
         HEIGHT / 2)
@@ -38,13 +38,10 @@ def show_end_screen(game):
     game.all_sprites.empty()
     game.walls_sprites.empty()
     game.screen.fill(BG_COLOUR)
-    if game.win:
-        draw_text_on_screen(game, "YOU WIN!", 40, WIDTH / 2, HEIGHT / 2)
-    else:
-        draw_text_on_screen(game, "GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
+    draw_text_on_screen(game, "GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
     draw_text_on_screen(
         game,
-        "Press a key to play again",
+        "Press any key to play again",
         22,
         WIDTH / 2,
         HEIGHT * 3 / 4)

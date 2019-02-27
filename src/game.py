@@ -8,7 +8,7 @@ from wall import Wall
 from hitbox import Hitbox
 from collision import game_over_voice
 from hud import draw_hero_health
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, DARK_LINE, GAME_SPEED
+from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, GRID_COLOUR, GAME_SPEED
 
 
 class Game:
@@ -29,7 +29,6 @@ class Game:
         self.enemy = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
-        self.win = None
         self.map_data = []
         self.load_data()
         self.counter = 0
@@ -78,9 +77,9 @@ class Game:
         ''' Draws the grid '''
 
         for x_pos in range(0, WIDTH, TILESIZE):
-            pg.draw.line(self.screen, DARK_LINE, (x_pos, 0), (x_pos, HEIGHT))
+            pg.draw.line(self.screen, GRID_COLOUR, (x_pos, 0), (x_pos, HEIGHT))
         for y_pos in range(0, HEIGHT, TILESIZE):
-            pg.draw.line(self.screen, DARK_LINE, (0, y_pos), (WIDTH, y_pos))
+            pg.draw.line(self.screen, GRID_COLOUR, (0, y_pos), (WIDTH, y_pos))
 
     def move_enemies(self):
         ''' Allows enemy to move '''
@@ -105,8 +104,7 @@ class Game:
     def enemies_exist(self):
         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
-            self.win = True
-            self.end_game()
+            self.playing = False
 
     def end_game(self):
         ''' End game process '''
@@ -159,7 +157,6 @@ class Game:
                     waiting = False
                     self.playing = False
                     pg.quit()
-                if event.type == pg.KEYDOWN:
+                if event.type == pg.KEYUP:
                     waiting = False
                     self.playing = True
-                    self.win = False
