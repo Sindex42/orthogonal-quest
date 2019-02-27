@@ -14,7 +14,7 @@ from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, GRID_COLOUR, GA
 class Game:
     ''' Setup and run game instance '''
 
-    def __init__(self, map_file='map.txt'):
+    def __init__(self):
         pg.init()
         pg.mixer.init()
         pg.mixer.music.load('./audio/Bridgeburner (8-Bit).mp3')
@@ -31,8 +31,8 @@ class Game:
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
-        self.map_file = map_file
-        self.load_data()
+        self.map_list = ['map1.txt', 'map2.txt', 'map3.txt', 'map4.txt']
+        self.map_nr = 0
         self.counter = 0
 
     def run(self):
@@ -49,6 +49,7 @@ class Game:
 
     def new(self):
         ''' Creates sprites '''
+        self.load_data()
 
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
@@ -69,9 +70,10 @@ class Game:
     def load_data(self):
         ''' Loads map '''
 
+        self.map_data = []
         game_folder = path.dirname(__file__)
 
-        with open(path.join(game_folder, f'{self.map_file}'), 'r') as file:
+        with open(path.join(game_folder, f'{self.map_list[self.map_nr]}'), 'r') as file:
             for line in file:
                 self.map_data.append(line)
 
