@@ -1,9 +1,7 @@
 ''' Runs the game '''
 
-import pygame as pg
 from game import Game
 from info_screens import show_end_screen, show_start_screen
-
 
 GAME = Game()
 GAME.playing = True
