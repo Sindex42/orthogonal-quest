@@ -18,7 +18,7 @@ class Hero(pg.sprite.Sprite):
         self.x_pos = x_pos
         self.y_pos = y_pos
 
-        string = './images/orthogonal_boy/orthogonal_boy_down/orthogonal_boy_f0.png'
+        string = './images/hero/hero_down/hero_f0.png'
         self.image = pg.transform.scale(pg.image.load(
             string), (TILESIZE - 1, TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
@@ -85,7 +85,7 @@ class Hero(pg.sprite.Sprite):
 
         self.image = pg.transform.scale(
             pg.image.load(
-                f'./images/orthogonal_boy/orthogonal_boy_attack/orthogonal_boy_{direction}.png'),
+                f'./images/hero/hero_attack/hero_{direction}.png'),
             (TILESIZE, TILESIZE)).convert()
 
 
@@ -93,9 +93,9 @@ def load_direction_image(direction, image_list):
     ''' Loads sprites for specific directions '''
 
     for image in os.listdir(
-            f'images/orthogonal_boy/orthogonal_boy_{direction}'):
+            f'images/hero/hero_{direction}'):
         path = os.path.join(
-            f'images/orthogonal_boy/orthogonal_boy_{direction}', image)
+            f'images/hero/hero_{direction}', image)
         image_list.append(
             pg.transform.scale(
                 pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))

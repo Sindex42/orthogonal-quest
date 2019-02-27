@@ -27,10 +27,12 @@ class Game:
         self.enemy_sprites = pg.sprite.Group()
         self.hero = None
         self.enemy = None
+        self.win = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
-        self.load_data()
+        self.map_list = ['map1.txt', 'map2.txt', 'map3.txt', 'map4.txt']
+        self.map_nr = 0
         self.counter = 0
 
     def run(self):
@@ -47,6 +49,7 @@ class Game:
 
     def new(self):
         ''' Creates sprites '''
+        self.load_data()
 
         for row, tiles in enumerate(self.map_data):
             for col, tile in enumerate(tiles):
@@ -67,9 +70,10 @@ class Game:
     def load_data(self):
         ''' Loads map '''
 
-        game_folder = path.dirname(__file__)
+        self.map_data = []
+        map_folder = path.join(path.dirname(__file__), 'maps')
 
-        with open(path.join(game_folder, 'map.txt'), 'r') as file:
+        with open(path.join(map_folder, f'{self.map_list[self.map_nr]}'), 'r') as file:
             for line in file:
                 self.map_data.append(line)
 
@@ -105,6 +109,8 @@ class Game:
         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
             self.playing = False
+            self.win = True
+            self.end_game()
 
     def end_game(self):
         ''' End game process '''
@@ -157,6 +163,7 @@ class Game:
                     waiting = False
                     self.playing = False
                     pg.quit()
-                if event.type == pg.KEYUP:
+                if event.type == pg.KEYDOWN:
                     waiting = False
                     self.playing = True
+                    self.win = False

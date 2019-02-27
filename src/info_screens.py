@@ -38,7 +38,12 @@ def show_end_screen(game):
     game.all_sprites.empty()
     game.walls_sprites.empty()
     game.screen.fill(BG_COLOUR)
-    draw_text_on_screen(game, "GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
+    if game.win:
+        draw_text_on_screen(game, "YOU WIN!", 40, WIDTH / 2, HEIGHT / 2)
+        game.map_nr += 1
+        game.map_nr = game.map_nr % len(game.map_list)
+    else:
+        draw_text_on_screen(game, "GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
     draw_text_on_screen(
         game,
         "Press any key to play again",
