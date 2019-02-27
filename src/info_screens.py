@@ -45,7 +45,12 @@ def show_end_screen(game):
         if game.map_nr == 0:
             draw_text_on_screen(game, "YOU HAVE COMPLETED THE GAME", 40, WIDTH / 2, HEIGHT / 2)
         else:
-            draw_text_on_screen(game, "YOU HAVE REACHED LEVEL " + str(game.map_nr + 1), 40, WIDTH / 2, HEIGHT / 2)
+            draw_text_on_screen(
+                game,
+                "YOU HAVE REACHED LEVEL " + str(game.map_nr + 1),
+                40,
+                WIDTH / 2,
+                HEIGHT / 2)
     else:
         draw_text_on_screen(game, "GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
     draw_text_on_screen(
