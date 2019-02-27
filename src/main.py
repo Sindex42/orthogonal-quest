@@ -120,6 +120,21 @@ class Game:
         draw_hero_health(self.screen, 10, 10, self.hero.health / 100)
         pg.display.flip()
 
+    def win_screen(self):
+        ''' Shows the win screen '''
+        self.enemy_sprites.empty()
+        self.all_sprites.empty()
+        self.walls_sprites.empty()
+        self.screen.fill(BG_COLOUR)
+        self.draw_text_on_screen("YOU WIN!", 40, WIDTH / 2, HEIGHT / 2)
+        self.draw_text_on_screen(
+            "Press a key to play again!",
+            22,
+            WIDTH / 2,
+            HEIGHT * 3 / 4)
+        pg.display.flip()
+        self.wait_for_key()
+
 
     def show_start_screen(self):
         ''' Shows the start screen '''
@@ -179,7 +194,7 @@ class Game:
     def enemies_exist(self):
         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
-            self.playing = False
+            self.win_screen()  
 
     def end_game(self):
         ''' End game process '''
