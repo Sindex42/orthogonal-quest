@@ -29,6 +29,7 @@ class Game:
         self.enemy = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
+        self.win = None
         self.map_data = []
         self.load_data()
         self.counter = 0
@@ -104,8 +105,9 @@ class Game:
     def enemies_exist(self):
         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
-            self.playing = False
-
+            self.win = True
+            self.end_game()
+    
     def end_game(self):
         ''' End game process '''
 
@@ -157,6 +159,7 @@ class Game:
                     waiting = False
                     self.playing = False
                     pg.quit()
-                if event.type == pg.KEYUP:
+                if event.type == pg.KEYDOWN:
                     waiting = False
                     self.playing = True
+                    self.win = False
