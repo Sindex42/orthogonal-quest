@@ -131,12 +131,16 @@ class Game:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_a:
                     self.hero.move(d_x=-1)
+                    self.hero.load_left_movement_image()
                 if event.key == pg.K_d:
                     self.hero.move(d_x=1)
+                    self.hero.load_right_movement_image()
                 if event.key == pg.K_w:
                     self.hero.move(d_y=-1)
+                    self.hero.load_up_movement_image()
                 if event.key == pg.K_s:
                     self.hero.move(d_y=1)
+                    self.hero.load_down_movement_image()
 
                 if event.key == pg.K_RIGHT:
                     self.attack_event('right', 1, 0)

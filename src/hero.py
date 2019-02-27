@@ -36,22 +36,25 @@ class Hero(pg.sprite.Sprite):
             self.x_pos += d_x
             self.y_pos += d_y
 
-        if d_x == 1:
+    def load_right_movement_image(self):
             self.right_index += 1
             if self.right_index >= len(self.right_images):
                 self.right_index = 0
             self.image = self.right_images[self.right_index].convert()
-        if d_x == -1:
+
+    def load_left_movement_image(self):
             self.left_index += 1
             if self.left_index >= len(self.left_images):
                 self.left_index = 0
             self.image = self.left_images[self.left_index].convert()
-        if d_y == 1:
+
+    def load_down_movement_image(self):
             self.down_index += 1
             if self.down_index >= len(self.down_images):
                 self.down_index = 0
             self.image = self.down_images[self.down_index].convert()
-        if d_y == -1:
+
+    def load_up_movement_image(self):
             self.up_index += 1
             if self.up_index >= len(self.up_images):
                 self.up_index = 0
