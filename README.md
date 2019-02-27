@@ -184,6 +184,22 @@ I want to press a key to restart the game
 As a game dev, 
 So I can allow another player to see instructions after game over,
 I want to press a key to redirect back to start screen
+
+As a game dev, 
+So I can win the game when I kill all enemies,
+I would like to have a win screen
+
+As a game dev, 
+So I don't die as as easily,
+I would like some Hitpoints
+
+As a game dev,
+So I can go to various levels of the game when I defeat all enemies,
+I would like progress to different maps
+
+As a game dev, 
+So I can feel the adrenaline,
+I would like to defeat a Boss
 ```
 
 
