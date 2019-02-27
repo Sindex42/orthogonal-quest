@@ -39,7 +39,7 @@ def show_end_screen(game):
     game.walls_sprites.empty()
     game.screen.fill(BG_COLOUR)
     if game.win:
-            draw_text_on_screen(game, "YOU WIN!", 40, WIDTH / 2, HEIGHT / 2)
+        draw_text_on_screen(game, "YOU WIN!", 40, WIDTH / 2, HEIGHT / 2)
     else:
         draw_text_on_screen(game, "GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
     draw_text_on_screen(

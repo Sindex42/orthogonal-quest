@@ -15,5 +15,3 @@ while GAME.playing:
     GAME.run()
     show_end_screen(GAME)
     GAME.wait_for_key()
-
-pg.quit()

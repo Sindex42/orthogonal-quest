@@ -161,7 +161,7 @@ class Game:
                     waiting = False
                     self.playing = False
                     pg.quit()
-                if event.type == pg.KEYUP:
+                if event.type == pg.KEYDOWN:
                     waiting = False
                     self.playing = True
                     self.win = False
