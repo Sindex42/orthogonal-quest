@@ -16,7 +16,7 @@ class Boss(pg.sprite.Sprite):
         self.image = self.image = pg.transform.scale(
             pg.image.load(f'./images/boss/boss_3.png'),
             (TILESIZE, TILESIZE)).convert()
-        #self.load_direction_image('down')
+        # self.load_direction_image('down')
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.x_pos = x_pos
@@ -28,7 +28,7 @@ class Boss(pg.sprite.Sprite):
         ''' Defines boss movement '''
 
         movement = sample(['up', 'down', 'left', 'right'], 1).pop()
-        #self.load_direction_image(movement)
+        # self.load_direction_image(movement)
         d_x, d_y = 0, 0
 
         if movement == 'up':

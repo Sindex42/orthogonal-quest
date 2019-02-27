@@ -9,7 +9,15 @@ from wall import Wall
 from hitbox import Hitbox
 from collision import game_over_voice
 from hud import draw_hero_health
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, GRID_COLOUR, GAME_SPEED, HERO_HEALTH
+from constants import (
+    WIDTH,
+    HEIGHT,
+    TILESIZE,
+    TITLE,
+    BG_COLOUR,
+    GRID_COLOUR,
+    GAME_SPEED,
+    HERO_HEALTH)
 
 
 class Game:
@@ -29,6 +37,7 @@ class Game:
         self.hero = None
         self.enemy = None
         self.win = None
+        self.boss = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
@@ -112,6 +121,8 @@ class Game:
     #         self.playing = False
 
     def spawn_boss(self):
+        ''' Spawns Boss '''
+
         if not self.enemy_sprites:
             #self.playing = False
             #self.win = True
