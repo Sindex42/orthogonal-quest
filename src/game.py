@@ -14,7 +14,7 @@ from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, GRID_COLOUR, GA
 class Game:
     ''' Setup and run game instance '''
 
-    def __init__(self):
+    def __init__(self, map_file='map.txt'):
         pg.init()
         pg.mixer.init()
         pg.mixer.music.load('./audio/Bridgeburner (8-Bit).mp3')
@@ -30,6 +30,7 @@ class Game:
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
+        self.map_file = map_file
         self.load_data()
         self.counter = 0
 
@@ -69,7 +70,7 @@ class Game:
 
         game_folder = path.dirname(__file__)
 
-        with open(path.join(game_folder, 'map.txt'), 'r') as file:
+        with open(path.join(game_folder, f'{self.map_file}'), 'r') as file:
             for line in file:
                 self.map_data.append(line)
 
