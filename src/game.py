@@ -7,7 +7,7 @@ from enemy import Enemy
 from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
-from key_events import Key_Events
+from key_events import KeyEvents
 from collision import game_over_voice, sword_slash_sound
 from hud import draw_hero_health
 from constants import (
@@ -46,7 +46,7 @@ class Game:
         self.map_nr = 0
         self.counter = 0
 
-        self.key_events = Key_Events(self)
+        self.key_events = KeyEvents(self)
 
     def run(self):
         ''' Game loop '''
