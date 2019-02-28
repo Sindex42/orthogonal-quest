@@ -21,14 +21,6 @@ Contributors:
 `python 3.7` and the Python package installer `pip 18.1` are required to install and
 play Orthogonal Quest.
 
-Please check that your system has these requirements before attempting Orthogonal
-Quest installation.
-
-To do this, open your operating system's terminal. Once there:
-
-1. Run `python3 -V`. You should see the output `Python 3.7.x`
-2. Run `pip3 -V`. If the output starts with `pip 18.1`, move on to the game installation section.
-
 If you do not have `python 3.7` or your version is less than `3.7`, you will need to
 install/upgrade it. The guides from DigetalOcean are recommended for this. They
 also cover installation of `pip`. The following are some examples but you may need
@@ -37,6 +29,16 @@ to find the guide relavant to your computer's exact operating system:
 - [Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-18-04)
 - [macOS](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-macos)
 - [Windows 10](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-windows-10)
+
+
+Please check that your system has these requirements before attempting Orthogonal
+Quest installation.
+
+To do this, open your operating system's terminal. Once there:
+
+1. Run `python3 -V`. You should see the output `Python 3.7.x`
+2. Run `pip3 -V`. If the output starts with `pip 18.1`, move on to the game installation section.
+
 
 
 ### Game Installation
