@@ -1,20 +1,6 @@
 import pygame as pg
 from hero import Hero
-from boss import Boss
-from wall import Wall
-from hitbox import Hitbox
-from collision import game_over_voice, sword_slash_sound
-from hud import draw_hero_health
 from movement import movement
-from constants import (
-    WIDTH,
-    HEIGHT,
-    TILESIZE,
-    TITLE,
-    BG_COLOUR,
-    GRID_COLOUR,
-    GAME_SPEED,
-    HERO_HEALTH)
 
 class Key_Events:
 
