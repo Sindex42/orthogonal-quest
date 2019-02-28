@@ -28,23 +28,8 @@ class Key_Events:
 
             if event.type == pg.KEYDOWN:
 
-                self.movement(event, hero)
+                movement(event, hero)
                 self.attack(event)
-
-    def movement(self, event, hero):
-
-        if event.key == pg.K_a:
-            hero.move(d_x=-1)
-            hero.load_movement_image(0)
-        if event.key == pg.K_d:
-            hero.move(d_x=1)
-            hero.load_movement_image(4)
-        if event.key == pg.K_w:
-            hero.move(d_y=-1)
-            hero.load_movement_image(8)
-        if event.key == pg.K_s:
-            hero.move(d_y=1)
-            hero.load_movement_image(12)
 
     def attack(self, event):
 
@@ -56,3 +41,18 @@ class Key_Events:
             self.game.attack_event('up', 0, -1)
         if event.key == pg.K_DOWN:
             self.game.attack_event('down', 0, 1)
+
+def movement(event, hero):
+
+    if event.key == pg.K_a:
+        hero.move(d_x=-1)
+        hero.load_movement_image(0)
+    if event.key == pg.K_d:
+        hero.move(d_x=1)
+        hero.load_movement_image(4)
+    if event.key == pg.K_w:
+        hero.move(d_y=-1)
+        hero.load_movement_image(8)
+    if event.key == pg.K_s:
+        hero.move(d_y=1)
+        hero.load_movement_image(12)
