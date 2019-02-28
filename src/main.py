@@ -7,8 +7,9 @@ GAME = Game()
 GAME.playing = True
 
 while GAME.playing:
-    show_start_screen(GAME)
-    GAME.wait_for_key()
+    if  GAME.map_nr == 0:
+        show_start_screen(GAME)
+        GAME.wait_for_key()
     GAME.new()
     GAME.run()
     show_end_screen(GAME)
