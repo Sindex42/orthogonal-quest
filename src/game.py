@@ -180,7 +180,7 @@ class Game:
                     waiting = False
                     self.playing = False
                     pg.quit()
-                if event.type == pg.KEYDOWN:
+                if pg.key.get_pressed()[pg.K_RETURN]:
                     waiting = False
                     self.playing = True
                     self.win = False

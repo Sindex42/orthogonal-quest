@@ -25,7 +25,7 @@ def show_start_screen(game):
         HEIGHT / 2)
     draw_text_on_screen(
         game,
-        "Press any key to play",
+        "Press 'ENTER' to play",
         22,
         WIDTH / 2,
         HEIGHT * 3 / 4)
@@ -55,7 +55,7 @@ def show_end_screen(game):
         draw_text_on_screen(game, "GAME OVER", 40, WIDTH / 2, HEIGHT / 2)
     draw_text_on_screen(
         game,
-        "Press any key to play again",
+        "Press 'ENTER' to play again",
         22,
         WIDTH / 2,
         HEIGHT * 3 / 4)
