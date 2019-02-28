@@ -137,10 +137,10 @@ class Game:
                     self.hero.load_movement_image(4)
                 if event.key == pg.K_w:
                     self.hero.move(d_y=-1)
-                    self.hero.load_movement_image(12)
+                    self.hero.load_movement_image(8)
                 if event.key == pg.K_s:
                     self.hero.move(d_y=1)
-                    self.hero.load_movement_image(8)
+                    self.hero.load_movement_image(12)
 
                 if event.key == pg.K_RIGHT:
                     self.attack_event('right', 1, 0)
