@@ -18,20 +18,19 @@ Contributors:
 
 ### System Requirements
 
-`python 3.7` and The Python Package Installer `pip 18.1` are required to install and
+`python 3.7` and the Python package installer `pip 18.1` are required to install and
 play Orthogonal Quest.
 
 Please check that your system has these requirements before attempting Orthogonal
 Quest installation.
 
-To do this open your operating system's terminal. Once in your terminal:
+To do this, open your operating system's terminal. Once there:
 
-1. run `python3 -V`. If you see the Output `Python 3.7.X`
-2. run `pip -V`. If the Output starts with `pip 18.1` at the beginning, please see
-the game installation section.
+1. Run `python3 -V`. You should see the output `Python 3.7.x`
+2. Run `pip3 -V`. If the output starts with `pip 18.1`, move on to the game installation section.
 
 If you do not have `python 3.7` or your version is less than `3.7`, you will need to
-install/ upgrade it. The guides from DigetalOcean are recommended for this. They
+install/upgrade it. The guides from DigetalOcean are recommended for this. They
 also cover installation of `pip`. The following are some examples but you may need
 to find the guide relavant to your computer's exact operating system:
 
@@ -51,28 +50,61 @@ on virtual environments and why it is a good idea to use them.
 To do this:
 
 1. In your terminal navigate to the location you want your environments to be saved.
-2. Create your virtual environment using venv `python3.7 -m venv [name_of_your_env]`
-3. Activate your environment `source /[path_to_your_env]/bin/activate`
+2. Create your virtual environment using venv `python3.7 -m venv name_of_your_env`
+3. Activate your environment `source path_to_your_env/bin/activate`
 
 #### Clone & build dependancies
 
-From your termainal, navigate to the directory you would like to save your game
-directory and input the following commands:
+From your termainal, navigate to a suitable installation location (e.g. A project directory) and input the following commands:
 
-```
-mkdir PyGames
-cd PyGames
-git clone git@github.com:Sindex42/orthogonal-quest.git
-cd orthogonal-quest
-source /[path_to_your_env]/bin/activate
-pip install -r requirements.txt
-```
+1. Create a game directory `mkdir PyGames`
+2. Change directory `cd PyGames`
+3. Clone the repository `git clone git@github.com:Sindex42/orthogonal-quest.git`
+4. Change directory `cd orthogonal-quest`
+5. Activate your virtual environment if you haven't already `source path_to_your_env/bin/activate`
+6. Install dependencies `pip install -r requirements.txt`
 
 
-### Begin your quest!
+## Begin your quest!
 
-From the `orthogonal-quest` directory root, run `python ./src/main.py`. Your virtual 
-environment must be activated in order for this to work.
+From the `orthogonal-quest` directory root, run `python ./src/main.py`
+
+Your virtual environment must be activated in order for this to work.
+
+### Ending your quest!
+
+To deactivate your virtual environment simply quit the game and in your terminal enter: `deactivate`.
+
+You will need to re-enter your venv to play the game again.
+
+
+## Technologies used
+
+Tech | Description
+------------- | -------------
+[Python3](https://www.python.org/) | Main language
+[Pygame](https://www.pygame.org/news) | Free and open source Python library for making multimedia applications
+[Travis CI](https://travis-ci.org/) | Continuous integration running tests and linters before merging branches
+[Code Climate](https://codeclimate.com/) | Automated code review for code quality and complexity
+[Pylint](https://www.pylint.org/) | Source-code, bug and quality checker for Python 
+[Autopep8](https://github.com/hhatto/autopep8) | A tool that automatically formats Python code to conform to the PEP 8 style guide
+
+
+## Learning log
+
+To see a log of our learnings throughout this project, please refer to our project [wiki](https://github.com/Sindex42/super-slack-bros/wiki)
+
+
+## How to Contribute
+
+We'd love to hear from you if have anything to contribute to help us improve Orthonogal Quest. To do so: 
+
+1. Fork the repo
+2. Make as regular and as small commits as possible
+3. Leave super clear commit messages along the way
+4. Make a pull request back to this repo explaining the contributions you made
+
+Your name will of course be added to our list of contributors if your pull request is approved.
 
 
 ## User Stories
@@ -208,36 +240,3 @@ I would like to defeat a Boss
 ```
 
 
-## Testing
-
-- Install packages `pip install -e .`
-
-
-## Usage
-
-
-## Technologies used
-
-Tech | Description
-------------- | -------------
-[Python3](https://www.python.org/) | Main language
-[Pygame](https://www.pygame.org/news) | Ruby web application framework
-[Travis CI](https://travis-ci.org/) | Continuous integration running tests and linters before merging branches
-[Code Climate](https://codeclimate.com/) | Automated code reviview for code quality and complexity
-
-
-## Learning log
-
-* To see a log of our learnings throughout this project, please refer to our project [wiki](https://github.com/Sindex42/super-slack-bros/wiki)
-
-
-## How to Contribute
-
-We'd love to hear from you if have anything to contribute to help us improve Orthonogal Quest. To do so: 
-
-1. Fork the repo
-2. Make as regular and as small commits as possible
-3. Leave super clear commit messages along the way
-4. Make a pull request back to this repo explaining the contributions you made
-
-Your name will of course be added to our list of contributors if your pull request is approved.
