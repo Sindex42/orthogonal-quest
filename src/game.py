@@ -115,7 +115,7 @@ class Game:
         draw_hero_health(self.screen, 10, 10, self.hero.health / HERO_HEALTH)
         pg.display.flip()
 
-     def enemies_exist(self):
+    def enemies_exist(self):
         ''' Ends game if all enemies dead '''
         
         if not self.enemy_sprites:

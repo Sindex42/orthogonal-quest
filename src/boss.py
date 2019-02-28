@@ -15,7 +15,6 @@ class Boss(pg.sprite.Sprite):
         self.image = self.image = pg.transform.scale(
             pg.image.load(f'./images/boss/boss_3.png'),
             (TILESIZE, TILESIZE)).convert()
-        # self.load_direction_image('down')
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.x_pos = x_pos
@@ -42,9 +41,6 @@ class Boss(pg.sprite.Sprite):
                 self, self.game.all_sprites, d_x, d_y, self.boss_touches_hero):
             self.x_pos += d_x
             self.y_pos += d_y
-
-        if collide(self, self.game.all_sprites, d_x, d_y):
-            self.boss_touches_hero()
 
     def boss_touches_hero(self):
         ''' Updates Hero Health '''
