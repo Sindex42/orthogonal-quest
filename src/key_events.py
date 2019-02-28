@@ -39,3 +39,12 @@ class Key_Events:
                 if event.key == pg.K_s:
                     hero.move(d_y=1)
                     hero.load_movement_image(12)
+
+                if event.key == pg.K_RIGHT:
+                    self.game.attack_event('right', 1, 0)
+                if event.key == pg.K_LEFT:
+                    self.game.attack_event('left', -1, 0)
+                if event.key == pg.K_UP:
+                    self.game.attack_event('up', 0, -1)
+                if event.key == pg.K_DOWN:
+                    self.game.attack_event('down', 0, 1)

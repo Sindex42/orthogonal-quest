@@ -141,34 +141,6 @@ class Game:
 
         self.key_events.listen(self.hero)
 
-        # for event in pg.event.get():
-        #     if event.type == pg.QUIT:
-        #         self.playing = False
-        #         pg.quit()
-
-        #     if event.type == pg.KEYDOWN:
-        #         if event.key == pg.K_a:
-        #             self.hero.move(d_x=-1)
-        #             self.hero.load_movement_image(0)
-        #         if event.key == pg.K_d:
-        #             self.hero.move(d_x=1)
-        #             self.hero.load_movement_image(4)
-        #         if event.key == pg.K_w:
-        #             self.hero.move(d_y=-1)
-        #             self.hero.load_movement_image(8)
-        #         if event.key == pg.K_s:
-        #             self.hero.move(d_y=1)
-        #             self.hero.load_movement_image(12)
-
-                # if event.key == pg.K_RIGHT:
-                #     self.attack_event('right', 1, 0)
-                # if event.key == pg.K_LEFT:
-                #     self.attack_event('left', -1, 0)
-                # if event.key == pg.K_UP:
-                #     self.attack_event('up', 0, -1)
-                # if event.key == pg.K_DOWN:
-                #     self.attack_event('down', 0, 1)
-
     def attack_event(self, direction, d_x, d_y):
         ''' Executes player attack '''
 
