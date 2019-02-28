@@ -15,4 +15,3 @@ class Hitbox:
             if enemy.x_pos == self.x_pos and enemy.y_pos == self.y_pos:
                 print('Attacked enemy')
                 self.game.enemy_sprites.remove(enemy)
-                

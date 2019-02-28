@@ -21,13 +21,13 @@ WIDTH = 960
 TITLE = 'Orthogonal Quest'
 FONT_NAME = 'arial'
 GAME_SPEED = 30 # smaller is faster
-
 TILESIZE = 60
 GRIDWIDTH = WIDTH / TILESIZE
 GRIDHEIGHT = HEIGHT / TILESIZE
 
 HERO_HEALTH = 100
 MOB_DAMAGE = 34
+BOSS_DAMAGE = 66
 
 # player health bar settings
 BAR_LENGTH = 100

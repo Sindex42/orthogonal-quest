@@ -4,11 +4,20 @@ from os import path
 import pygame as pg
 from hero import Hero
 from enemy import Enemy
+from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
 from collision import game_over_voice
 from hud import draw_hero_health
-from constants import WIDTH, HEIGHT, TILESIZE, TITLE, BG_COLOUR, GRID_COLOUR, GAME_SPEED
+from constants import (
+    WIDTH,
+    HEIGHT,
+    TILESIZE,
+    TITLE,
+    BG_COLOUR,
+    GRID_COLOUR,
+    GAME_SPEED,
+    HERO_HEALTH)
 
 
 class Game:
@@ -28,10 +37,11 @@ class Game:
         self.hero = None
         self.enemy = None
         self.win = None
+        self.boss = None
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
-        self.map_list = ['map1.txt', 'map2.txt', 'map3.txt', 'map4.txt']
+        self.map_list = ['map1.txt', 'map2.txt', 'map3.txt', 'map4.txt', 'map5.txt']
         self.map_nr = 0
         self.counter = 0
 
@@ -57,6 +67,8 @@ class Game:
                     self.walls_sprites.add(Wall(self, col, row))
                 if tile == 'E':
                     self.enemy_sprites.add(Enemy(self, col, row))
+                if tile == 'B':
+                    self.enemy_sprites.add(Boss(self, col, row))
                 if tile == 'H':
                     self.hero = Hero(self, col, row)
                     self.all_sprites.add(self.hero)
@@ -102,11 +114,12 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.walls_sprites.draw(self.screen)
         self.enemy_sprites.draw(self.screen)
-        draw_hero_health(self.screen, 10, 10, self.hero.health / 100)
+        draw_hero_health(self.screen, 10, 10, self.hero.health / HERO_HEALTH)
         pg.display.flip()
 
     def enemies_exist(self):
         ''' Ends game if all enemies dead '''
+
         if not self.enemy_sprites:
             self.playing = False
             self.win = True
