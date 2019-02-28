@@ -4,7 +4,7 @@ from os import path
 import pygame as pg
 from hero import Hero
 from enemy import Enemy
-from boss import Boss
+#from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
 from collision import game_over_voice
@@ -117,7 +117,7 @@ class Game:
 
     def enemies_exist(self):
         ''' Ends game if all enemies dead '''
-        
+
         if not self.enemy_sprites:
             self.playing = False
             self.win = True
