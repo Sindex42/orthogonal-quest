@@ -7,6 +7,7 @@ from enemy import Enemy
 from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
+from key_events import Key_Events
 from collision import game_over_voice, sword_slash_sound
 from hud import draw_hero_health
 from constants import (
@@ -44,6 +45,8 @@ class Game:
         self.map_list = ['map1.txt', 'map2.txt', 'map3.txt', 'map4.txt', 'map5.txt']
         self.map_nr = 0
         self.counter = 0
+
+        self.key_events = Key_Events(self)
 
     def run(self):
         ''' Game loop '''
@@ -136,33 +139,35 @@ class Game:
     def events(self):
         ''' Event listener '''
 
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                self.playing = False
-                pg.quit()
+        self.key_events.listen(self.hero)
 
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_a:
-                    self.hero.move(d_x=-1)
-                    self.hero.load_movement_image(0)
-                if event.key == pg.K_d:
-                    self.hero.move(d_x=1)
-                    self.hero.load_movement_image(4)
-                if event.key == pg.K_w:
-                    self.hero.move(d_y=-1)
-                    self.hero.load_movement_image(8)
-                if event.key == pg.K_s:
-                    self.hero.move(d_y=1)
-                    self.hero.load_movement_image(12)
+        # for event in pg.event.get():
+        #     if event.type == pg.QUIT:
+        #         self.playing = False
+        #         pg.quit()
 
-                if event.key == pg.K_RIGHT:
-                    self.attack_event('right', 1, 0)
-                if event.key == pg.K_LEFT:
-                    self.attack_event('left', -1, 0)
-                if event.key == pg.K_UP:
-                    self.attack_event('up', 0, -1)
-                if event.key == pg.K_DOWN:
-                    self.attack_event('down', 0, 1)
+        #     if event.type == pg.KEYDOWN:
+        #         if event.key == pg.K_a:
+        #             self.hero.move(d_x=-1)
+        #             self.hero.load_movement_image(0)
+        #         if event.key == pg.K_d:
+        #             self.hero.move(d_x=1)
+        #             self.hero.load_movement_image(4)
+        #         if event.key == pg.K_w:
+        #             self.hero.move(d_y=-1)
+        #             self.hero.load_movement_image(8)
+        #         if event.key == pg.K_s:
+        #             self.hero.move(d_y=1)
+        #             self.hero.load_movement_image(12)
+
+                # if event.key == pg.K_RIGHT:
+                #     self.attack_event('right', 1, 0)
+                # if event.key == pg.K_LEFT:
+                #     self.attack_event('left', -1, 0)
+                # if event.key == pg.K_UP:
+                #     self.attack_event('up', 0, -1)
+                # if event.key == pg.K_DOWN:
+                #     self.attack_event('down', 0, 1)
 
     def attack_event(self, direction, d_x, d_y):
         ''' Executes player attack '''
