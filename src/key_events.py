@@ -32,15 +32,28 @@ class Key_Events:
                 self.attack(event)
 
     def attack(self, event):
+        self.attack_left(event)
+        self.attack_right(event)
+        self.attack_up(event)
+        self.attack_down(event)
 
+
+    def attack_right(self, event):
         if event.key == pg.K_RIGHT:
             self.game.attack_event('right', 1, 0)
+
+    def attack_left(self, event):
         if event.key == pg.K_LEFT:
             self.game.attack_event('left', -1, 0)
+
+    def attack_up(self, event):
         if event.key == pg.K_UP:
             self.game.attack_event('up', 0, -1)
+
+    def attack_down(self, event):
         if event.key == pg.K_DOWN:
             self.game.attack_event('down', 0, 1)
+
 
 def movement(event, hero):
 
