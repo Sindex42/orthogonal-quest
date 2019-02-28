@@ -23,9 +23,7 @@ class Key_Events:
 
     def listen(self, hero):
         for event in pg.event.get():
-            if event.type == pg.QUIT:
-                self.game.playing = False
-                pg.quit()
+            self.quit(event)
 
             if event.type == pg.KEYDOWN:
 
@@ -38,6 +36,10 @@ class Key_Events:
         self.attack_up(event)
         self.attack_down(event)
 
+    def quit(self, event):
+        if event.type == pg.QUIT:
+            self.game.playing = False
+            pg.quit()
 
     def attack_right(self, event):
         if event.key == pg.K_RIGHT:
@@ -54,19 +56,3 @@ class Key_Events:
     def attack_down(self, event):
         if event.key == pg.K_DOWN:
             self.game.attack_event('down', 0, 1)
-
-
-# def movement(event, hero):
-#
-#     if event.key == pg.K_a:
-#         hero.move(d_x=-1)
-#         hero.load_movement_image(0)
-#     if event.key == pg.K_d:
-#         hero.move(d_x=1)
-#         hero.load_movement_image(4)
-#     if event.key == pg.K_w:
-#         hero.move(d_y=-1)
-#         hero.load_movement_image(8)
-#     if event.key == pg.K_s:
-#         hero.move(d_y=1)
-#         hero.load_movement_image(12)
