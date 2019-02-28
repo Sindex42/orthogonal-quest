@@ -20,7 +20,7 @@ HEIGHT = 720
 WIDTH = 960
 TITLE = 'Orthogonal Quest'
 FONT_NAME = 'arial'
-GAME_SPEED = 60 # smaller is faster
+GAME_SPEED = 30 # smaller is faster
 
 TILESIZE = 60
 GRIDWIDTH = WIDTH / TILESIZE
