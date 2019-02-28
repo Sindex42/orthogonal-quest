@@ -38,4 +38,4 @@ def sword_slash_sound():
         'audio', 'sword-gesture1.ogg'))
     chn_3 = pg.mixer.Channel(2)
     chn_3.set_volume(0.5)
-    chn_3.play(sound_slash, 0)          
+    chn_3.play(sound_slash, 0)
