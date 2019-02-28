@@ -17,10 +17,8 @@ class Hero(pg.sprite.Sprite):
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
-
-        string = './images/hero/movement/hero_12.png'
         self.image = pg.transform.scale(pg.image.load(
-            string), (TILESIZE - 1, TILESIZE - 1)).convert()
+            './images/hero/movement/hero_12.png'), (TILESIZE - 1, TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.images = []
