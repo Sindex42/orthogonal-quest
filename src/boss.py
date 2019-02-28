@@ -48,13 +48,6 @@ class Boss(pg.sprite.Sprite):
         if collide(self, self.game.all_sprites, d_x, d_y):
             self.boss_touches_hero()
 
-    # def load_direction_image(self, direction):
-    #     ''' Load directional facing sprites '''
-
-    #     self.image = pg.transform.scale(
-    #         pg.image.load(f'./images/{self.type}/{self.type}_{direction}.png'),
-    #         (TILESIZE, TILESIZE)).convert()
-
     def boss_touches_hero(self):
         ''' Updates Hero Health '''
 

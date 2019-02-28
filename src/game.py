@@ -50,7 +50,7 @@ class Game:
 
         self.playing = True
         while self.playing:
-            self.spawn_boss()
+            self.enemies_exist()
             self.move_enemies()
             self.events()
             self.update()
@@ -115,22 +115,12 @@ class Game:
         draw_hero_health(self.screen, 10, 10, self.hero.health / HERO_HEALTH)
         pg.display.flip()
 
-    # def enemies_exist(self):
-    #     ''' Ends game if all enemies dead '''
-    #     if not self.enemy_sprites:
-    #         self.playing = False
-
-    def spawn_boss(self):
-        ''' Spawns Boss '''
-
+    def enemies_exist(self):
+         ''' Ends game if all enemies dead '''
         if not self.enemy_sprites:
-            #self.playing = False
-            #self.win = True
-            #self.end_game()
-            for row, tiles in enumerate(self.map_data):
-                for col, tile in enumerate(tiles):
-                    if tile == 'B':
-                        self.enemy_sprites.add(Boss(self, col, row))
+            self.playing = False
+            self.win = True
+            self.end_game()
 
     def end_game(self):
         ''' End game process '''
