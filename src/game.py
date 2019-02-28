@@ -7,7 +7,7 @@ from enemy import Enemy
 from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
-from collision import game_over_voice, sword_slash_sound
+from collision import sound_effect
 from hud import draw_hero_health
 from constants import (
     WIDTH,
@@ -129,7 +129,7 @@ class Game:
         ''' End game process '''
 
         print("Game Over!")
-        game_over_voice()
+        sound_effect(2, 1.0)
         self.hero.kill()
         self.playing = False
 
@@ -170,7 +170,7 @@ class Game:
         self.hero.load_attack_image(direction)
         hitbox = Hitbox(self, self.hero.x_pos + d_x, self.hero.y_pos + d_y)
         hitbox.collide_with_enemy()
-        sword_slash_sound()
+        sound_effect(3, 0.5)
 
     def wait_for_key(self):
         ''' Allows user to start game and quit '''
