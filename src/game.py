@@ -4,7 +4,7 @@ from os import path
 import pygame as pg
 from hero import Hero
 from enemy import Enemy
-#from boss import Boss
+from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
 from collision import game_over_voice
@@ -41,7 +41,7 @@ class Game:
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         self.playing = None
         self.map_data = []
-        self.map_list = ['map1.txt', 'map2.txt', 'map3.txt', 'map4.txt']
+        self.map_list = ['map1.txt', 'map2.txt', 'map3.txt', 'map4.txt', 'map5.txt']
         self.map_nr = 0
         self.counter = 0
 
@@ -67,6 +67,8 @@ class Game:
                     self.walls_sprites.add(Wall(self, col, row))
                 if tile == 'E':
                     self.enemy_sprites.add(Enemy(self, col, row))
+                if tile == 'B':
+                    self.enemy_sprites.add(Boss(self, col, row))
                 if tile == 'H':
                     self.hero = Hero(self, col, row)
                     self.all_sprites.add(self.hero)
