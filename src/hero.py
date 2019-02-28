@@ -17,15 +17,13 @@ class Hero(pg.sprite.Sprite):
         self.game = game
         self.x_pos = x_pos
         self.y_pos = y_pos
-
-        string = './images/hero/hero_down/hero_f0.png'
         self.image = pg.transform.scale(pg.image.load(
-            string), (TILESIZE - 1, TILESIZE - 1)).convert()
+            './images/hero/movement/hero_12.png'), (TILESIZE - 1, TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.right_index, self.left_index, self.up_index, self.down_index = 0, 0, 0, 0
-        self.up_images, self.right_images, self.down_images, self.left_images = [], [], [], []
+        self.images = []
         self.animation_setup()
+        self.index_counter = -1
         self.health = HERO_HEALTH
 
     def move(self, d_x=0, d_y=0):
@@ -36,26 +34,15 @@ class Hero(pg.sprite.Sprite):
             self.x_pos += d_x
             self.y_pos += d_y
 
-        if d_x == 1:
-            self.right_index += 1
-            if self.right_index >= len(self.right_images):
-                self.right_index = 0
-            self.image = self.right_images[self.right_index].convert()
-        if d_x == -1:
-            self.left_index += 1
-            if self.left_index >= len(self.left_images):
-                self.left_index = 0
-            self.image = self.left_images[self.left_index].convert()
-        if d_y == 1:
-            self.down_index += 1
-            if self.down_index >= len(self.down_images):
-                self.down_index = 0
-            self.image = self.down_images[self.down_index].convert()
-        if d_y == -1:
-            self.up_index += 1
-            if self.up_index >= len(self.up_images):
-                self.up_index = 0
-            self.image = self.up_images[self.up_index].convert()
+    def load_movement_image(self, index):
+        ''' Loads hero movements images '''
+
+        self.index_counter += 1
+        if self.index_counter >= 4:
+            self.index_counter = 0
+        i = self.index_counter + index
+        self.image = pg.transform.scale(pg.image.load(
+            f'./images/hero/movement/hero_{i}.png'), (TILESIZE - 1, TILESIZE - 1)).convert()
 
     def hero_touches_enemy(self):
         ''' Updates Hero Health '''
@@ -66,12 +53,15 @@ class Hero(pg.sprite.Sprite):
             self.game.end_game()
 
     def animation_setup(self):
-        ''' Assigns directional images to appropriate lists '''
+        ''' Loads directional images to list '''
 
-        load_direction_image('up', self.up_images)
-        load_direction_image('right', self.right_images)
-        load_direction_image('down', self.down_images)
-        load_direction_image('left', self.left_images)
+        for image in os.listdir(
+                'images/hero/movement'):
+            path = os.path.join(
+                'images/hero/movement', image)
+            self.images.append(
+                pg.transform.scale(
+                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
 
     def update(self):
         ''' Update position '''
@@ -87,15 +77,3 @@ class Hero(pg.sprite.Sprite):
             pg.image.load(
                 f'./images/hero/hero_attack/hero_{direction}.png'),
             (TILESIZE, TILESIZE)).convert()
-
-
-def load_direction_image(direction, image_list):
-    ''' Loads sprites for specific directions '''
-
-    for image in os.listdir(
-            f'images/hero/hero_{direction}'):
-        path = os.path.join(
-            f'images/hero/hero_{direction}', image)
-        image_list.append(
-            pg.transform.scale(
-                pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
