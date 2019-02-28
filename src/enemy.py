@@ -29,11 +29,18 @@ class Enemy(pg.sprite.Sprite):
         self.load_direction_image(movement)
         d_x, d_y = 0, 0
 
-        if movement == 'up' : d_y = -1
-        if movement == 'down' : d_y = 1
-        if movement == 'left' : d_x = -1
-        if movement == 'right' : d_x = 1
-       
+        if movement == 'up':
+            d_y = -1
+
+        if movement == 'down':
+            d_y = 1
+
+        if movement == 'left':
+            d_x = -1
+
+        if movement == 'right':
+            d_x = 1
+
         if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
                 self, self.game.all_sprites, d_x, d_y, self.enemy_touches_hero) and not collide(
                     self, self.game.enemy_sprites, d_x, d_y):
