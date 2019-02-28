@@ -4,7 +4,7 @@ import os
 import pygame as pg
 
 from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
-from collision import collide, bump_sound
+from collision import collide, bump_sound, enemy_impact_sound
 
 
 class Hero(pg.sprite.Sprite):
@@ -48,6 +48,7 @@ class Hero(pg.sprite.Sprite):
         ''' Updates Hero Health '''
 
         print("Ran into enemy")
+        enemy_impact_sound()
         self.health -= MOB_DAMAGE
         if self.health <= 0:
             self.game.end_game()

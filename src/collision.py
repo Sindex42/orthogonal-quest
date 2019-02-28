@@ -30,3 +30,21 @@ def game_over_voice():
     chn_2 = pg.mixer.Channel(1)
     chn_2.set_volume(1.0)
     chn_2.play(sound_game_over, 0)
+
+def sword_slash_sound():
+    ''' Generate sword slash sounds '''
+
+    sound_slash = pg.mixer.Sound(os.path.join(
+        'audio', 'sword-gesture1.ogg'))
+    chn_3 = pg.mixer.Channel(2)
+    chn_3.set_volume(0.5)
+    chn_3.play(sound_slash, 0)
+
+def enemy_impact_sound():
+    ''' Generate sword slash sounds '''
+
+    sound_slash = pg.mixer.Sound(os.path.join(
+        'audio', 'impact_enemy.ogg'))
+    chn_4 = pg.mixer.Channel(3)
+    chn_4.set_volume(0.5)
+    chn_4.play(sound_slash, 0)

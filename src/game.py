@@ -7,7 +7,7 @@ from enemy import Enemy
 from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
-from collision import game_over_voice
+from collision import game_over_voice, sword_slash_sound
 from hud import draw_hero_health
 from constants import (
     WIDTH,
@@ -170,6 +170,7 @@ class Game:
         self.hero.load_attack_image(direction)
         hitbox = Hitbox(self, self.hero.x_pos + d_x, self.hero.y_pos + d_y)
         hitbox.collide_with_enemy()
+        sword_slash_sound()
 
     def wait_for_key(self):
         ''' Allows user to start game and quit '''
