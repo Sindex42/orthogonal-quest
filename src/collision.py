@@ -39,3 +39,12 @@ def sword_slash_sound():
     chn_3 = pg.mixer.Channel(2)
     chn_3.set_volume(0.5)
     chn_3.play(sound_slash, 0)
+
+def enemy_impact_sound():
+    ''' Generate sword slash sounds '''
+
+    sound_slash = pg.mixer.Sound(os.path.join(
+        'audio', 'impact_enemy.ogg'))
+    chn_4 = pg.mixer.Channel(3)
+    chn_4.set_volume(0.5)
+    chn_4.play(sound_slash, 0)
