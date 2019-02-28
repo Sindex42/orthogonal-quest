@@ -31,11 +31,14 @@ class Enemy(pg.sprite.Sprite):
 
         if movement == 'up':
             d_y = -1
-        elif movement == 'down':
+
+        if movement == 'down':
             d_y = 1
-        elif movement == 'left':
+
+        if movement == 'left':
             d_x = -1
-        else:
+
+        if movement == 'right':
             d_x = 1
 
         if not collide(self, self.game.walls_sprites, d_x, d_y) and not collide(
