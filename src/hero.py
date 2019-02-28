@@ -47,9 +47,15 @@ class Hero(pg.sprite.Sprite):
             self.game.end_game()
 
     def animation_setup(self):
-        ''' Assigns directional images to appropriate lists '''
+        ''' Loads directional images to list '''
 
-        load_direction_images(self.images)
+        for image in os.listdir(
+                'images/hero/movement'):
+            path = os.path.join(
+                'images/hero/movement', image)
+            self.images.append(
+                pg.transform.scale(
+                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
 
     def update(self):
         ''' Update position '''
@@ -65,14 +71,3 @@ class Hero(pg.sprite.Sprite):
             pg.image.load(
                 f'./images/hero/hero_attack/hero_{direction}.png'),
             (TILESIZE, TILESIZE)).convert()
-
-def load_direction_images(image_list):
-    ''' Loads sprites for specific directions '''
-
-    for image in os.listdir(
-            'images/hero/movement'):
-        path = os.path.join(
-            'images/hero/movement', image)
-        image_list.append(
-            pg.transform.scale(
-                pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
