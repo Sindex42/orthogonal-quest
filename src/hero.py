@@ -35,11 +35,12 @@ class Hero(pg.sprite.Sprite):
             self.y_pos += d_y
 
     def load_movement_image(self, index):
+        ''' Loads hero movements images '''
+
         self.index_counter += 1
         if self.index_counter >= 4:
             self.index_counter = 0
         i = self.index_counter + index
-        
         self.image = pg.transform.scale(pg.image.load(
             f'./images/hero/movement/hero_{i}.png'), (TILESIZE - 1, TILESIZE - 1)).convert()
 
