@@ -25,8 +25,8 @@ def bump_sound():
 def sound_effect(chn, vol):
     ''' Generates sound effects '''
 
-    sound_effect = pg.mixer.Sound(os.path.join(
+    sound = pg.mixer.Sound(os.path.join(
         'audio', f'sound_{chn}.ogg'))
     channel = pg.mixer.Channel(chn)
     channel.set_volume(vol)
-    channel.play(sound_effect, 0)
+    channel.play(sound, 0)
