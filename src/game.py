@@ -7,7 +7,7 @@ from enemy import Enemy
 from boss import Boss
 from wall import Wall
 from hitbox import Hitbox
-from collision import sound_effect
+from sounds import sound_effect
 from hud import draw_hero_health
 from constants import (
     WIDTH,

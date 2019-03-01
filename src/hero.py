@@ -4,7 +4,8 @@ import os
 import pygame as pg
 
 from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
-from collision import collide, bump_sound, sound_effect
+from collision import collide
+from sounds import bump_sound, sound_effect
 
 
 class Hero(pg.sprite.Sprite):
