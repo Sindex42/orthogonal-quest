@@ -14,6 +14,15 @@ Contributors:
 * [Michael Nguyen](https://github.com/michaelnguyen974)
 * [Thomas Lawrence](https://github.com/matharotheelf)
 
+![](https://media.giphy.com/media/8mzmHCjZjNMNUmDzyp/giphy.gif)
+
+
+## Learning log
+
+To see a log of our learnings, and use of our agile processes throughout this project, please refer to our project [wiki](https://github.com/Sindex42/super-slack-bros/wiki)
+
+
+
 ## Getting Started
 
 ### System Requirements
@@ -73,8 +82,6 @@ From the `orthogonal-quest` directory root, run `python ./src/main.py`
 
 Your virtual environment must be activated in order for this to work.
 
-![](https://media.giphy.com/media/8mzmHCjZjNMNUmDzyp/giphy.gif)
-
 ### Ending your quest!
 
 To deactivate your virtual environment simply quit the game and in your terminal enter: `deactivate`.
@@ -92,11 +99,6 @@ Tech | Description
 [Code Climate](https://codeclimate.com/) | Automated code review for code quality and complexity
 [Pylint](https://www.pylint.org/) | Source-code, bug and quality checker for Python 
 [Autopep8](https://github.com/hhatto/autopep8) | A tool that automatically formats Python code to conform to the PEP 8 style guide
-
-
-## Learning log
-
-To see a log of our learnings throughout this project, please refer to our project [wiki](https://github.com/Sindex42/super-slack-bros/wiki)
 
 
 ## How to Contribute
