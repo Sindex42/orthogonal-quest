@@ -73,6 +73,8 @@ From the `orthogonal-quest` directory root, run `python ./src/main.py`
 
 Your virtual environment must be activated in order for this to work.
 
+![](https://media.giphy.com/media/8mzmHCjZjNMNUmDzyp/giphy.gif)
+
 ### Ending your quest!
 
 To deactivate your virtual environment simply quit the game and in your terminal enter: `deactivate`.
