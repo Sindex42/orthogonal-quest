@@ -21,7 +21,6 @@ class Hero(pg.sprite.Sprite):
             './images/hero/movement/hero_12.png'), (TILESIZE - 1, TILESIZE - 1)).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.images = []
         self.index_counter = -1
         self.health = HERO_HEALTH
 
