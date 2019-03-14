@@ -1,6 +1,5 @@
 ''' Hero module '''
 
-import os
 import pygame as pg
 
 from constants import TILESIZE, BLACK, HERO_HEALTH, MOB_DAMAGE
