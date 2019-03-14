@@ -22,7 +22,6 @@ class Hero(pg.sprite.Sprite):
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.images = []
-        self.animation_setup()
         self.index_counter = -1
         self.health = HERO_HEALTH
 
@@ -52,17 +51,6 @@ class Hero(pg.sprite.Sprite):
         self.health -= MOB_DAMAGE
         if self.health <= 0:
             self.game.end_game()
-
-    def animation_setup(self):
-        ''' Loads directional images to list '''
-
-        for image in os.listdir(
-                'images/hero/movement'):
-            path = os.path.join(
-                'images/hero/movement', image)
-            self.images.append(
-                pg.transform.scale(
-                    pg.image.load(path), (TILESIZE - 1, TILESIZE - 1)))
 
     def update(self):
         ''' Update position '''
